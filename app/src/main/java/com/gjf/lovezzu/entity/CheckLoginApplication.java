@@ -9,16 +9,16 @@ public class CheckLoginApplication extends Application {
     private boolean isLogin;
 
     public boolean isLogin() {
-        return isLogin;
+        return this.isLogin;
     }
 
-    public void setIsLogin(boolean isLogin) {
-        this.isLogin = isLogin;
+    public void setIsLogin(boolean isLogining) {
+        this.isLogin = isLogining;
     }
 
     @Override
     public void onCreate() {
-       isLogin = false;
+       isLogin = true;
 
         super.onCreate();
     }

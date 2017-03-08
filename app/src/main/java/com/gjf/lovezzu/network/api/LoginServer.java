@@ -15,5 +15,5 @@ public interface LoginServer {
 
     @FormUrlEncoded
     @POST("register")
-    Observable<LoginResult> login(@Field("phone") String phone, @Field("password") String password);
+    Observable<LoginResult> login(@Field("issuccessful") boolean issuccessful ,@Field("phone") String phone, @Field("password") String password);
 }

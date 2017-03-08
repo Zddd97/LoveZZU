@@ -6,6 +6,15 @@ package com.gjf.lovezzu.entity;
  */
 public class LoginResult {
 
+   private boolean isSuccessful;
+
+    public boolean isSuccessful() {
+        return isSuccessful;
+    }
+
+    public void setIsSuccessful(boolean isSuccessful) {
+        this.isSuccessful = isSuccessful;
+    }
 
     private String phone;
     private String passowrd;

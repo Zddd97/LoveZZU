@@ -2,6 +2,7 @@ package com.gjf.lovezzu.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import com.gjf.lovezzu.fragment.LifeFragment;
 import com.gjf.lovezzu.fragment.MessageFragment;
 import com.gjf.lovezzu.fragment.PersonFragment;
 import com.gjf.lovezzu.fragment.SchoolFragment;
-
+import com.gjf.lovezzu.service.CheckLogin;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkLoin();
+
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -149,4 +152,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.commit();
 
     }
+
+    private void checkLoin(){
+        Intent startintent = new Intent(MainActivity.this, CheckLogin.class);
+        startService(startintent);
+    }
+
 }

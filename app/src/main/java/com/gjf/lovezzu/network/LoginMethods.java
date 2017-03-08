@@ -47,8 +47,8 @@ public class LoginMethods {
         return SingletonHolder.INSTANCE;
     }
 
-     public void goToLogin(Subscriber<LoginResult> subscriber,String phone,String password){
-         loginServer.login(phone,password).subscribeOn(Schedulers.io())
+     public void goToLogin(Subscriber<LoginResult> subscriber,boolean issuccessful,String phone,String password){
+         loginServer.login(issuccessful,phone,password).subscribeOn(Schedulers.io())
                  .observeOn(AndroidSchedulers.mainThread())
                  .subscribe(subscriber);
      }

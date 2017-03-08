@@ -24,6 +24,7 @@ import rx.Subscriber;
 public class UserSingUpFragment extends Fragment {
 
     @BindView(R.id.login_now)  TextView login_now;
+    @BindView(R.id.user_singup_button) TextView user_singuo_button;
     private UserLoginFragmen userLoginFragmen;
     private  View view;
     private Subscriber subscriber;
@@ -64,11 +65,14 @@ public class UserSingUpFragment extends Fragment {
         };
 
     }
-    @OnClick({R.id.login_now})
+    @OnClick({R.id.login_now,R.id.user_singup_button})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.login_now:
                goTologin();
+                break;
+            case R.id.user_singup_button:
+                goTosingup();
                 break;
         }
     }
