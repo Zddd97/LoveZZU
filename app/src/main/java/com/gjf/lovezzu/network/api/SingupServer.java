@@ -12,8 +12,8 @@ import rx.Observable;
  */
 public interface SingupServer {
     @FormUrlEncoded
-    @POST("Singup")
-    Observable<LoginResult> register(@Field("issuccessful") boolean issuccessful,@Field("phone") String name,  @Field("password") String password);
+    @POST("controller")
+    Observable<LoginResult> register(@Field("identifier") String identifier,@Field("issuccessful") boolean issuccessful,@Field("phone") String name,  @Field("password") String password);
 }
 
 

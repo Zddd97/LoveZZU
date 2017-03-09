@@ -98,7 +98,7 @@ public class UserLoginFragmen extends Fragment {
 
             @Override
             public void onCompleted() {
-                Toast.makeText(getContext(),"连接成功！",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(),"连接成功！",Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -127,7 +127,8 @@ public class UserLoginFragmen extends Fragment {
         String phone = user_reg_phone.getText().toString().trim();
         String password = user_reg_password.getText().toString().trim();
         boolean  issuccessful = false;
-        LoginMethods.getInstance().goToLogin(subscriber,issuccessful,phone, password);
+        String identifier = "0";
+        LoginMethods.getInstance().goToLogin(subscriber,identifier,issuccessful,phone, password);
 
     }
    private void saveUserInfo(String phone,String password){
@@ -140,6 +141,9 @@ public class UserLoginFragmen extends Fragment {
 
       checkLoginApplication = (CheckLoginApplication)getActivity().getApplication();
        checkLoginApplication.setIsLogin(true);
+       Intent intent = new Intent(getContext(),MainActivity.class);
+       startActivity(intent);
+
 
    }
     private void checkInput(){

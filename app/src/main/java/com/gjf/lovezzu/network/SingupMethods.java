@@ -47,8 +47,8 @@ public class SingupMethods {
         return SingletonHolder.INSTANCE;
     }
 
-    public void goToSingup(Subscriber<LoginResult> subscriber,boolean issuccesful,String phone,String password){
-        singupServer.register(issuccesful,phone,password).subscribeOn(Schedulers.io())
+    public void goToSingup(Subscriber<LoginResult> subscriber,String identifier,boolean issuccesful,String phone,String password){
+        singupServer.register(identifier,issuccesful,phone,password).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

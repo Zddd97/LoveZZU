@@ -6,7 +6,17 @@ package com.gjf.lovezzu.entity;
  */
 public class LoginResult {
 
-   private boolean isSuccessful;
+    private String identifier;
+
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    private boolean isSuccessful;
 
     public boolean isSuccessful() {
         return isSuccessful;

@@ -76,7 +76,8 @@ public class UserSingUpFragment extends Fragment {
         String phone = getuser_reg_phone.getText().toString();
         String password = getUser_reg_password.getText().toString();
         boolean issuccessful = false;
-        SingupMethods.getInstance().goToSingup(subscriber,issuccessful,phone,password);
+        String identifier = "1";
+        SingupMethods.getInstance().goToSingup(subscriber,identifier,issuccessful,phone,password);
 
     }
     @OnClick({R.id.login_now,R.id.user_singup_button})

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.gjf.lovezzu.entity.CheckLoginApplication;
 import com.gjf.lovezzu.entity.LoginResult;
@@ -33,7 +32,7 @@ public class CheckLogin extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Toast.makeText(this,"创建",Toast.LENGTH_LONG).show();
+       // Toast.makeText(this,"创建",Toast.LENGTH_LONG).show();
         Log.d("My", "start");
 
 
@@ -41,23 +40,25 @@ public class CheckLogin extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        checkLogin();  Toast.makeText(this,"启动",Toast.LENGTH_LONG).show();
+        checkLogin();
+        //Toast.makeText(this,"启动",Toast.LENGTH_LONG).show();
 
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this,"销毁",Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this,"销毁",Toast.LENGTH_LONG).show();
        super.onDestroy();
 
     }
 
     private void checkLogin(){
         SharedPreferences sharedPreferences = getSharedPreferences("userinfo", Activity.MODE_APPEND);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
         String phone = sharedPreferences.getString("phone", "");
         String password = sharedPreferences.getString("password","");
-        Toast.makeText(this,"电话是："+phone.toString()+"密码是"+password.toString(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"电话是："+phone.toString()+"密码是"+password.toString(),Toast.LENGTH_LONG).show();
 
         subscriber = new Subscriber<LoginResult>() {
             @Override
@@ -67,7 +68,7 @@ public class CheckLogin extends Service {
 
             @Override
             public void onError(Throwable e) {
-                Toast.makeText(getApplicationContext(),e.getMessage().toString()+"网络错误！",Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(),e.getMessage().toString()+"网络错误！",Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -75,13 +76,17 @@ public class CheckLogin extends Service {
              if (loginResult.isSuccessful()){
                  checkLoginApplication = (CheckLoginApplication)getApplication();
                  checkLoginApplication.setIsLogin(true);
+
              }else {
                  checkLoginApplication = (CheckLoginApplication)getApplication();
                  checkLoginApplication.setIsLogin(false);
+                 editor.clear();
+
              }
             }
         };
-        LoginMethods.getInstance().goToLogin(subscriber,issuccrssful, phone, password);
+        String identifier = "0";
+        LoginMethods.getInstance().goToLogin(subscriber,identifier,issuccrssful, phone, password);
     }
 
 }
