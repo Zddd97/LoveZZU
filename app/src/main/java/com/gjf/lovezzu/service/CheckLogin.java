@@ -73,8 +73,10 @@ public class CheckLogin extends Service {
             @Override
             public void onNext(LoginResult loginResult) {
              if (loginResult.isSuccessful()){
+                 checkLoginApplication = (CheckLoginApplication)getApplication();
                  checkLoginApplication.setIsLogin(true);
              }else {
+                 checkLoginApplication = (CheckLoginApplication)getApplication();
                  checkLoginApplication.setIsLogin(false);
              }
             }

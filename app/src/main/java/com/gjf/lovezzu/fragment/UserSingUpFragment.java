@@ -8,10 +8,13 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.ResultReturn;
+import com.gjf.lovezzu.entity.LoginResult;
+import com.gjf.lovezzu.network.SingupMethods;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +28,8 @@ public class UserSingUpFragment extends Fragment {
 
     @BindView(R.id.login_now)  TextView login_now;
     @BindView(R.id.user_singup_button) TextView user_singuo_button;
+    @BindView(R.id.user_reg_phone) EditText getuser_reg_phone;
+    @BindView(R.id.user_reg_password) EditText getUser_reg_password;
     private UserLoginFragmen userLoginFragmen;
     private  View view;
     private Subscriber subscriber;
@@ -45,7 +50,7 @@ public class UserSingUpFragment extends Fragment {
         transaction.commit();
     }
     private void goTosingup(){
-        subscriber = new Subscriber<ResultReturn>() {
+        subscriber = new Subscriber<LoginResult>() {
             @Override
             public void onCompleted() {
 
@@ -57,12 +62,21 @@ public class UserSingUpFragment extends Fragment {
             }
 
             @Override
-            public void onNext(ResultReturn resultReturn) {
-
+            public void onNext(LoginResult loginResult) {
+                         if (loginResult.isSuccessful()){
+                             Toast.makeText(getContext(),"注册成功",Toast.LENGTH_LONG).show();
+                             goTologin();
+                         }else{
+                             Toast.makeText(getContext(),"注册失败！",Toast.LENGTH_LONG).show();
+                         }
             }
 
 
         };
+        String phone = getuser_reg_phone.getText().toString();
+        String password = getUser_reg_password.getText().toString();
+        boolean issuccessful = false;
+        SingupMethods.getInstance().goToSingup(subscriber,issuccessful,phone,password);
 
     }
     @OnClick({R.id.login_now,R.id.user_singup_button})

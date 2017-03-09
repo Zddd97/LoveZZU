@@ -13,7 +13,7 @@ import rx.Observable;
 public interface SingupServer {
     @FormUrlEncoded
     @POST("Singup")
-    Observable<LoginResult> register(@Field("phone") String name,  @Field("password") String password);
+    Observable<LoginResult> register(@Field("issuccessful") boolean issuccessful,@Field("phone") String name,  @Field("password") String password);
 }
 
 

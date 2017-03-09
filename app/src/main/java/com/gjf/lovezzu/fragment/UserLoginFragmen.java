@@ -110,10 +110,11 @@ public class UserLoginFragmen extends Fragment {
             public void onNext(LoginResult loginResult) {
                 if (loginResult.isSuccessful()){
                     String phone = loginResult.getPhone();
-                    String password = loginResult.getPassowrd();
+                    String password = loginResult.getPassword();
                     saveUserInfo(phone,password);
                 }else{
                     Toast.makeText(getContext(),"账号或者密码错误！",Toast.LENGTH_LONG).show();
+                    checkLoginApplication = (CheckLoginApplication)getActivity().getApplication();
                     checkLoginApplication.setIsLogin(false);
                 }
 
@@ -125,7 +126,7 @@ public class UserLoginFragmen extends Fragment {
 
         String phone = user_reg_phone.getText().toString().trim();
         String password = user_reg_password.getText().toString().trim();
-        boolean issuccessful = false;
+        boolean  issuccessful = false;
         LoginMethods.getInstance().goToLogin(subscriber,issuccessful,phone, password);
 
     }

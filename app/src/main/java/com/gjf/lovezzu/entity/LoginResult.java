@@ -17,7 +17,7 @@ public class LoginResult {
     }
 
     private String phone;
-    private String passowrd;
+    private String password;
 
     public String getPhone() {
         return phone;
@@ -27,11 +27,13 @@ public class LoginResult {
         this.phone = phone;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

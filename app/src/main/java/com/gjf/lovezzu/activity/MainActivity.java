@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.entity.CheckLoginApplication;
 import com.gjf.lovezzu.fragment.FriendFragment;
 import com.gjf.lovezzu.fragment.LifeFragment;
 import com.gjf.lovezzu.fragment.MessageFragment;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout mFour;
 
     LinearLayout mFive;
+    private CheckLoginApplication app;
     private SchoolFragment schoolFragment;
     private LifeFragment lifeFragment;
     private FriendFragment friendFragment;
@@ -42,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkLoin();
-
+ app = (CheckLoginApplication)getApplication();
+        Toast.makeText(getApplicationContext(),""+app.isLogin(),Toast.LENGTH_LONG).show();
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -154,8 +158,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void checkLoin(){
+        CheckLoginApplication checkLoginApplication = (CheckLoginApplication)getApplication();
+        if (checkLoginApplication.isLogin()==false){
         Intent startintent = new Intent(MainActivity.this, CheckLogin.class);
         startService(startintent);
+             }
     }
 
 }
