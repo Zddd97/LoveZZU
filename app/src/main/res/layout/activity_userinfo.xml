@@ -48,7 +48,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_icon_layout">
 
 
                     <TextView
@@ -99,7 +100,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_nickname_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -165,7 +167,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="账号" />
+                            android:text="账号"
+                            android:id="@+id/user_info_phone_text"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -190,7 +193,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_code_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -257,7 +261,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_sex_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -303,7 +308,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_home_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -362,7 +368,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_school_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -408,7 +415,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_class_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -454,7 +462,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fffffffc">
+                    android:background="#fffffffc"
+                    android:id="@+id/userinfo_major_layout">
 
                     <TextView
                         android:layout_width="wrap_content"
