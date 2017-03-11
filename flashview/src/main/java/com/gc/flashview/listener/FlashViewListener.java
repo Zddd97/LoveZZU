@@ -8,5 +8,5 @@ import android.view.View;
  */
 public interface FlashViewListener 
 {
-	public void onClick(int position); 
+	 void onClick(int position);
 }
