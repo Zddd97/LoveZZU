@@ -41,5 +41,48 @@
                 }
             }
         ]
+    },
+    {
+        "outputFile": "F:\\LoveZZU\\flashview\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-v13\\values-w480dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 61,
+                    "endOffset": 112
+                },
+                "from": {
+                    "file": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\values-w480dp\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 61,
+                        "endOffset": 113
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 117,
+                    "endColumn": 71,
+                    "endOffset": 184
+                },
+                "from": {
+                    "file": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\values-w480dp\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 118,
+                        "endColumn": 71,
+                        "endOffset": 185
+                    }
+                }
+            }
+        ]
     }
 ]

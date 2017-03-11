@@ -1,5 +1,25 @@
 [
     {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "F:\\LoveZZU\\flashview\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\dot_white.png",
+        "source": "F:\\LoveZZU\\flashview\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\dot_white.png"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\dot_light.png",
+        "source": "F:\\LoveZZU\\flashview\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\dot_light.png"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\image_holder.xml",
+        "source": "F:\\LoveZZU\\flashview\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\image_holder.xml"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\defaultflashview.png",
+        "source": "F:\\LoveZZU\\flashview\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\defaultflashview.png"
+    },
+    {
         "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_launcher.png"
     },
