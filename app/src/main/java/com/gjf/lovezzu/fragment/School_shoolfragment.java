@@ -37,7 +37,7 @@ public class School_shoolfragment extends android.app.Fragment {
         imageUrls.add("http://www.kole8.com/desktop/desk_file-11/2/2/2012/11/2012113013552959.jpg");
         imageUrls.add("http://www.237.cc/uploads/pcline/712_0_1680x1050.jpg");*/
         flashView.setImageUris(imageUrls);
-        flashView.setEffect(EffectConstants.DEPTH_PAGE_EFFECT);//更改图片切换的动画效果
+        flashView.setEffect(EffectConstants.DEFAULT_EFFECT);//更改图片切换的动画效果
         flashView.setOnPageClickListener(new FlashViewListener() {
             @Override
             public void onClick(int position) {
