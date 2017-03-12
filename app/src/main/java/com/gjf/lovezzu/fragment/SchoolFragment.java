@@ -37,6 +37,7 @@ public class SchoolFragment extends Fragment {
         ButterKnife.bind(this, view);
         school_shoolfragment = new School_shoolfragment();
         shool_societyfragment = new Shool_societyfragment();
+        inSchool.setTextColor(Color.parseColor("#0090FD"));
         replaceFragment(school_shoolfragment);
         return view;
     }
