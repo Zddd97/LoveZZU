@@ -32,14 +32,12 @@ public class SchoolMidAdapter extends RecyclerView.Adapter<SchoolMidAdapter.View
         holder.schoolImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"点击事件",Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "点击事件", Toast.LENGTH_SHORT).show();
                 //获取intent，开启新的活动
             }
         });
         return holder;
     }
-
-
 
 
     @Override
@@ -59,7 +57,6 @@ public class SchoolMidAdapter extends RecyclerView.Adapter<SchoolMidAdapter.View
         public ViewHolder(View itemView) {
             super(itemView);
             schoolImage = (ImageView) itemView.findViewById(R.id.mid_school_image);
-
         }
     }
 

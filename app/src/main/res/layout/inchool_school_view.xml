@@ -41,10 +41,20 @@
             android:id="@+id/in_school_last"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:background="#cba">
+            android:layout_marginTop="1dp"
+            android:layout_weight="15"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="资讯速递" />
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/last_school_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
