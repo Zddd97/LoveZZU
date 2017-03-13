@@ -2,11 +2,13 @@ package com.gjf.lovezzu.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,13 +39,32 @@ public class School_shoolfragment extends android.app.Fragment {
     private List<SchoolMid> schoolMidList = new ArrayList<>();
     private List<SchoolLast> schoolLastList = new ArrayList<>();
 
+    public static final String TAG = "Fragment";
+
+/*
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.d(TAG, "onAttach");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Log.d(TAG, "onCreate");
+
+    }*/
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.inchool_school_view, container, false);
         //初始化所需数据
+
         initSchoolList();
 
+        //Log.d(TAG, "onCreateView");
         //头部轮播
         flashView = (FlashView) view.findViewById(R.id.flash_view);
         flashView.setImageUris(imageUrls);
@@ -77,7 +98,9 @@ public class School_shoolfragment extends android.app.Fragment {
 
     private void initSchoolList() {
         //以下数据为测试数据，真实数据可从服务器中获取,由于要加载的数据过多，可以新建一个线程进行加载数据，并进行数据的初始化
+        //首页的新闻总是要更新的，是不是可以写成一个server，在后台进行更新
         //头部轮播图片，从服务器中加载
+
         imageUrls.add("http://www.bz55.com/uploads1/allimg/120312/1_120312100435_8.jpg");
         imageUrls.add("http://img2.pconline.com.cn/pconline/0706/19/1038447_34.jpg");
         imageUrls.add("http://www.237.cc/uploads/pcline/712_0_1680x1050.jpg");
@@ -121,5 +144,52 @@ public class School_shoolfragment extends android.app.Fragment {
         *
         * */
 
+ /*   @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.d(TAG, "onActivityCreated");
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "onDestroyView");
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d(TAG, "onDetach");
+    }*/
 }
