@@ -18,6 +18,7 @@ public class LoginResult {
 
     private boolean isSuccessful;
 
+
     public boolean isSuccessful() {
         return isSuccessful;
     }

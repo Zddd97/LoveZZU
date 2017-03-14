@@ -29,7 +29,7 @@ import java.util.List;
  */
 
 public class School_shoolfragment extends android.app.Fragment {
-
+   private View view;
     private FlashView flashView;
     private ArrayList<String> imageUrls = new ArrayList<String>();
     private List<SchoolMid> schoolMidList = new ArrayList<>();
@@ -55,40 +55,20 @@ public class School_shoolfragment extends android.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.inchool_school_view, container, false);
-        //初始化所需数据
 
-        initSchoolList();
+     if (view ==null){view = inflater.inflate(R.layout.inchool_school_view, container, false);
 
-        //Log.d(TAG, "onCreateView");
-        //头部轮播
-        flashView = (FlashView) view.findViewById(R.id.flash_view);
-        flashView.setImageUris(imageUrls);
-        flashView.setEffect(EffectConstants.DEFAULT_EFFECT);//更改图片切换的动画效果
-        flashView.setOnPageClickListener(new FlashViewListener() {
-            @Override
-            public void onClick(int position) {
-                Toast.makeText(view.getContext(), "你的点击的是第" + (position + 1) + "张图片！",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        //中间部分
-
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.in_mid_school);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
-        SchoolMidAdapter adapter = new SchoolMidAdapter(schoolMidList);
-        recyclerView.setAdapter(adapter);
-
-        //结尾部分
-        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
-        recyclerView1.setLayoutManager(gridLayoutManager);
-        SchoolLastAdapter adapter1 = new SchoolLastAdapter(schoolLastList);
-        recyclerView1.setAdapter(adapter1);
+         //初始化所需数据
+         initSchoolList();
+         showTopImage();
+         showCenterImage();
+         showEndImage();
+     }else {
+         ViewGroup viewGroup = (ViewGroup)view.getParent();
+         if (viewGroup!=null){
+             viewGroup.removeView(view);
+         }
+     }
         return view;
     }
 
@@ -134,6 +114,43 @@ public class School_shoolfragment extends android.app.Fragment {
 
     }
 
+    private void showTopImage(){
+
+        //Log.d(TAG, "onCreateView");
+        //头部轮播
+        flashView = (FlashView) view.findViewById(R.id.flash_view);
+        flashView.setImageUris(imageUrls);
+        flashView.setEffect(EffectConstants.DEFAULT_EFFECT);//更改图片切换的动画效果
+        flashView.setOnPageClickListener(new FlashViewListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(view.getContext(), "你的点击的是第" + (position + 1) + "张图片！",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+private void showCenterImage(){
+
+    //中间部分
+
+    RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.in_mid_school);
+    LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+    layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+    recyclerView.setLayoutManager(layoutManager);
+    SchoolMidAdapter adapter = new SchoolMidAdapter(schoolMidList);
+    recyclerView.setAdapter(adapter);
+}
+
+    private void showEndImage(){
+        //结尾部分
+        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
+        recyclerView1.setLayoutManager(gridLayoutManager);
+        SchoolLastAdapter adapter1 = new SchoolLastAdapter(schoolLastList);
+        recyclerView1.setAdapter(adapter1);
+    }
      /*
         * 设置向服务器请求图片--返回jison--{json:图片的URL和点击图片跳转的的URL}（有格式）--本地解析json--
         * 将图片的URL和点击的URL解析 匹配，用于设置相应的点击事件
