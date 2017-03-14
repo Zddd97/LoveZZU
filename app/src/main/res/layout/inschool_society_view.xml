@@ -5,4 +5,8 @@
     android:background="#0f0"
     android:orientation="vertical">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/last_school_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

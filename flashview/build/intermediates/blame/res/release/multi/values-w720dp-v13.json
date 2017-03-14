@@ -1,5 +1,29 @@
 [
     {
+        "outputFile": "F:\\LoveZZU\\flashview\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w720dp-v13\\values-w720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 76,
+                    "endOffset": 127
+                },
+                "from": {
+                    "file": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\values-w720dp\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 76,
+                        "endOffset": 128
+                    }
+                }
+            }
+        ]
+    },
+    {
         "outputFile": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w720dp-v13\\values-w720dp-v13.xml",
         "map": [
             {

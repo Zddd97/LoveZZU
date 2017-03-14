@@ -3,6 +3,8 @@ package com.gjf.lovezzu.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +31,7 @@ import java.util.List;
  */
 
 public class School_shoolfragment extends android.app.Fragment {
-   private View view;
+    private View view;
     private FlashView flashView;
     private ArrayList<String> imageUrls = new ArrayList<String>();
     private List<SchoolMid> schoolMidList = new ArrayList<>();
@@ -37,39 +39,67 @@ public class School_shoolfragment extends android.app.Fragment {
 
     public static final String TAG = "Fragment";
 
-/*
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.d(TAG, "onAttach");
-    }
+    private SwipeRefreshLayout swipeRefreshLayout;
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        Log.d(TAG, "onCreate");
-
-    }*/
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-     if (view ==null){view = inflater.inflate(R.layout.inchool_school_view, container, false);
+        if (view == null) {
+            view = inflater.inflate(R.layout.inchool_school_view, container, false);
 
-         //初始化所需数据
-         initSchoolList();
-         showTopImage();
-         showCenterImage();
-         showEndImage();
-     }else {
-         ViewGroup viewGroup = (ViewGroup)view.getParent();
-         if (viewGroup!=null){
-             viewGroup.removeView(view);
-         }
-     }
+            //初始化所需数据
+            initSchoolList();
+            showTopImage();
+            showCenterImage();
+            showEndImage();
+            onRefresh();
+        } else {
+            ViewGroup viewGroup = (ViewGroup) view.getParent();
+            if (viewGroup != null) {
+                viewGroup.removeView(view);
+            }
+            onRefresh();
+        }
         return view;
+    }
+
+
+    //刷新操作
+    private void onRefresh() {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.last_school_content_flash);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshlast();
+            }
+        });
+    }
+
+    private void refreshlast() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //重新加载数据并更新界面
+                try {
+                    Thread.sleep(200);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+
+
+            }
+        }).start();
     }
 
     private void initSchoolList() {
@@ -114,7 +144,7 @@ public class School_shoolfragment extends android.app.Fragment {
 
     }
 
-    private void showTopImage(){
+    private void showTopImage() {
 
         //Log.d(TAG, "onCreateView");
         //头部轮播
@@ -131,19 +161,20 @@ public class School_shoolfragment extends android.app.Fragment {
         });
 
     }
-private void showCenterImage(){
 
-    //中间部分
+    private void showCenterImage() {
 
-    RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.in_mid_school);
-    LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-    layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-    recyclerView.setLayoutManager(layoutManager);
-    SchoolMidAdapter adapter = new SchoolMidAdapter(schoolMidList);
-    recyclerView.setAdapter(adapter);
-}
+        //中间部分
 
-    private void showEndImage(){
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.in_mid_school);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+        SchoolMidAdapter adapter = new SchoolMidAdapter(schoolMidList);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void showEndImage() {
         //结尾部分
         RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
@@ -151,58 +182,5 @@ private void showCenterImage(){
         SchoolLastAdapter adapter1 = new SchoolLastAdapter(schoolLastList);
         recyclerView1.setAdapter(adapter1);
     }
-     /*
-        * 设置向服务器请求图片--返回jison--{json:图片的URL和点击图片跳转的的URL}（有格式）--本地解析json--
-        * 将图片的URL和点击的URL解析 匹配，用于设置相应的点击事件
-        *
-        * */
 
- /*   @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "onActivityCreated");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.d(TAG, "onDestroyView");
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.d(TAG, "onDetach");
-    }*/
 }
