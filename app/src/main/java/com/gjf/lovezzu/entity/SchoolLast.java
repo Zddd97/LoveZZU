@@ -1,4 +1,4 @@
-package com.gjf.lovezzu;
+package com.gjf.lovezzu.entity;
 
 /**
  * Created by zhao on 2017/3/12.

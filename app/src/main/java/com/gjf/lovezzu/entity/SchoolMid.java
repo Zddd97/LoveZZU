@@ -1,4 +1,4 @@
-package com.gjf.lovezzu;
+package com.gjf.lovezzu.entity;
 
 import android.content.Intent;
 

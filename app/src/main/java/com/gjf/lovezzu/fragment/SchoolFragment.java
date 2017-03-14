@@ -33,22 +33,13 @@ public class SchoolFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view == null) {
+
             view = inflater.inflate(R.layout.school_fragment, container, false);
             ButterKnife.bind(this, view);
             school_shoolfragment = new School_shoolfragment();
             shool_societyfragment = new Shool_societyfragment();
             inSchool.setTextColor(Color.parseColor("#0090FD"));
             replaceFragment(school_shoolfragment);
-        }else {
-            ViewGroup viewGroup = (ViewGroup)view.getParent();
-            if (viewGroup!=null){
-                viewGroup.removeView(view);
-            }
-        }
-
-
-
         return view;
     }
 
@@ -79,9 +70,7 @@ public class SchoolFragment extends Fragment {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-
         transaction.replace(R.id.in_school_content, fragment);
-
         transaction.commit();
     }
 

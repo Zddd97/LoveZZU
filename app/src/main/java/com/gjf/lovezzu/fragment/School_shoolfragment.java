@@ -15,10 +15,10 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.SchoolLast;
-import com.gjf.lovezzu.SchoolLastAdapter;
-import com.gjf.lovezzu.SchoolMid;
-import com.gjf.lovezzu.SchoolMidAdapter;
+import com.gjf.lovezzu.entity.SchoolLast;
+import com.gjf.lovezzu.view.SchoolLastAdapter;
+import com.gjf.lovezzu.entity.SchoolMid;
+import com.gjf.lovezzu.view.SchoolMidAdapter;
 import com.gjf.lovezzu.activity.MainActivity;
 
 import java.util.ArrayList;

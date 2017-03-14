@@ -1,4 +1,4 @@
-package com.gjf.lovezzu;
+package com.gjf.lovezzu.view;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.entity.SchoolMid;
 
 import java.util.List;
 
