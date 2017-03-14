@@ -8,12 +8,12 @@
         "source": "C:\\Users\\zhaox\\.android\\build-cache\\f59b38abddf7c357e17b055dc7b28e05cb02c663\\output\\res\\drawable-hdpi\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
-    },
-    {
         "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\dot_white.png",
         "source": "F:\\LoveZZU\\flashview\\src\\main\\res\\drawable-hdpi\\dot_white.png"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png",
+        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png",
