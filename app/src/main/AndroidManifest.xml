@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gjf.lovezzu">
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
 
     <application
         android:name=".entity.CheckLoginApplication"
@@ -18,6 +25,17 @@
         </activity>
         <activity android:name=".activity.UserLoginActivity" />
         <activity android:name=".activity.UserInfoActivity" />
+        <activity android:name=".activity.UserSettingActivity"/>
+
+        <activity
+
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            />
+        <activity
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            />
+
 
         <service android:name=".service.CheckLogin" />
 
@@ -26,5 +44,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA" />
 </manifest>
