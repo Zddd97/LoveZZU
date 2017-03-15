@@ -109,8 +109,8 @@ public class UserLoginFragmen extends Fragment {
             @Override
             public void onNext(LoginResult loginResult) {
                 if (loginResult.isSuccessful()){
-                    String phone = loginResult.getPhone();
-                    String password = loginResult.getPassword();
+                    String phone = user_reg_phone.getText().toString();
+                    String password = user_reg_password.getText().toString();
                     saveUserInfo(phone,password);
                 }else{
                     Toast.makeText(getContext(),"账号或者密码错误！",Toast.LENGTH_LONG).show();

@@ -12,6 +12,6 @@ import rx.Observable;
  */
 public interface GetUserInfoServer {
     @FormUrlEncoded
-    @POST("controller")
+    @POST("queryuserinfoAction")
     Observable<UserInfoResult> getInfo(@Field("identifier") String identifier,@Field("phone") String phone, @Field("password") String password);
 }
