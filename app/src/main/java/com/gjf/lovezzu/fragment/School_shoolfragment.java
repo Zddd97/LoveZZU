@@ -93,6 +93,7 @@ public class School_shoolfragment extends android.app.Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 });
