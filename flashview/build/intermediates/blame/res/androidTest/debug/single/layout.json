@@ -24,12 +24,12 @@
         "source": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_icon.xml",
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\22948c14cfdaba19596fc1947fb675bd9067d5d8\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_activity_chooser_view_include.xml",
