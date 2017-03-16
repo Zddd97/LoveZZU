@@ -41,7 +41,7 @@ public class UpLoadIconMethods {
         private static final UpLoadIconMethods INSTANCE = new UpLoadIconMethods();
     }
 
-    public static UpLoadIconMethods upLoadIconMethods(){
+    public static UpLoadIconMethods upLoadIconMethods(Subscriber subscriber, Map<String, RequestBody> photos, String phone){
         return SingletonHolder.INSTANCE;
     }
     public void goToUploadIcon(Subscriber<UserInfoResult> subscriber,Map<String , RequestBody> photo,String phone){
