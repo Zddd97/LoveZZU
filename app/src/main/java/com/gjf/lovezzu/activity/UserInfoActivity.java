@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -314,6 +315,10 @@ public class UserInfoActivity extends AppCompatActivity {
 
 
     }
+    private void SaveInfoIcon(Uri uri){
+
+
+    }
    //修改昵称的网络操作
     private void SaveInfoNcikNmae(String nickname){
 
@@ -496,4 +501,7 @@ public class UserInfoActivity extends AppCompatActivity {
             photoAdapter.notifyDataSetChanged();
         }
     }
+
+
+
 }
