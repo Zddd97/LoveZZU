@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:paddingTop="30dp"
-
     android:background="#01000000"
-    android:id="@+id/layout">
+    android:paddingTop="30dp">
 
 
     <include
         android:id="@+id/id_ly_bottombar"
+        layout="@layout/bottom_navigation_bar"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
-        layout="@layout/bottom_navigation_bar" />
+        android:layout_alignParentBottom="true" />
 
 
     <FrameLayout
         android:id="@+id/id_content"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@id/id_ly_bottombar"
-        />
+        android:layout_above="@id/id_ly_bottombar" />
 
 </RelativeLayout>
