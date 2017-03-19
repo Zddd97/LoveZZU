@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F4F4">
+    android:background="#F4F4F4"
+    android:orientation="vertical">
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
-        <android.support.v4.view.ViewPager
-            android:layout_width="wrap_content"
-            android:layout_height="0dp">
 
-        </android.support.v4.view.ViewPager>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="#01000000"
+            android:gravity="center"
+            android:text="生活"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_weight="3">
+
+        <com.gc.flashview.FlashView
+            android:id="@+id/life_flush"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_weight="6"
         android:background="#fff"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="198dp"
             android:layout_height="wrap_content"
@@ -27,17 +47,16 @@
 
 
             <LinearLayout
+                android:id="@+id/life_taoyu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:id="@+id/life_taoyu">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="131dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -45,8 +64,8 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
                         android:text="淘渔"
-                        android:textSize="20dp"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -55,7 +74,7 @@
                         android:layout_marginTop="5dp"
                         android:text="资源共享，二次利用"
                         android:textColor="#9F9F9F"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
 
                 </LinearLayout>
@@ -63,8 +82,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -83,22 +102,24 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#DCDCDC"/>
+                android:background="#DCDCDC" />
+
             <LinearLayout
+                android:id="@+id/life_play"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:id="@+id/life_play">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="41.62">
+                    android:layout_weight="41.62"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -106,8 +127,8 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
                         android:text="一起玩"
-                        android:textSize="20dp"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -116,7 +137,7 @@
                         android:layout_marginTop="5dp"
                         android:text="从此不再孤单"
                         android:textColor="#9F9F9F"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
 
                 </LinearLayout>
@@ -124,8 +145,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -140,35 +161,37 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="30dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/life_play"/>
+                        android:src="@drawable/life_play" />
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
+
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="#DCDCDC" />
 
         <LinearLayout
+            android:id="@+id/life_huati"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_weight="0.5"
-            android:id="@+id/life_huati">
+            android:orientation="vertical">
 
 
             <LinearLayout
+                android:id="@+id/life_talk"
                 android:layout_width="match_parent"
                 android:layout_height="74dp"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="2">
+                    android:layout_weight="2"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -176,8 +199,8 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
                         android:text="话题圈"
-                        android:textSize="20dp"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -186,7 +209,7 @@
                         android:layout_marginTop="5dp"
                         android:text="大家一起说"
                         android:textColor="#9F9F9F"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
 
                 </LinearLayout>
@@ -194,8 +217,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -214,21 +237,23 @@
                 </LinearLayout>
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#DCDCDC"/>
+                android:background="#DCDCDC" />
+
             <LinearLayout
+                android:id="@+id/life_shudong"
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
-                android:orientation="horizontal"
-                android:id="@+id/life_shudong">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1.47">
+                    android:layout_weight="1.47"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -236,8 +261,8 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
                         android:text="树洞"
-                        android:textSize="20dp"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -246,7 +271,7 @@
                         android:layout_marginTop="5dp"
                         android:text="有情绪就表达"
                         android:textColor="#9F9F9F"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
 
                 </LinearLayout>
@@ -254,8 +279,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
 
                     <ImageView
@@ -266,26 +291,28 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="20dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/life_tree"/>
+                        android:src="@drawable/life_tree" />
                 </LinearLayout>
 
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#DCDCDC"/>
+                android:background="#DCDCDC" />
+
             <LinearLayout
+                android:id="@+id/life_jianzhi"
                 android:layout_width="match_parent"
                 android:layout_height="79dp"
-                android:orientation="horizontal"
-                android:id="@+id/life_jianzhi">
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1.41">
+                    android:layout_weight="1.41"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -293,8 +320,8 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
                         android:text="兼职"
-                        android:textSize="20dp"
-                        android:textColor="#000000" />
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -303,7 +330,7 @@
                         android:layout_marginTop="5dp"
                         android:text="课外时间不停赚"
                         android:textColor="#9F9F9F"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
 
                 </LinearLayout>
@@ -311,8 +338,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1.70">
+                    android:layout_weight="1.70"
+                    android:orientation="vertical">
 
 
                     <ImageView
@@ -323,7 +350,7 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="30dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/life_offer"/>
+                        android:src="@drawable/life_offer" />
                 </LinearLayout>
 
 
@@ -332,11 +359,7 @@
         </LinearLayout>
 
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F4F4F4"
-        android:layout_weight="0.9"/>
+
 
 </LinearLayout>
 
