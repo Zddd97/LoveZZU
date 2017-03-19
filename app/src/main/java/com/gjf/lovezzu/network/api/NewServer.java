@@ -1,15 +1,15 @@
 package com.gjf.lovezzu.network.api;
 
-import com.gjf.lovezzu.entity.NewsResult;
+import com.gjf.lovezzu.entity.Data;
 
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**
  * Created by BlackBeard丶 on 2017/03/17.
  */
 public interface   NewServer {
-    @GET("top250")
-    Observable<NewsResult> getNews(@Query("start")int start,@Query("count")int count);
+    @GET("福利/100/{pageNO}")
+    Observable<Data> getNews(@Path("pageNO")int pageNO);
 }

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.entity.Data;
 import com.gjf.lovezzu.entity.NewsResult;
-import com.gjf.lovezzu.entity.SchoolSociety;
 import com.gjf.lovezzu.network.NewsMethods;
 import com.gjf.lovezzu.view.SocietyAdapter;
 
@@ -33,7 +34,9 @@ public class Shool_societyfragment extends Fragment {
     private View view;
     private Subscriber subscriber;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private List<SchoolSociety> schoolSocietyList = new ArrayList<>();
+
+    private List<NewsResult> newsResultList = new ArrayList<>();
+    private List<NewsResult> mlist;
     RecyclerView newsSociety;
     private SocietyAdapter adapter;
     @BindView(R.id.title_douban)  TextView doubantitle;
@@ -47,7 +50,7 @@ public class Shool_societyfragment extends Fragment {
             view = inflater.inflate(R.layout.inschool_society_view, container, false);
             ButterKnife.bind(this, view);
             getNews();
-            initNews(null);
+
 
             showNews();
             onRegresh();
@@ -103,12 +106,12 @@ public class Shool_societyfragment extends Fragment {
         newsSociety = (RecyclerView) view.findViewById(R.id.school_society_content);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         newsSociety.setLayoutManager(layoutManager);
-        adapter = new SocietyAdapter(schoolSocietyList,getContext());
+        adapter = new SocietyAdapter(newsResultList,getContext());
         newsSociety.setAdapter(adapter);
     }
 
     private void getNews(){
-  subscriber = new Subscriber<NewsResult>() {
+  subscriber = new Subscriber<Data>() {
       @Override
       public void onCompleted() {
 
@@ -116,28 +119,36 @@ public class Shool_societyfragment extends Fragment {
 
       @Override
       public void onError(Throwable e) {
-
+          Toast.makeText(getContext(),e.getMessage().toString(),Toast.LENGTH_LONG).show();
+         // Log.d("gjf123", e.getMessage().toString());
       }
 
       @Override
-      public void onNext(NewsResult newsResult) {
+      public void onNext(Data newsResult) {
 
-          Toast.makeText(getContext(),newsResult.getStart(),Toast.LENGTH_LONG).show();
+          List<NewsResult> list = newsResult.getResults();
+
+
+         Toast.makeText(getContext(),"",Toast.LENGTH_LONG).show();
+         Log.d("gjf123", "");
+          initNews(list);
+
       }
   };
-        NewsMethods.getInstance().getTopMovie(subscriber,0,1);
+        NewsMethods.getInstance().getTopMovie(subscriber,1);
     }
 
     //初始化新闻
-    private void initNews(NewsResult newsResult) {
+    private void initNews(List<NewsResult> newsResult) {
 
-            for (int i = 1; i <= 2; i++) {
-               SchoolSociety schoolSociety = new SchoolSociety("新闻标题", "2017-3-15", "1024",R.drawable.__picker_ic_photo_black_48dp, "http://dsxcnqzj.top/wp-content/uploads/2017/02/Screenshot_20170219-172019.png");
-              schoolSocietyList.add(schoolSociety);
-          }
+//        SchoolSociety schoolSociety = new SchoolSociety("111nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", "2017-3-15", "1024",R.drawable.__picker_ic_photo_black_48dp, "http://7xi8d6.com1.z0.glb.clouddn.com/2017-03-16-17333221_108837802984751_2789267558635667456_n.jpg");
+//        schoolSocietyList.add(schoolSociety);
+
+ newsResultList.addAll(newsResult);
 
 
-  }
+
+    }
 
     }
 

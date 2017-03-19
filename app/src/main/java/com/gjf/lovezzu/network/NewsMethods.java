@@ -1,7 +1,7 @@
 package com.gjf.lovezzu.network;
 
 import com.gjf.lovezzu.constant.Url;
-import com.gjf.lovezzu.entity.NewsResult;
+import com.gjf.lovezzu.entity.Data;
 import com.gjf.lovezzu.network.api.NewServer;
 
 import java.util.concurrent.TimeUnit;
@@ -33,7 +33,7 @@ public class NewsMethods {
                 .client(httpClientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(Url.DOUBAN_API)
+                .baseUrl(Url.GANK_API)
                 .build();
 
         newServer = retrofit.create(NewServer.class);
@@ -52,11 +52,11 @@ public class NewsMethods {
     /**
      * 用于获取豆瓣电影Top250的数据
      * @param subscriber 由调用者传过来的观察者对象
-     * @param start 起始位置
-     * @param count 获取长度
+
+
      */
-    public void getTopMovie(Subscriber<NewsResult> subscriber, int start, int count){
-        newServer.getNews(start, count)
+    public void getTopMovie(Subscriber<Data> subscriber, int pageNO){
+        newServer.getNews(pageNO )
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
