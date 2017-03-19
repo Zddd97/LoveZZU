@@ -8,12 +8,12 @@
         "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_title_item.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_search_view.xml",
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_activity_chooser_view.xml",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_popup_menu_item_layout.xml",
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\layout\\abc_activity_chooser_view_list_item.xml",

@@ -1,5 +1,7 @@
 package com.gjf.lovezzu.view;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.SchoolSociety;
 
@@ -21,10 +24,17 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
 
     private List<SchoolSociety> schoolSocietyList;
     private SchoolSociety schoolSociety;
+    private Context mContext;
+    private Activity activity;
+    private LayoutInflater inflater;
 
-    public SocietyAdapter(List<SchoolSociety> schoolSocieties) {
+    public SocietyAdapter(List<SchoolSociety> schoolSocieties,Context mContext) {
         this.schoolSocietyList = schoolSocieties;
+        this.mContext = mContext;
+        inflater = LayoutInflater.from(mContext);
     }
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,7 +56,14 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         schoolSociety = schoolSocietyList.get(position);
-        holder.newsImage.setImageResource(schoolSociety.getNewsImage());
+
+       // holder.newsImage.setImageResource(schoolSociety.getNewsImage());
+        Glide.with(mContext)
+                .load(schoolSociety.getHttpUrl())
+                .centerCrop().thumbnail(0.1f)
+                .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+                .error(R.drawable.__picker_ic_broken_image_black_48dp)
+                .into(holder.newsImage);
         holder.newsTitle.setText(schoolSociety.getNewsTitle());
         holder.newsDate.setText(schoolSociety.getNewsDate());
         holder.newsRead.setText(schoolSociety.getNewsRead());

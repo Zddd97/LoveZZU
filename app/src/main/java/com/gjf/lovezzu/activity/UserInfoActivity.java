@@ -239,7 +239,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditSex(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -255,7 +255,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditHome(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -271,7 +271,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditSchool(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -287,7 +287,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditClass(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -302,7 +302,7 @@ public class UserInfoActivity extends AppCompatActivity {
     //修改专业
     private void EditMjaor(){  LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
