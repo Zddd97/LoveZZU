@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.SchoolSociety;
+import com.gjf.lovezzu.entity.NewsResult;
 
 import java.util.List;
 
@@ -22,14 +22,15 @@ import java.util.List;
 
 public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHolder> {
 
-    private List<SchoolSociety> schoolSocietyList;
-    private SchoolSociety schoolSociety;
+    private List<NewsResult> newsResultList;
+
+  private NewsResult newsResult;
     private Context mContext;
     private Activity activity;
     private LayoutInflater inflater;
 
-    public SocietyAdapter(List<SchoolSociety> schoolSocieties,Context mContext) {
-        this.schoolSocietyList = schoolSocieties;
+    public SocietyAdapter(List<NewsResult> newsResults,Context mContext) {
+        this.newsResultList = newsResults;
         this.mContext = mContext;
         inflater = LayoutInflater.from(mContext);
     }
@@ -55,23 +56,23 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        schoolSociety = schoolSocietyList.get(position);
+        newsResult = newsResultList.get(position);
 
        // holder.newsImage.setImageResource(schoolSociety.getNewsImage());
         Glide.with(mContext)
-                .load(schoolSociety.getHttpUrl())
+                .load(newsResult.getUrl())
                 .centerCrop().thumbnail(0.1f)
                 .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                 .error(R.drawable.__picker_ic_broken_image_black_48dp)
                 .into(holder.newsImage);
-        holder.newsTitle.setText(schoolSociety.getNewsTitle());
-        holder.newsDate.setText(schoolSociety.getNewsDate());
-        holder.newsRead.setText(schoolSociety.getNewsRead());
+        holder.newsTitle.setText(newsResult.getCreatedAt());
+        holder.newsDate.setText(newsResult.get_id());
+        holder.newsRead.setText(newsResult.getSource());
     }
 
     @Override
     public int getItemCount() {
-        return schoolSocietyList.size();
+        return newsResultList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

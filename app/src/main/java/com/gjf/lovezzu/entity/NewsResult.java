@@ -1,64 +1,126 @@
 package com.gjf.lovezzu.entity;
 
+import java.util.List;
+
 /**
  * Created by BlackBeard丶 on 2017/03/17.
  */
-public class NewsResult<T> {
-    private int count;
-    private int start;
-    private int total;
-    private String title;
+public class NewsResult {
 
-    //用来模仿Data
-    private T subjects;
+        private String _id;
 
-    public int getCount() {
-        return count;
-    }
+        private String createdAt;
 
-    public void setCount(int count) {
-        this.count = count;
-    }
+        private List<String> images ;
 
-    public int getStart() {
-        return start;
-    }
+        private String desc;
 
-    public void setStart(int start) {
-        this.start = start;
-    }
+        private String publishedAt;
 
-    public int getTotal() {
-        return total;
-    }
+        private String source;
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
+        private String type;
 
-    public String getTitle() {
-        return title;
-    }
+        private String url;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+        private boolean used;
 
-    public T getSubjects() {
-        return subjects;
-    }
+        private String who;
 
-    public void setSubjects(T subjects) {
-        this.subjects = subjects;
-    }
-
-    @Override
-    public String toString() {StringBuffer sb = new StringBuffer();
-        sb.append("title=" + title + " count=" + count + " start=" + start);
-        if (null != subjects) {
-            sb.append(" subjects:" + subjects.toString());
+        public String get_id() {
+            return _id;
         }
 
-        return super.toString();
+        public void set_id(String _id) {
+            this._id = _id;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public void setCreatedAt(String createdAt) {
+            this.createdAt = createdAt;
+        }
+
+        public List<String> getImages() {
+            return images;
+        }
+
+        public void setImages(List<String> images) {
+            this.images = images;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+
+        public String getPublishedAt() {
+            return publishedAt;
+        }
+
+        public void setPublishedAt(String publishedAt) {
+            this.publishedAt = publishedAt;
+        }
+
+        public String getSource() {
+            return source;
+        }
+
+        public void setSource(String source) {
+            this.source = source;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public boolean isUsed() {
+            return used;
+        }
+
+        public void setUsed(boolean used) {
+            this.used = used;
+        }
+
+        public String getWho() {
+            return who;
+        }
+
+        public void setWho(String who) {
+            this.who = who;
+        }
+
+        @Override
+        public String toString() {
+            return "NewsResult{" +
+                    "_id='" + _id + '\'' +
+                    ", createdAt='" + createdAt + '\'' +
+                    ", images=" + images +
+                    ", desc='" + desc + '\'' +
+                    ", publishedAt='" + publishedAt + '\'' +
+                    ", source='" + source + '\'' +
+                    ", type='" + type + '\'' +
+                    ", url='" + url + '\'' +
+                    ", used=" + used +
+                    ", who='" + who + '\'' +
+                    '}';
+        }
     }
-}
+
