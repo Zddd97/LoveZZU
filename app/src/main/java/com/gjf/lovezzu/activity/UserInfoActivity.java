@@ -3,12 +3,17 @@ package com.gjf.lovezzu.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +29,17 @@ import com.gjf.lovezzu.network.DownloadIconMethods;
 import com.gjf.lovezzu.network.GetUserInfoMethods;
 import com.gjf.lovezzu.network.SaveUserInfoMethods;
 import com.gjf.lovezzu.view.CircleImageView;
+import com.gjf.lovezzu.view.PhotoAdapter;
+import com.gjf.lovezzu.view.RecyclerItemClickListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.iwf.photopicker.PhotoPicker;
+import me.iwf.photopicker.PhotoPreview;
 import rx.Subscriber;
 
 /**
@@ -35,7 +47,8 @@ import rx.Subscriber;
  */
 public class UserInfoActivity extends AppCompatActivity {
     private Subscriber subscriber;
-
+    private PhotoAdapter photoAdapter;
+    private ArrayList<String> selectedPhotos = new ArrayList<>();
     @BindView(R.id.userinfo_icon)  ImageView userinfo_icon;
     @BindView(R.id.main_my_user_icon) CircleImageView circleImageView;
     @BindView(R.id.user_info_nickname_text) TextView user_info_nickname_text;
@@ -58,9 +71,12 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_userinfo);
         ButterKnife.bind(this);
         disPlayImage();
+        dispalyUserInfo();
+
 
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
@@ -164,19 +180,51 @@ public class UserInfoActivity extends AppCompatActivity {
     //上传图片
     private void UploadIcon(){
 
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        photoAdapter = new PhotoAdapter(this, selectedPhotos);
+
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, OrientationHelper.VERTICAL));
+        recyclerView.setAdapter(photoAdapter);
+
+        PhotoPicker.builder()
+                .setPhotoCount(1)
+                .start(UserInfoActivity.this);
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        if (photoAdapter.getItemViewType(position) == PhotoAdapter.TYPE_ADD) {
+                            PhotoPicker.builder()
+                                    .setPhotoCount(PhotoAdapter.MAX)
+                                    .setShowCamera(true)
+                                    .setPreviewEnabled(false)
+                                    .setSelected(selectedPhotos)
+                                    .start(UserInfoActivity.this);
+                        } else {
+                            PhotoPreview.builder()
+                                    .setPhotos(selectedPhotos)
+                                    .setCurrentItem(position)
+                                    .start(UserInfoActivity.this);
+                        }
+                    }
+                }));
+
+
     }
     //修改昵称
     private void EditNickname(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+       final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
+
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
                 .setView(layout).setPositiveButton("保存", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-             SaveInfoNcikNmae(text.getText().toString());
+        SaveInfoNcikNmae(text.getText().toString());
             }
         }).setNegativeButton("取消",null).show();
 
@@ -191,7 +239,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditSex(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -207,7 +255,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditHome(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -223,7 +271,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditSchool(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -239,7 +287,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private void EditClass(){
         LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -254,7 +302,7 @@ public class UserInfoActivity extends AppCompatActivity {
     //修改专业
     private void EditMjaor(){  LayoutInflater inflater = getLayoutInflater();
         final View layout = inflater.inflate(R.layout.userinfo_update_view, (ViewGroup) findViewById(R.id.uplayout));
-        final EditText text = (EditText)findViewById(R.id.edituserinfo);
+        final EditText text = (EditText)layout.findViewById(R.id.edituserinfo);
 
 
         new AlertDialog.Builder(UserInfoActivity.this).setMessage("请输入您的昵称：")
@@ -264,6 +312,10 @@ public class UserInfoActivity extends AppCompatActivity {
                 SaveInfoMajor(text.getText().toString());
             }
         }).setNegativeButton("取消",null).show();
+
+
+    }
+    private void SaveInfoIcon(Uri uri){
 
 
     }
@@ -290,6 +342,7 @@ public class UserInfoActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         String phone = sharedPreferences.getString("phone", "");
         String id ="";
+        Toast.makeText(getApplicationContext(),phone,Toast.LENGTH_LONG).show();
         SaveUserInfoMethods.saveUserInfoMethods().editNickname(subscriber, id, phone, nickname);
 
     }
@@ -369,7 +422,9 @@ public class UserInfoActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("userinfo", Activity.MODE_APPEND);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         String phone = sharedPreferences.getString("phone", "");
+
         String id ="";
+
         SaveUserInfoMethods.saveUserInfoMethods().editSchool(subscriber, id, phone, school);
 
     }
@@ -425,5 +480,28 @@ public class UserInfoActivity extends AppCompatActivity {
         SaveUserInfoMethods.saveUserInfoMethods().editMajor(subscriber, id, phone, mjor);
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
+
+            List<String> photos = null;
+            if (data != null) {
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+            }
+            selectedPhotos.clear();
+
+            if (photos != null) {
+
+                selectedPhotos.addAll(photos);
+            }
+            photoAdapter.notifyDataSetChanged();
+        }
+    }
+
+
 
 }

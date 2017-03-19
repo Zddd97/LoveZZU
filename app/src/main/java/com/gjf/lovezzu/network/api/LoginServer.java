@@ -14,6 +14,6 @@ import rx.Observable;
 public interface LoginServer {
 
     @FormUrlEncoded
-    @POST("controller")
+    @POST("loginAction")
     Observable<LoginResult> login(@Field("identifier") String identifier,@Field("issuccessful") boolean  issuccessful ,@Field("phone") String phone, @Field("password") String password);
 }

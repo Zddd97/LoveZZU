@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.gjf.lovezzu"
-        minSdkVersion 10
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -37,4 +37,10 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
     compile project(':flashview')
+
+
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.yancy.imageselector:imageselector:1.2.0'//图片选择器（上传头像使用）
 }

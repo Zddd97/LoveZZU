@@ -58,7 +58,7 @@ public class CheckLogin extends Service {
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         String phone = sharedPreferences.getString("phone", "");
         String password = sharedPreferences.getString("password","");
-        //Toast.makeText(this,"电话是："+phone.toString()+"密码是"+password.toString(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "电话是：" + phone.toString() + "密码是" + password.toString(), Toast.LENGTH_LONG).show();
 
         subscriber = new Subscriber<LoginResult>() {
             @Override
@@ -80,7 +80,7 @@ public class CheckLogin extends Service {
              }else {
                  checkLoginApplication = (CheckLoginApplication)getApplication();
                  checkLoginApplication.setIsLogin(false);
-                 editor.clear();
+                 editor.clear().commit();
 
              }
             }
