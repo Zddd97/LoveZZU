@@ -113,7 +113,7 @@ public class School_shoolfragment extends android.app.Fragment {
         imageUrls.add("http://www.237.cc/uploads/pcline/712_0_1680x1050.jpg");
 
         //中间滑动项，从服务器中加载
-        Intent intent = new Intent(getContext(), MainActivity.class);
+        Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
         SchoolMid schoolMid_1 = new SchoolMid(R.drawable.schoolintroduce, intent);
         SchoolMid schoolMid_2 = new SchoolMid(R.drawable.schoolstyle, intent);
         SchoolMid schoolMid_3 = new SchoolMid(R.drawable.schoolfamous, intent);
