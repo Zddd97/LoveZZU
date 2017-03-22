@@ -1,6 +1,7 @@
 package com.gjf.lovezzu.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.TopicTalk;
 
 import java.util.ArrayList;
 
@@ -86,19 +88,21 @@ public class LifeFragment extends Fragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.life_taoyu:
-                Toast.makeText(getContext(), "淘鱼", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "淘鱼", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.life_play:
-                Toast.makeText(getContext(), "一起玩", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "一起玩", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.life_talk:
-                Toast.makeText(getContext(), "话题圈", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity().getApplicationContext(), TopicTalk.class);
+                startActivity(intent);
+                //Toast.makeText(getActivity().getApplicationContext(), "话题圈", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.life_shudong:
-                Toast.makeText(getContext(), "树洞", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "树洞", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.life_jianzhi:
-                Toast.makeText(getContext(), "兼职", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "兼职", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
