@@ -8,6 +8,15 @@ public class TopicMid {
     private String title;
     private int imageId;
     private String url;
+    private String contentUrl;
+
+    public String getContentUrl() {
+        return contentUrl;
+    }
+
+    public void setContentUrl(String contentUrl) {
+        this.contentUrl = contentUrl;
+    }
 
     public TopicMid(String title, int imageId, String url) {
         this.title = title;
