@@ -32,7 +32,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/user_love"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_image"
@@ -73,12 +73,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/person_saylove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
-                android:background="#fffffc">
+                android:background="#fffffc"
+                >
 
                 <ImageView
                     android:layout_width="wrap_content"

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by BlackBeard丶 on 2017/03/17.
  */
-public class NewsResult {
+public class SocietyNewsResult {
 
         private String _id;
 
@@ -109,7 +109,7 @@ public class NewsResult {
 
         @Override
         public String toString() {
-            return "NewsResult{" +
+            return "SocietyNewsResult{" +
                     "_id='" + _id + '\'' +
                     ", createdAt='" + createdAt + '\'' +
                     ", images=" + images +

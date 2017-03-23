@@ -3,7 +3,6 @@ package com.gjf.lovezzu.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,14 +16,18 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.SchoolLast;
-import com.gjf.lovezzu.view.SchoolLastAdapter;
-import com.gjf.lovezzu.entity.SchoolMid;
-import com.gjf.lovezzu.view.SchoolMidAdapter;
 import com.gjf.lovezzu.activity.MainActivity;
+import com.gjf.lovezzu.entity.SchoolMid;
+import com.gjf.lovezzu.entity.SchoolNewsData;
+import com.gjf.lovezzu.entity.SchoolNewsResult;
+import com.gjf.lovezzu.network.SchoolNewsMethods;
+import com.gjf.lovezzu.view.SchoolLastAdapter;
+import com.gjf.lovezzu.view.SchoolMidAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by lenovo047 on 2017/3/9.
@@ -35,11 +38,13 @@ public class School_shoolfragment extends android.app.Fragment {
     private FlashView flashView;
     private ArrayList<String> imageUrls = new ArrayList<String>();
     private List<SchoolMid> schoolMidList = new ArrayList<>();
-    private List<SchoolLast> schoolLastList = new ArrayList<>();
-
+    private List<SchoolNewsResult> schoolNewsResultList = new ArrayList<>();
+   private int Page;
     public static final String TAG = "Fragment";
 
     private SwipeRefreshLayout swipeRefreshLayout;
+    private Subscriber subscriber;
+    SchoolLastAdapter adapter1;
 
 
     @Nullable
@@ -51,10 +56,12 @@ public class School_shoolfragment extends android.app.Fragment {
 
             //初始化所需数据
             initSchoolList();
+
             showTopImage();
             showCenterImage();
             showEndImage();
             onRefresh();
+
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
@@ -85,7 +92,7 @@ public class School_shoolfragment extends android.app.Fragment {
             public void run() {
                 //重新加载数据并更新界面
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(2000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -93,7 +100,8 @@ public class School_shoolfragment extends android.app.Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                       getSchoolNews(Page++);
+                        adapter1.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 });
@@ -126,22 +134,23 @@ public class School_shoolfragment extends android.app.Fragment {
 
         //结尾新闻项（for循环从服务器读取出SchoolLast对象）
 
-        SchoolLast schoolLast3 = new SchoolLast(R.drawable.life_play_img1, "新闻标题1234", "新闻详情：http://...");
-        SchoolLast schoolLast4 = new SchoolLast(R.drawable.life_play_img2, "新闻标题tdrhsf", "新闻详情：http://...");
-        SchoolLast schoolLast5 = new SchoolLast(R.drawable.life_play_img3, "新闻标题dghllllllllllllll", "新闻详情：http://...");
-        SchoolLast schoolLast6 = new SchoolLast(R.drawable.life_play_img4, "新闻标题217532", "新闻详情：http://...");
-        SchoolLast schoolLast7 = new SchoolLast(R.drawable.life_play_img5, "新闻标题1024522", "新闻详情：http://...");
-        SchoolLast schoolLast8 = new SchoolLast(R.drawable.life_play_img6, "新闻标题455", "新闻详情：http://...");
-        SchoolLast schoolLast9 = new SchoolLast(R.drawable.life_play_img1, "新闻标题555555555555555555555555555", "新闻详情：http://...");
-
-
-        schoolLastList.add(schoolLast3);
-        schoolLastList.add(schoolLast4);
-        schoolLastList.add(schoolLast5);
-        schoolLastList.add(schoolLast6);
-        schoolLastList.add(schoolLast7);
-        schoolLastList.add(schoolLast8);
-        schoolLastList.add(schoolLast9);
+//        SchoolNewsResult schoolNewsResult3 = new SchoolNewsResult(R.drawable.life_play_img1, "新闻标题1234", "新闻详情：http://...");
+//        SchoolNewsResult schoolNewsResult4 = new SchoolNewsResult(R.drawable.life_play_img2, "新闻标题tdrhsf", "新闻详情：http://...");
+//        SchoolNewsResult schoolNewsResult5 = new SchoolNewsResult(R.drawable.life_play_img3, "新闻标题dghllllllllllllll", "新闻详情：http://...");
+//        SchoolNewsResult schoolNewsResult6 = new SchoolNewsResult(R.drawable.life_play_img4, "新闻标题217532", "新闻详情：http://...");
+//        SchoolNewsResult schoolNewsResult7 = new SchoolNewsResult(R.drawable.life_play_img5, "新闻标题1024522", "新闻详情：http://...");
+//        SchoolNewsResult schoolNewsResult8 = new SchoolNewsResult(R.drawable.life_play_img6, "新闻标题455", "新闻详情：http://...");
+//        SchoolNewsResult schoolNewsResult9 = new SchoolNewsResult(R.drawable.life_play_img1, "新闻标题555555555555555555555555555", "新闻详情：http://...");
+//
+//
+//        schoolNewsResultList.add(schoolNewsResult3);
+//        schoolNewsResultList.add(schoolNewsResult4);
+//        schoolNewsResultList.add(schoolNewsResult5);
+//        schoolNewsResultList.add(schoolNewsResult6);
+//        schoolNewsResultList.add(schoolNewsResult7);
+//        schoolNewsResultList.add(schoolNewsResult8);
+//        schoolNewsResultList.add(schoolNewsResult9);
+        getSchoolNews(Page);
 
     }
 
@@ -180,8 +189,30 @@ public class School_shoolfragment extends android.app.Fragment {
         RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
         recyclerView1.setLayoutManager(gridLayoutManager);
-        SchoolLastAdapter adapter1 = new SchoolLastAdapter(schoolLastList);
+       adapter1 = new SchoolLastAdapter(schoolNewsResultList,getContext());
         recyclerView1.setAdapter(adapter1);
+    }
+
+    private void getSchoolNews(int page){
+        subscriber = new Subscriber<SchoolNewsData>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(SchoolNewsData schoolNewsData) {
+                List<SchoolNewsResult> list = schoolNewsData.getResults();
+                schoolNewsResultList.addAll(list);
+
+            }
+        };
+        SchoolNewsMethods.getInstance().getSchoolNews(subscriber,page);
     }
 
 }

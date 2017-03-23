@@ -35,6 +35,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             />
+        <activity android:name=".activity.saylvoeActivity.SayLoveActivity"/>
+        <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
 
 
         <service android:name=".service.CheckLogin" />

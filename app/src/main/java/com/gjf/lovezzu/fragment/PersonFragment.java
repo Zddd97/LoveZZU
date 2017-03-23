@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.saylvoeActivity.SayLoveActivity;
 import com.gjf.lovezzu.activity.UserInfoActivity;
 import com.gjf.lovezzu.activity.UserLoginActivity;
 import com.gjf.lovezzu.activity.UserSettingActivity;
@@ -28,6 +29,7 @@ public class PersonFragment extends Fragment {
     @BindView(R.id.user_image)LinearLayout linearLayout;
     @BindView(R.id.my_info)  LinearLayout my_info;
     @BindView(R.id.person_usersetting)  LinearLayout person_usersetting;
+    @BindView(R.id.person_saylove) LinearLayout person_saylove;
 
 
 
@@ -55,7 +57,11 @@ public class PersonFragment extends Fragment {
       Intent intent = new Intent(getContext(), UserSettingActivity.class);
         startActivity(intent);
     }
-    @OnClick({R.id.user_image,R.id.person_usersetting})
+    public void goToSayLove(){
+        Intent intent = new Intent(getContext(), SayLoveActivity.class);
+        startActivity(intent);
+    }
+    @OnClick({R.id.user_image,R.id.person_usersetting,R.id.person_saylove})
     public void onClick(View view){
        switch (view.getId()){
            case R.id.user_image:
@@ -69,6 +75,9 @@ public class PersonFragment extends Fragment {
                break;
            case R.id.person_usersetting:
                goToSetting();
+               break;
+           case R.id.person_saylove:
+               goToSayLove();
                break;
         }
     }

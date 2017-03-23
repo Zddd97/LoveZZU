@@ -3,17 +3,17 @@ package com.gjf.lovezzu.entity;
 import java.util.List;
 
 /**
- * Created by BlackBeard丶 on 2017/03/19.
+ * Created by BlackBeard丶 on 2017/03/23.
  */
-public class Data {
+public class SchoolNewsData {
     private boolean error;
-    private List<NewsResult> results;
+    private List<SchoolNewsResult> results;
 
-    public List<NewsResult> getResults() {
+    public List<SchoolNewsResult> getResults() {
         return results;
     }
 
-    public void setResults(List<NewsResult> results) {
+    public void setResults(List<SchoolNewsResult> results) {
         this.results = results;
     }
 
@@ -24,7 +24,4 @@ public class Data {
     public void setError(boolean error) {
         this.error = error;
     }
-
-
-
 }

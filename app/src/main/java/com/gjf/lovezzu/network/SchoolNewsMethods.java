@@ -1,8 +1,8 @@
 package com.gjf.lovezzu.network;
 
 import com.gjf.lovezzu.constant.Url;
-import com.gjf.lovezzu.entity.SocietyNewsData;
-import com.gjf.lovezzu.network.api.NewServer;
+import com.gjf.lovezzu.entity.SchoolNewsData;
+import com.gjf.lovezzu.network.api.SchoolNewServer;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,17 +15,15 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by BlackBeard丶 on 2017/03/17.
+ * Created by BlackBeard丶 on 2017/03/23.
  */
-public class NewsMethods {
+public class SchoolNewsMethods {
     private static final int DEFAULT_TIMEOUT = 5;
 
     private Retrofit retrofit;
-    private NewServer newServer;
 
-    //构造方法私有
-    private NewsMethods() {
-        //手动创建一个OkHttpClient并设置超时时间
+    private SchoolNewServer schoolNewServer;
+    private SchoolNewsMethods(){
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
@@ -36,27 +34,21 @@ public class NewsMethods {
                 .baseUrl(Url.GANK_API)
                 .build();
 
-        newServer = retrofit.create(NewServer.class);
+        schoolNewServer = retrofit.create(SchoolNewServer.class);
     }
-
     //在访问HttpMethods时创建单例
     private static class SingletonHolder{
-        private static final NewsMethods INSTANCE = new NewsMethods();
+        private static final SchoolNewsMethods INSTANCE = new SchoolNewsMethods();
     }
 
     //获取单例
-    public static NewsMethods getInstance(){
+    public static SchoolNewsMethods getInstance(){
         return SingletonHolder.INSTANCE;
     }
 
-    /**
-     * 用于获取豆瓣电影Top250的数据
-     * @param subscriber 由调用者传过来的观察者对象
 
-
-     */
-    public void getTopMovie(Subscriber<SocietyNewsData> subscriber, int pageNO){
-        newServer.getNews(pageNO )
+    public void getSchoolNews(Subscriber<SchoolNewsData> subscriber, int pageNO){
+        schoolNewServer.getNews(pageNO )
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
