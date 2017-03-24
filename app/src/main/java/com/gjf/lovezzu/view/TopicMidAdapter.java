@@ -50,12 +50,13 @@ public class TopicMidAdapter extends RecyclerView.Adapter<TopicMidAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         topicMid = topicMidList.get(position);
-        Glide.with(mContext)
+        holder.imageView.setImageResource(topicMid.getImageId());
+       /* Glide.with(mContext)
                 .load(topicMid.getUrl())
                 .centerCrop().thumbnail(0.1f)
                 .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                 .error(R.drawable.__picker_ic_broken_image_black_48dp)
-                .into(holder.imageView);
+                .into(holder.imageView);*/
         holder.textView.setText(topicMid.getTitle());
     }
 

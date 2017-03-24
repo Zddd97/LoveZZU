@@ -14,7 +14,7 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.activity.TopicTalk;
+import com.gjf.lovezzu.activity.TopicTalkActivity;
 
 import java.util.ArrayList;
 
@@ -94,7 +94,7 @@ public class LifeFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), "一起玩", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.life_talk:
-                Intent intent = new Intent(getActivity().getApplicationContext(), TopicTalk.class);
+                Intent intent = new Intent(getActivity().getApplicationContext(), TopicTalkActivity.class);
                 startActivity(intent);
                 //Toast.makeText(getActivity().getApplicationContext(), "话题圈", Toast.LENGTH_SHORT).show();
                 break;
