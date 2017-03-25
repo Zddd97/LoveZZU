@@ -1,7 +1,7 @@
 [
     {
         "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\e45b32b3a395b60ed22a140a988b8b9e88a3261a\\output\\res\\drawable-xhdpi\\abc_btn_radio_to_on_mtrl_000.png"
+
     },
     {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png",
@@ -53,7 +53,7 @@
     },
     {
         "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\e45b32b3a395b60ed22a140a988b8b9e88a3261a\\output\\res\\drawable-xhdpi\\abc_textfield_search_activated_mtrl_alpha.9.png"
+
     },
     {
         "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_ab_share_pack_holo_light.9.png",
@@ -121,15 +121,7 @@
     },
     {
         "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_ic_search_api_mtrl_alpha.png",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\e45b32b3a395b60ed22a140a988b8b9e88a3261a\\output\\res\\drawable-xhdpi\\abc_ic_search_api_mtrl_alpha.png"
-    },
-    {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\drawable-xhdpi\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\e45b32b3a395b60ed22a140a988b8b9e88a3261a\\output\\res\\drawable-xhdpi\\abc_tab_indicator_mtrl_alpha.9.png"
+
     },
     {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4\\abc_ic_ab_back_mtrl_am_alpha.png",

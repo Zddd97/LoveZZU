@@ -1,6 +1,6 @@
 package com.gjf.lovezzu.network.api;
 
-import com.gjf.lovezzu.entity.Data;
+import com.gjf.lovezzu.entity.SocietyNewsData;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -11,5 +11,5 @@ import rx.Observable;
  */
 public interface   NewServer {
     @GET("福利/100/{pageNO}")
-    Observable<Data> getNews(@Path("pageNO")int pageNO);
+    Observable<SocietyNewsData> getNews(@Path("pageNO")int pageNO);
 }
