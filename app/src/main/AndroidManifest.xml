@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gjf.lovezzu">
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -16,7 +17,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,18 +28,17 @@
         </activity>
         <activity android:name=".activity.UserLoginActivity" />
         <activity android:name=".activity.UserInfoActivity" />
-        <activity android:name=".activity.UserSettingActivity"/>
-
+        <activity android:name=".activity.UserSettingActivity" />
+        <activity
+            android:name=".activity.TopicTalkActivity"
+            android:launchMode="singleTask" />
         <activity
 
-            android:name="me.iwf.photopicker.PhotoPickerActivity"
-            />
-        <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:name="me.iwf.photopicker.PhotoPagerActivity"
-            />
+            android:name="me.iwf.photopicker.PhotoPickerActivity" />
+      
         <activity android:name=".activity.saylvoeActivity.SayLoveActivity"/>
         <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
+
 
 
         <service android:name=".service.CheckLogin" />
@@ -47,7 +49,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 </manifest>
