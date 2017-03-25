@@ -27,16 +27,16 @@ import rx.Subscriber;
 /**
  * Created by BlackBeard丶 on 2017/03/15.
  */
-public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
+public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
     private ArrayList<String> photoPaths = new ArrayList<String>();
     private LayoutInflater inflater;
-    private  Uri uri;
+    private Uri uri;
     private Context mContext;
     private Subscriber subscriber;
-  public   final static int TYPE_ADD = 1;
-  public   final static int TYPE_PHOTO = 2;
-//
-  public   final static int MAX = 9;
+    public final static int TYPE_ADD = 1;
+    public final static int TYPE_PHOTO = 2;
+    //
+    public final static int MAX = 9;
 
     public PhotoAdapter(Context mContext, ArrayList<String> photoPaths) {
         this.photoPaths = photoPaths;
@@ -46,7 +46,8 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     }
 
 
-    @Override public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = null;
         switch (viewType) {
             case TYPE_ADD:
@@ -64,13 +65,13 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     public void onBindViewHolder(final PhotoViewHolder holder, final int position) {
 
         if (getItemViewType(position) == TYPE_PHOTO) {
-          uri = Uri.fromFile(new File(photoPaths.get(position)));
+            uri = Uri.fromFile(new File(photoPaths.get(position)));
 
             Map<String, RequestBody> photos = new HashMap<>();
             File file = new File(uri.getPath());
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            photos.put("\"; filename=\""+file.getName(),requestFile);
-            Log.d("ggggg",uri.toString());
+            photos.put("\"; filename=\"" + file.getName(), requestFile);
+            Log.d("ggggg", uri.toString());
 
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
@@ -87,7 +88,8 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     }
 
 
-    @Override public int getItemCount() {
+    @Override
+    public int getItemCount() {
         int count = photoPaths.size() + 1;
         if (count > MAX) {
             count = MAX;
@@ -103,15 +105,16 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     public static class PhotoViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivPhoto;
         private View vSelected;
+
         public PhotoViewHolder(View itemView) {
             super(itemView);
-            ivPhoto   = (ImageView) itemView.findViewById(R.id.iv_photo);
+            ivPhoto = (ImageView) itemView.findViewById(R.id.iv_photo);
             vSelected = itemView.findViewById(R.id.v_selected);
             if (vSelected != null) vSelected.setVisibility(View.GONE);
         }
     }
 
-    public void upLoad(   Map<String, RequestBody> photos){
+    public void upLoad(Map<String, RequestBody> photos) {
         subscriber = new Subscriber<UserInfoResult>() {
             @Override
             public void onCompleted() {
@@ -129,6 +132,6 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
             }
         };
         String phone = null;
-        UpLoadIconMethods.upLoadIconMethods(subscriber,photos,phone);
+        UpLoadIconMethods.upLoadIconMethods(subscriber, photos, phone);
     }
 }

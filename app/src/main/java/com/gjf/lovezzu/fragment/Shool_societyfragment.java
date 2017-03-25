@@ -40,7 +40,8 @@ public class Shool_societyfragment extends Fragment {
     private int Page = 1;
     RecyclerView newsSociety;
     private SocietyAdapter adapter;
-    @BindView(R.id.title_douban)  TextView doubantitle;
+    @BindView(R.id.title_douban)
+    TextView doubantitle;
 
     @Nullable
     @Override
@@ -55,7 +56,7 @@ public class Shool_societyfragment extends Fragment {
 
             showNews();
             onRegresh();
-        }else {
+        } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
                 viewGroup.removeView(view);
@@ -66,7 +67,7 @@ public class Shool_societyfragment extends Fragment {
         return view;
     }
 
-    private void onRegresh(){
+    private void onRegresh() {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.society_refresh_layout);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -103,7 +104,7 @@ public class Shool_societyfragment extends Fragment {
     }
 
     //展示新闻
-    private void showNews(){
+    private void showNews() {
         newsSociety = (RecyclerView) view.findViewById(R.id.school_society_content);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         newsSociety.setLayoutManager(layoutManager);
@@ -116,13 +117,15 @@ public class Shool_societyfragment extends Fragment {
       @Override
       public void onCompleted() {
 
-      }
 
-      @Override
-      public void onError(Throwable e) {
-          Toast.makeText(getContext(),e.getMessage().toString(),Toast.LENGTH_LONG).show();
-         // Log.d("gjf123", e.getMessage().toString());
-      }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Toast.makeText(getContext(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                // Log.d("gjf123", e.getMessage().toString());
+            }
+
 
       @Override
       public void onNext(SocietyNewsData newsResult) {
@@ -138,11 +141,16 @@ public class Shool_societyfragment extends Fragment {
       }
   };
         NewsMethods.getInstance().getTopMovie(subscriber,page);
+
+    }
+
+
+
+
     }
 
 
-
-    }
+}
 
 
 

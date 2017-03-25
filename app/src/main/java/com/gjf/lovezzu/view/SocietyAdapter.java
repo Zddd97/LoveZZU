@@ -24,17 +24,21 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
 
     private List<SocietyNewsResult> societyNewsResultList;
 
+
+
   private SocietyNewsResult societyNewsResult;
+
     private Context mContext;
     private Activity activity;
     private LayoutInflater inflater;
 
+
     public SocietyAdapter(List<SocietyNewsResult> societyNewsResults,Context mContext) {
         this.societyNewsResultList = societyNewsResults;
+
         this.mContext = mContext;
         inflater = LayoutInflater.from(mContext);
     }
-
 
 
     @Override
@@ -58,7 +62,7 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         societyNewsResult = societyNewsResultList.get(position);
 
-       // holder.newsImage.setImageResource(schoolSociety.getNewsImage());
+        // holder.newsImage.setImageResource(schoolSociety.getNewsImage());
         Glide.with(mContext)
                 .load(societyNewsResult.getUrl())
                 .centerCrop().thumbnail(0.1f)
