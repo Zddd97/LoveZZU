@@ -21,8 +21,8 @@ import java.util.List;
 
 public class SchoolLastAdapter extends RecyclerView.Adapter<SchoolLastAdapter.ViewHolder> {
 
-    private List<SchoolNewsResult> schoolNewsResultList;
-    private Context mContext;
+
+    private Context mContext;  private List<SchoolNewsResult> schoolNewsResultList;
     private LayoutInflater inflater;
     public SchoolLastAdapter(List<SchoolNewsResult> schoolNewsResultList,Context context) {
         this.schoolNewsResultList = schoolNewsResultList;
