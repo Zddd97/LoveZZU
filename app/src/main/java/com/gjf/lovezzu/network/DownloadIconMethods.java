@@ -31,7 +31,7 @@ public class DownloadIconMethods {
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
         retrofit = new Retrofit.Builder().
-                baseUrl(Url.ICON_URL).
+                baseUrl(Url.LOGIN_URL).
                 addCallAdapterFactory(RxJavaCallAdapterFactory.create())
 
                 .build();

@@ -46,27 +46,27 @@ public class SaveUserInfoMethods {
                 .subscribe(subscriber);
     }
     public void editSex(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String sex ){
-        edituserInfoServer.editNickname(identifier,phone,sex).subscribeOn(Schedulers.io())
+        edituserInfoServer.editSex(identifier,phone,sex).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
     public void editHome(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String home ){
-        edituserInfoServer.editNickname(identifier,phone,home).subscribeOn(Schedulers.io())
+        edituserInfoServer.editHome(identifier,phone,home).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
     public void editSchool(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String school ){
-        edituserInfoServer.editNickname(identifier,phone,school).subscribeOn(Schedulers.io())
+        edituserInfoServer.editSchool(identifier,phone,school).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
     public void editClass(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String Class ){
-        edituserInfoServer.editNickname(identifier,phone,Class).subscribeOn(Schedulers.io())
+        edituserInfoServer.editClass(identifier,phone,Class).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
     public void editMajor(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String major ){
-        edituserInfoServer.editNickname(identifier,phone,major).subscribeOn(Schedulers.io())
+        edituserInfoServer.editMajor(identifier,phone,major).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
