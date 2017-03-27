@@ -39,11 +39,12 @@ public class School_shoolfragment extends android.app.Fragment {
     private ArrayList<String> imageUrls = new ArrayList<String>();
     private List<SchoolMid> schoolMidList = new ArrayList<>();
     private List<SchoolNewsResult> schoolNewsResultList = new ArrayList<>();
-   private int Page;
+    private int Page;
     public static final String TAG = "Fragment";
-
+    private RecyclerView recyclerView1;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Subscriber subscriber;
+    private GridLayoutManager gridLayoutManager;
     SchoolLastAdapter adapter1;
 
 
@@ -56,11 +57,11 @@ public class School_shoolfragment extends android.app.Fragment {
 
             //初始化所需数据
             initSchoolList();
-
             showTopImage();
             showCenterImage();
             showEndImage();
             onRefresh();
+            doUpResfresh();
 
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
@@ -68,12 +69,13 @@ public class School_shoolfragment extends android.app.Fragment {
                 viewGroup.removeView(view);
             }
             onRefresh();
+            doUpResfresh();
         }
         return view;
     }
 
 
-    //刷新操作
+    //下拉刷新操作
     private void onRefresh() {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.last_school_content_flash);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
@@ -84,6 +86,21 @@ public class School_shoolfragment extends android.app.Fragment {
             }
         });
     }
+
+
+    //上拉加载
+
+
+
+
+
+    private void doUpResfresh() {
+        if (recyclerView1 == null) {
+            recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
+        }
+
+    }
+
 
     private void refreshlast() {
 
@@ -100,7 +117,7 @@ public class School_shoolfragment extends android.app.Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       getSchoolNews(Page++);
+                        getSchoolNews(Page++);
                         adapter1.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -186,14 +203,14 @@ public class School_shoolfragment extends android.app.Fragment {
 
     private void showEndImage() {
         //结尾部分
-        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
+        recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
+        gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
         recyclerView1.setLayoutManager(gridLayoutManager);
-       adapter1 = new SchoolLastAdapter(schoolNewsResultList,getContext());
+        adapter1 = new SchoolLastAdapter(schoolNewsResultList, getContext());
         recyclerView1.setAdapter(adapter1);
     }
 
-    private void getSchoolNews(int page){
+    private void getSchoolNews(int page) {
         subscriber = new Subscriber<SchoolNewsData>() {
             @Override
             public void onCompleted() {
@@ -212,7 +229,7 @@ public class School_shoolfragment extends android.app.Fragment {
 
             }
         };
-        SchoolNewsMethods.getInstance().getSchoolNews(subscriber,page);
+        SchoolNewsMethods.getInstance().getSchoolNews(subscriber, page);
     }
 
 }

@@ -3,6 +3,7 @@ package com.gjf.lovezzu.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,33 +32,83 @@ public class TopicTalkActivity extends AppCompatActivity {
     private RecyclerView midRecyclerView;
     private RecyclerView lastRecyerView;
     private ImageView backImage;
+    private SwipeRefreshLayout topicRegresh;
     private TopicMidAdapter topicMidAdapter;
     private TopicLastAdapter topicLastAdapter;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.talk_view);
-        backImage= (ImageView) findViewById(R.id.back);
+        backImage = (ImageView) findViewById(R.id.back);
+
         backImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TopicTalkActivity.this,MainActivity.class);
+                Intent intent = new Intent(TopicTalkActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+
         initItem();
         showMid();
         showLast();
+        onRefresh();
     }
 
+    //刷新操作
+    private void onRefresh() {
+        topicRegresh = (SwipeRefreshLayout) findViewById(R.id.talk_refresh);
+        topicRegresh.setColorSchemeResources(R.color.colorPrimary);
+        topicRegresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshTopic();
+            }
+        });
+    }
+
+    //刷新数据
+    private void refreshTopic() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //加载数据并更新
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        initItem();
+                        topicMidAdapter.notifyDataSetChanged();
+                        topicLastAdapter.notifyDataSetChanged();
+                        topicRegresh.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
+    }
 
     //初始化加载数据
     private void initItem() {
 
         TopicMid topicMid1 = new TopicMid("新闻标题", R.drawable.life_beautiful_girl, "从服务器获得链接");
 
-        TopicLast topicLast = new TopicLast("测试测试", "中国队赢了，里皮是真的皮","1001","1996");
+        TopicLast topicLast = new TopicLast("测试测试", "中国队赢了，里皮是真的皮", "1001", "1996");
+        topicMidList.clear();
+        topicLastList.clear();
+
+        topicMidList.add(topicMid1);
+        topicMidList.add(topicMid1);
+        topicMidList.add(topicMid1);
+        topicMidList.add(topicMid1);
+        topicMidList.add(topicMid1);
+
 
         topicLastList.add(topicLast);
         topicLastList.add(topicLast);
@@ -65,11 +116,6 @@ public class TopicTalkActivity extends AppCompatActivity {
         topicLastList.add(topicLast);
         topicLastList.add(topicLast);
 
-        topicMidList.add(topicMid1);
-        topicMidList.add(topicMid1);
-        topicMidList.add(topicMid1);
-        topicMidList.add(topicMid1);
-        topicMidList.add(topicMid1);
 
     }
 
