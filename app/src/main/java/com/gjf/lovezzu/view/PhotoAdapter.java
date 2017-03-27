@@ -70,10 +70,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             Map<String, RequestBody> photos = new HashMap<>();
             File file = new File(uri.getPath());
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            photos.put("myUpload" + file.getName(), requestFile);
-            photos.put("phone", RequestBody.create( MediaType.parse("multipart/form-data"), "123456"));
+            photos.put("myUpload\";filebname=\"" +file.getName(), requestFile);
+           photos.put("phone", RequestBody.create( MediaType.parse("multipart/form-data"), "123456"));
             Log.d("ggggg", photos.toString());
             Log.d("ggggg", uri.toString());
+            Log.d("ggggg",file.getName());
 
 
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
