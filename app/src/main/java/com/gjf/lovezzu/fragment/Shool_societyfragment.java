@@ -37,7 +37,7 @@ public class Shool_societyfragment extends Fragment {
 
     private List<SocietyNewsResult> societyNewsResultList = new ArrayList<>();
     private List<SocietyNewsResult> mlist;
-    private int Page = 1;
+    private int Page = 0;
     RecyclerView newsSociety;
     private SocietyAdapter adapter;
     @BindView(R.id.title_douban)
@@ -51,7 +51,8 @@ public class Shool_societyfragment extends Fragment {
 
             view = inflater.inflate(R.layout.inschool_society_view, container, false);
             ButterKnife.bind(this, view);
-             getNews(Page);
+            refreshView();
+
 
 
             showNews();

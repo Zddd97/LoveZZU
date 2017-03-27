@@ -1,7 +1,6 @@
 package com.gjf.lovezzu.network;
 
 import com.gjf.lovezzu.constant.Url;
-import com.gjf.lovezzu.entity.UserInfoResult;
 import com.gjf.lovezzu.network.api.UploadIconServer;
 
 import java.util.Map;
@@ -9,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -41,11 +41,11 @@ public class UpLoadIconMethods {
         private static final UpLoadIconMethods INSTANCE = new UpLoadIconMethods();
     }
 
-    public static UpLoadIconMethods upLoadIconMethods(Subscriber subscriber, Map<String, RequestBody> photos, String phone){
+    public static UpLoadIconMethods upLoadIconMethods(){
         return SingletonHolder.INSTANCE;
     }
-    public void goToUploadIcon(Subscriber<UserInfoResult> subscriber,Map<String , RequestBody> photo,String phone){
-  uploadIconServer.upLoadIcon(photo,phone).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io())
+    public void goToUploadIcon(Subscriber<ResponseBody> subscriber,Map<String , RequestBody> params){
+  uploadIconServer.upLoadIcon(params).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

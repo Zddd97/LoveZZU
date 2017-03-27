@@ -11,7 +11,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.UserInfoResult;
 import com.gjf.lovezzu.network.UpLoadIconMethods;
 
 import java.io.File;
@@ -22,6 +21,7 @@ import java.util.Map;
 import me.iwf.photopicker.utils.AndroidLifecycleUtils;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import rx.Subscriber;
 
 /**
@@ -70,12 +70,16 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             Map<String, RequestBody> photos = new HashMap<>();
             File file = new File(uri.getPath());
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            photos.put("\"; filename=\"" + file.getName(), requestFile);
+            photos.put("myUpload" + file.getName(), requestFile);
+            photos.put("phone", RequestBody.create( MediaType.parse("multipart/form-data"), "123456"));
+            Log.d("ggggg", photos.toString());
             Log.d("ggggg", uri.toString());
+
 
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
             if (canLoadImage) {
+                upLoad(photos);
                 Glide.with(mContext)
                         .load(uri)
                         .centerCrop()
@@ -115,23 +119,23 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     }
 
     public void upLoad(Map<String, RequestBody> photos) {
-        subscriber = new Subscriber<UserInfoResult>() {
+        subscriber = new Subscriber<ResponseBody>() {
             @Override
             public void onCompleted() {
-
+                Log.d("ggggg","success");
             }
 
             @Override
             public void onError(Throwable e) {
-
+               Log.d("ggggg",e.getMessage().toString());
             }
 
             @Override
-            public void onNext(UserInfoResult userInfoResult) {
-
+            public void onNext(ResponseBody userInfoResult) {
+                Log.d("ggggg","xiyibu");
             }
         };
         String phone = null;
-        UpLoadIconMethods.upLoadIconMethods(subscriber, photos, phone);
+        UpLoadIconMethods.upLoadIconMethods().goToUploadIcon(subscriber,photos);
     }
 }
