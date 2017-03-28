@@ -8,6 +8,7 @@ public class Url {
    public  final static String ICON_URL = "http://dsxcnqzj.top/wp-content/uploads/";
     public  final static String DOUBAN_API = "https://api.douban.com/v2/movie/";
     public  final static String GANK_API = "http://gank.io/api/data/";
+
    //qqqqqqqqqqq
 
 }
