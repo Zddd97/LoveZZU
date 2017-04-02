@@ -109,7 +109,7 @@ public class School_shoolfragment extends android.app.Fragment {
             public void run() {
                 //重新加载数据并更新界面
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(200);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

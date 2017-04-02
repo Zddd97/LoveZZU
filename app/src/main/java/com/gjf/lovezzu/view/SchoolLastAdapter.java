@@ -51,7 +51,7 @@ public class SchoolLastAdapter extends RecyclerView.Adapter<SchoolLastAdapter.Vi
       //  holder.imageView.setImageResource(schoolNewsResult.getImageId());
         Glide.with(mContext)
                 .load(schoolNewsResult.getUrl())
-                .centerCrop().thumbnail(0.1f)
+                .centerCrop()
                 .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                 .error(R.drawable.__picker_ic_broken_image_black_48dp)
                 .into(holder.imageView);
