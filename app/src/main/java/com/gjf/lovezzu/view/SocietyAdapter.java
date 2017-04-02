@@ -65,7 +65,7 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
         // holder.newsImage.setImageResource(schoolSociety.getNewsImage());
         Glide.with(mContext)
                 .load(societyNewsResult.getUrl())
-                .centerCrop().thumbnail(0.1f)
+                .centerCrop().thumbnail(0.1f).dontAnimate()
                 .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                 .error(R.drawable.__picker_ic_broken_image_black_48dp)
                 .into(holder.newsImage);
