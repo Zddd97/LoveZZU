@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +23,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import rx.Subscriber;
 
 /**
  * Created by lenovo047 on 2017/3/9.
  */
 
-public class Shool_societyfragment extends Fragment {
+public class Shool_societyfragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate{
+    private BGARefreshLayout mRefreshLayout;
+
     private View view;
     private Subscriber subscriber;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -51,18 +53,19 @@ public class Shool_societyfragment extends Fragment {
 
             view = inflater.inflate(R.layout.inschool_society_view, container, false);
             ButterKnife.bind(this, view);
-            refreshView();
+           getNews(1);
 
 
 
             showNews();
             onRegresh();
+            refreshView();
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
-                viewGroup.removeView(view);
+               viewGroup.removeView(view);
             }
-            onRegresh();
+
         }
 
         return view;
@@ -86,7 +89,7 @@ public class Shool_societyfragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -114,6 +117,7 @@ public class Shool_societyfragment extends Fragment {
     }
 
     private void getNews(int page){
+
   subscriber = new Subscriber<SocietyNewsData>() {
       @Override
       public void onCompleted() {
@@ -134,21 +138,37 @@ public class Shool_societyfragment extends Fragment {
           List<SocietyNewsResult> list = newsResult.getResults();
 
 
-         Toast.makeText(getContext(),"",Toast.LENGTH_LONG).show();
-         Log.d("gjf123", "");
+         //Toast.makeText(getContext(),list.toString(),Toast.LENGTH_LONG).show();
+          //Log.d("gjf123", "");
           //加载新闻
           societyNewsResultList.addAll(list);
+          adapter.notifyDataSetChanged();
+
 
       }
   };
-        NewsMethods.getInstance().getTopMovie(subscriber,page);
+        NewsMethods.getInstance().getTopMovie(subscriber, page);
 
     }
 
 
 
 
+    private void initRefreshLayout(){
+    
     }
+
+
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+
+    }
+
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        return false;
+    }
+}
 
 
 

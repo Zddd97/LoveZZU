@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d8e0e8"
+
     android:orientation="vertical">
 
     <LinearLayout
@@ -53,7 +53,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/mine_dynamic" />
+                    android:src="@drawable/mine_dynamic"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -69,6 +73,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:src="@drawable/right_arrow"
+
                  />
             </LinearLayout>
 
@@ -86,7 +91,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/mine_confession" />
+                    android:src="@drawable/mine_confession"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -126,7 +135,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/mine_task" />
+                    android:src="@drawable/mine_task"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -156,7 +169,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
-                    android:src="@drawable/mine_schoole_coin" />
+                    android:src="@drawable/mine_schoole_coin"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -186,7 +203,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
-                    android:src="@drawable/mine_score" />
+                    android:src="@drawable/mine_score"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -216,7 +237,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
-                    android:src="@drawable/mine_trade_record" />
+                    android:src="@drawable/mine_trade_record"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -246,7 +271,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
-                    android:src="@drawable/mine_collect" />
+                    android:src="@drawable/mine_collect"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -287,7 +316,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/mine_setting" />
+                    android:src="@drawable/mine_setting"  android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    />
 
                 <TextView
                     android:layout_width="0dp"

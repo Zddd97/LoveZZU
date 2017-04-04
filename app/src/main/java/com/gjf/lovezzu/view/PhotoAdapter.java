@@ -70,21 +70,23 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             Map<String, RequestBody> photos = new HashMap<>();
             File file = new File(uri.getPath());
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            photos.put("myUpload\";filebname=\"" +file.getName(), requestFile);
-           photos.put("phone", RequestBody.create( MediaType.parse("multipart/form-data"), "123456"));
+            photos.put("myUpload", requestFile);
+            photos.put("phone", RequestBody.create(MediaType.parse("multipart/form-data"), "123456"));
             Log.d("ggggg", photos.toString());
             Log.d("ggggg", uri.toString());
             Log.d("ggggg",file.getName());
 
 
+
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
             if (canLoadImage) {
-                upLoad(photos);
+                if (requestFile!=null){
+                upLoad(photos);}
                 Glide.with(mContext)
                         .load(uri)
                         .centerCrop()
-                        .thumbnail(0.1f)
+
                         .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                         .error(R.drawable.__picker_ic_broken_image_black_48dp)
                         .into(holder.ivPhoto);
@@ -133,6 +135,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
             @Override
             public void onNext(ResponseBody userInfoResult) {
+
                 Log.d("ggggg","xiyibu");
             }
         };

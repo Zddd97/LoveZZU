@@ -20,4 +20,5 @@
         android:layout_height="match_parent"
         android:id="@+id/title_douban"
         android:text="111111111"/>
+
 </LinearLayout>

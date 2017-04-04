@@ -10,6 +10,6 @@ import rx.Observable;
  * Created by BlackBeard丶 on 2017/03/23.
  */
 public interface SchoolNewServer {
-    @GET("福利/100/{pageNO}")
+    @GET("福利/10/{pageNO}")
     Observable<SchoolNewsData> getNews(@Path("pageNO")int pageNO);
 }

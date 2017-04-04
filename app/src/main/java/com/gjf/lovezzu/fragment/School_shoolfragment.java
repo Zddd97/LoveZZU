@@ -109,7 +109,7 @@ public class School_shoolfragment extends android.app.Fragment {
             public void run() {
                 //重新加载数据并更新界面
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(200);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -133,9 +133,9 @@ public class School_shoolfragment extends android.app.Fragment {
         //首页的新闻总是要更新的，是不是可以写成一个server，在后台进行更新
         //头部轮播图片，从服务器中加载
 
-        imageUrls.add("http://www.bz55.com/uploads1/allimg/120312/1_120312100435_8.jpg");
-        imageUrls.add("http://img2.pconline.com.cn/pconline/0706/19/1038447_34.jpg");
-        imageUrls.add("http://www.237.cc/uploads/pcline/712_0_1680x1050.jpg");
+        imageUrls.add("http://7xi8d6.com1.z0.glb.clouddn.com/2017-03-09-17127109_1652837611687612_1425055271046086656_n.jpg");
+        imageUrls.add("http://7xi8d6.com1.z0.glb.clouddn.com/2017-03-13-17267506_264626920661300_5781854075880472576_n.jpg");
+        imageUrls.add("http://7xi8d6.com1.z0.glb.clouddn.com/2017-03-13-17267506_264626920661300_5781854075880472576_n.jpg");
 
         //中间滑动项，从服务器中加载
         Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
@@ -211,6 +211,7 @@ public class School_shoolfragment extends android.app.Fragment {
     }
 
     private void getSchoolNews(int page) {
+
         subscriber = new Subscriber<SchoolNewsData>() {
             @Override
             public void onCompleted() {
@@ -226,6 +227,7 @@ public class School_shoolfragment extends android.app.Fragment {
             public void onNext(SchoolNewsData schoolNewsData) {
                 List<SchoolNewsResult> list = schoolNewsData.getResults();
                 schoolNewsResultList.addAll(list);
+                adapter1.notifyDataSetChanged();
 
             }
         };

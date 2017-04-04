@@ -3,16 +3,19 @@ package com.gjf.lovezzu.fragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.MainActivity;
 import com.gjf.lovezzu.entity.LoginResult;
 import com.gjf.lovezzu.network.SingupMethods;
 
@@ -30,6 +33,7 @@ public class UserSingUpFragment extends Fragment {
     @BindView(R.id.user_singup_button) TextView user_singuo_button;
     @BindView(R.id.user_reg_phone) EditText getuser_reg_phone;
     @BindView(R.id.user_reg_password) EditText getUser_reg_password;
+    @BindView(R.id.reg_title_back) ImageView reg_title_back;
     private UserLoginFragmen userLoginFragmen;
     private  View view;
     private Subscriber subscriber;
@@ -53,7 +57,7 @@ public class UserSingUpFragment extends Fragment {
         subscriber = new Subscriber<LoginResult>() {
             @Override
             public void onCompleted() {
-
+//
             }
 
             @Override
@@ -77,10 +81,10 @@ public class UserSingUpFragment extends Fragment {
         String password = getUser_reg_password.getText().toString();
         boolean issuccessful = false;
         String identifier = "1";
-        SingupMethods.getInstance().goToSingup(subscriber,identifier,issuccessful,phone,password);
+        SingupMethods.getInstance().goToSingup(subscriber, identifier, issuccessful, phone, password);
 
     }
-    @OnClick({R.id.login_now,R.id.user_singup_button})
+    @OnClick({R.id.login_now,R.id.user_singup_button,R.id.reg_title_back})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.login_now:
@@ -89,6 +93,16 @@ public class UserSingUpFragment extends Fragment {
             case R.id.user_singup_button:
                 goTosingup();
                 break;
+            case R.id.reg_title_back :
+                returnHome();
+                break;
         }
+    }
+    //回到主页
+
+    private void returnHome() {
+        Intent intent = new Intent();
+        intent.setClass(getActivity(), MainActivity.class);
+        startActivity(intent);
     }
 }
