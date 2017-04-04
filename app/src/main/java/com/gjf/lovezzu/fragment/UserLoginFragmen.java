@@ -41,7 +41,7 @@ public class UserLoginFragmen extends Fragment {
 
 
     @BindView(R.id.new_user_reg) TextView new_user_reg;
-    @BindView(R.id.my_title_back) ImageView my_title_back;
+    @BindView(R.id.login_title_back) ImageView my_title_back;
     @BindView(R.id.user_reg_phone) EditText user_reg_phone;
     @BindView(R.id.user_reg_password)   EditText user_reg_password;
     @BindView(R.id.user_login)  LinearLayout user_login;
@@ -55,10 +55,10 @@ public class UserLoginFragmen extends Fragment {
 
         return view;
     }
-    @OnClick({R.id.my_title_back,R.id.new_user_reg,R.id.user_login})
+    @OnClick({R.id.login_title_back,R.id.new_user_reg,R.id.user_login})
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.my_title_back:
+            case R.id.login_title_back:
                 returnHome();
                 break;
             case R.id.new_user_reg:
@@ -78,7 +78,6 @@ public class UserLoginFragmen extends Fragment {
         Intent intent = new Intent();
         intent.setClass(getActivity(), MainActivity.class);
         startActivity(intent);
-
     }
   //进入注册页面
     private void goToreg() {

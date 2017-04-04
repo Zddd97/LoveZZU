@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fffffc"
+
     android:orientation="horizontal">
     <com.gjf.lovezzu.view.CircleImageView
         android:id="@+id/main_my_user_icon"

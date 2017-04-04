@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0.5dp"
-            android:id="@+id/reg_title_back"
+            android:id="@+id/login_title_back"
             android:src="@drawable/fragment_back" />
     </LinearLayout>
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:text="注册"
+            android:text="登录"
             android:textSize="20sp"/>
     </LinearLayout>
 
