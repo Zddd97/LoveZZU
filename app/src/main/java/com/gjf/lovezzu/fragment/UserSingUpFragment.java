@@ -57,7 +57,7 @@ public class UserSingUpFragment extends Fragment {
         subscriber = new Subscriber<LoginResult>() {
             @Override
             public void onCompleted() {
-
+//
             }
 
             @Override
