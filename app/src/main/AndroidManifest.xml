@@ -35,11 +35,13 @@
         <activity
 
             android:name="me.iwf.photopicker.PhotoPickerActivity" />
-      
-        <activity android:name=".activity.saylvoeActivity.SayLoveActivity"/>
-        <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
-        <activity android:name=".activity.TaoyuActivity"/>
 
+        <activity android:name=".activity.saylvoeActivity.SayLoveActivity" />
+        <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity" />
+        <activity android:name=".activity.TaoyuActivity" />
+        <activity
+            android:name=".activity.PlayTogetherActivity"
+            android:launchMode="singleTask" />
 
 
         <service android:name=".service.CheckLogin" />
