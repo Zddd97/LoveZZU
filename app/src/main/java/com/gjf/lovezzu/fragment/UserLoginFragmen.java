@@ -107,10 +107,11 @@ public class UserLoginFragmen extends Fragment {
 
             @Override
             public void onNext(LoginResult loginResult) {
-                if (loginResult.isSuccessful()){
+                String SessionID = loginResult.getSessionID();
+                if (SessionID!=null){
                     String phone = user_reg_phone.getText().toString();
-                    String password = user_reg_password.getText().toString();
-                    saveUserInfo(phone,password);
+                    //String password = user_reg_password.getText().toString();
+                    saveUserInfo(SessionID,phone);
                 }else{
                     Toast.makeText(getContext(),"账号或者密码错误！",Toast.LENGTH_LONG).show();
                     checkLoginApplication = (CheckLoginApplication)getActivity().getApplication();
@@ -127,14 +128,15 @@ public class UserLoginFragmen extends Fragment {
         String password = user_reg_password.getText().toString().trim();
         boolean  issuccessful = false;
         String identifier = "0";
-        LoginMethods.getInstance().goToLogin(subscriber,identifier,issuccessful,phone, password);
+        LoginMethods.getInstance().goToLogin(subscriber,phone, password);
 
     }
-   private void saveUserInfo(String phone,String password){
+   private void saveUserInfo(String SessionID,String phone){
        SharedPreferences sharedPreferences = getContext().getSharedPreferences("userinfo",getContext().MODE_APPEND);
        SharedPreferences.Editor editUserInfo = sharedPreferences.edit();
-       editUserInfo.putString("phone",phone);
-       editUserInfo.putString("password", password);
+      editUserInfo.putString("phone",phone);
+       //editUserInfo.putString("password", password);
+       editUserInfo.putString("SessionID", SessionID);
        editUserInfo.commit();
        Toast.makeText(getContext(), "登录成功！", Toast.LENGTH_LONG).show();
 

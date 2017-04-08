@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.fragment.TaoyuFragment;
+import com.gjf.lovezzu.fragment.taoyu.TaoyuFragment;
 
 /**
  * Created by lenovo047 on 2017/3/25.

@@ -39,6 +39,7 @@
         <activity android:name=".activity.saylvoeActivity.SayLoveActivity"/>
         <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
         <activity android:name=".activity.TaoyuActivity"/>
+        <activity android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"/>
 
 
 

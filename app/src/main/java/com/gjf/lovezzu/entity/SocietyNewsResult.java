@@ -106,8 +106,17 @@ public class SocietyNewsResult {
         public void setWho(String who) {
             this.who = who;
         }
+        private SchoolNewsResult schoolNewsResult;
 
-        @Override
+    public SchoolNewsResult getSchoolNewsResult() {
+        return schoolNewsResult;
+    }
+
+    public void setSchoolNewsResult(SchoolNewsResult schoolNewsResult) {
+        this.schoolNewsResult = schoolNewsResult;
+    }
+
+    @Override
         public String toString() {
             return "SocietyNewsResult{" +
                     "_id='" + _id + '\'' +
