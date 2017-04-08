@@ -216,6 +216,7 @@ public class UserInfoActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         String phone = sharedPreferences.getString("phone", "");
         String password = sharedPreferences.getString("password", "");
+        String SessionID = sharedPreferences.getString("SessionID", "");
         String id = "3";
         GetUserInfoMethods.getUserInfoMethods().goToGetUserInfo(subscriber, id, phone, password);
 

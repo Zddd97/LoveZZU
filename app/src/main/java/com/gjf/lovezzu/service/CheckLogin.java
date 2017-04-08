@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.gjf.lovezzu.entity.CheckLoginApplication;
 import com.gjf.lovezzu.entity.LoginResult;
@@ -56,37 +57,51 @@ public class CheckLogin extends Service {
     private void checkLogin(){
         SharedPreferences sharedPreferences = getSharedPreferences("userinfo", Activity.MODE_APPEND);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
-        String phone = sharedPreferences.getString("phone", "");
-        String password = sharedPreferences.getString("password","");
-       // Toast.makeText(this, "电话是：" + phone.toString() + "密码是" + password.toString(), Toast.LENGTH_LONG).show();
+        String SessionID = sharedPreferences.getString("SessionID", "");
+        //String password = sharedPreferences.getString("password","");
+       Toast.makeText(this, "电话是：" + SessionID.toString().trim() , Toast.LENGTH_LONG).show();
+        if (!SessionID.equals("")){
+            //Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_LONG).show();
 
-        subscriber = new Subscriber<LoginResult>() {
-            @Override
-            public void onCompleted() {
+            subscriber = new Subscriber<LoginResult>() {
+                @Override
+                public void onCompleted() {
 
-            }
+                }
 
-            @Override
-            public void onError(Throwable e) {
-              //  Toast.makeText(getApplicationContext(),e.getMessage().toString()+"网络错误！",Toast.LENGTH_LONG).show();
-            }
+                @Override
+                public void onError(Throwable e) {
+                    //  Toast.makeText(getApplicationContext(),e.getMessage().toString()+"网络错误！",Toast.LENGTH_LONG).show();
+                }
 
-            @Override
-            public void onNext(LoginResult loginResult) {
-             if (loginResult.isSuccessful()){
-                 checkLoginApplication = (CheckLoginApplication)getApplication();
-                 checkLoginApplication.setIsLogin(true);
+                @Override
+                public void onNext(LoginResult loginResult) {
+                    String SessionID = loginResult.getSessionID();
+                    if (!SessionID.equals("")){
+                        checkLoginApplication = (CheckLoginApplication)getApplication();
+                        checkLoginApplication.setIsLogin(true);
+                        Toast.makeText(getApplicationContext(),"2",Toast.LENGTH_LONG).show();
 
-             }else {
-                 checkLoginApplication = (CheckLoginApplication)getApplication();
-                 checkLoginApplication.setIsLogin(false);
-                 editor.clear().commit();
+                    }else {
+                        checkLoginApplication = (CheckLoginApplication)getApplication();
+                        checkLoginApplication.setIsLogin(false);
+                        editor.clear().commit();
 
-             }
-            }
-        };
-        String identifier = "0";
-        LoginMethods.getInstance().goToLogin(subscriber,identifier,issuccrssful, phone, password);
+                    }
+                }
+            };
+
+            LoginMethods.getInstance().checkLogin(subscriber,SessionID);
+        }else {
+            checkLoginApplication = (CheckLoginApplication)getApplication();
+            checkLoginApplication.setIsLogin(false);
+            editor.clear().commit();
+           // Toast.makeText(getApplicationContext(),"清除成功",Toast.LENGTH_LONG).show();
+
+
+        }
+
+
     }
 
 }
