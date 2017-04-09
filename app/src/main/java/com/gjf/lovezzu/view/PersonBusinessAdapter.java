@@ -24,7 +24,7 @@ public class PersonBusinessAdapter  extends RecyclerView.Adapter<PersonBusinessA
     private List<PersonBuinessResult> businesrecordList;
     private LayoutInflater inflater;
     public  PersonBusinessAdapter(List<PersonBuinessResult> personBuinessResultList , Context context){
-
+///
         this.businesrecordList =  businesrecordList;
         this.mContext = context;
         inflater= LayoutInflater.from(mContext);
