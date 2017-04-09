@@ -14,6 +14,7 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.PlayTogetherActivity;
 import com.gjf.lovezzu.activity.TaoyuActivity;
 import com.gjf.lovezzu.activity.TopicTalkActivity;
 
@@ -93,12 +94,12 @@ public class LifeFragment extends Fragment {
                 goToTaoYu();
                 break;
             case R.id.life_play:
-                Toast.makeText(getActivity().getApplicationContext(), "一起玩", Toast.LENGTH_SHORT).show();
+                Intent play_intent=new Intent(getActivity().getApplicationContext(), PlayTogetherActivity.class);
+                startActivity(play_intent);
                 break;
             case R.id.life_talk:
                 Intent intent = new Intent(getActivity().getApplicationContext(), TopicTalkActivity.class);
                 startActivity(intent);
-                //Toast.makeText(getActivity().getApplicationContext(), "话题圈", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.life_shudong:
                 Toast.makeText(getActivity().getApplicationContext(), "树洞", Toast.LENGTH_SHORT).show();

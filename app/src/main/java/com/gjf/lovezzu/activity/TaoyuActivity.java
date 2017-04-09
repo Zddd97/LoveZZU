@@ -19,7 +19,7 @@ public class TaoyuActivity extends AppCompatActivity{
     private TaoyuFragment TaoyuFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);////
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.taoyu_activity);
 
         if (Build.VERSION.SDK_INT >= 21) {
