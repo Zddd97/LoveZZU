@@ -35,7 +35,6 @@
         <activity
 
             android:name="me.iwf.photopicker.PhotoPickerActivity" />
-
         <activity android:name=".activity.saylvoeActivity.SayLoveActivity" />
         <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity" />
         <activity android:name=".activity.TaoyuActivity" />

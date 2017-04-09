@@ -8,14 +8,17 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
-
+import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gjf.lovezzu.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +35,14 @@ public class SchoolFragment extends Fragment {
     private School_shoolfragment school_shoolfragment;
     private Shool_societyfragment shool_societyfragment;
    private View view;
+    final int RIGHT = 0;
+    final int LEFT = 1;
+    private FragmentTabHost mTabHost;
+    private LayoutInflater layoutInflater;
+    private Class fragmentArray[] = { School_shoolfragment.class,Shool_societyfragment.class};
+    private String textViewArray[] = { "学校", "社会"};
+    private List<android.support.v4.app.Fragment> list = new ArrayList<android.support.v4.app.Fragment>();
+    private ViewPager vp;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,5 +87,6 @@ public class SchoolFragment extends Fragment {
         transaction.replace(R.id.in_school_content, fragment);
         transaction.commit();
     }
+
 
 }

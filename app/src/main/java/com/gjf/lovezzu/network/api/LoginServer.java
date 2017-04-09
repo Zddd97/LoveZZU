@@ -15,5 +15,9 @@ public interface LoginServer {
 
     @FormUrlEncoded
     @POST("loginAction")
-    Observable<LoginResult> login(@Field("identifier") String identifier,@Field("issuccessful") boolean  issuccessful ,@Field("phone") String phone, @Field("password") String password);
+    Observable<LoginResult> login(@Field("phone") String phone, @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("loginAction")
+    Observable<LoginResult> checklogin(@Field("SessionID") String SessionID);
 }

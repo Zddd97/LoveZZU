@@ -47,4 +47,19 @@ public class LoginResult {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    private String  SessionID;
+
+    public String getSessionID() {
+        return SessionID;
+    }
+
+    public void setSessionID(String sessionID) {
+        SessionID = sessionID;
+    }
+
+    public void setSuccessful(boolean successful) {
+
+        isSuccessful = successful;
+    }
 }
