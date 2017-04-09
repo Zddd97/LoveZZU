@@ -27,6 +27,27 @@ public class SchoolNewsResult {
     private boolean used;
 
     private String who;
+    private String urlImg;
+    private String title;
+    private Integer advisoryid;
+    public String getUrlImg() {
+        return urlImg;
+    }
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public Integer getAdvisoryid() {
+        return advisoryid;
+    }
+    public void setAdvisoryid(Integer advisoryid) {
+        this.advisoryid = advisoryid;
+    }
 
     public String get_id() {
         return _id;

@@ -22,12 +22,13 @@ import java.util.List;
 public class SchoolLastAdapter extends RecyclerView.Adapter<SchoolLastAdapter.ViewHolder> {
 
 
-    private Context mContext;  private List<SchoolNewsResult> schoolNewsResultList;
+    private Context mContext;
+    private List<SchoolNewsResult> schoolNewsResultList;
     private LayoutInflater inflater;
     public SchoolLastAdapter(List<SchoolNewsResult> schoolNewsResultList,Context context) {
         this.schoolNewsResultList = schoolNewsResultList;
         this.mContext =context;
-        inflater = LayoutInflater.from(mContext);
+        this.inflater = LayoutInflater.from(mContext);
     }
 
     @Override
@@ -50,12 +51,12 @@ public class SchoolLastAdapter extends RecyclerView.Adapter<SchoolLastAdapter.Vi
 
       //  holder.imageView.setImageResource(schoolNewsResult.getImageId());
         Glide.with(mContext)
-                .load(schoolNewsResult.getUrl())
+                .load(schoolNewsResult.getUrlImg())
                 .centerCrop()
                 .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                 .error(R.drawable.__picker_ic_broken_image_black_48dp)
                 .into(holder.imageView);
-        holder.titleText.setText(schoolNewsResult.getPublishedAt());
+        holder.titleText.setText(schoolNewsResult.getTitle());
     }
 
     @Override

@@ -31,7 +31,7 @@ public class SchoolNewsMethods {
                 .client(httpClientBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(Url.GANK_API)
+                .baseUrl(Url.News_Url)
                 .build();
 
         schoolNewServer = retrofit.create(SchoolNewServer.class);
@@ -47,8 +47,8 @@ public class SchoolNewsMethods {
     }
 
 
-    public void getSchoolNews(Subscriber<SchoolNewsData> subscriber, int pageNO){
-        schoolNewServer.getNews(pageNO )
+    public void getSchoolNews(Subscriber<SchoolNewsData> subscriber ,int page){
+        schoolNewServer.getNews(page )
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

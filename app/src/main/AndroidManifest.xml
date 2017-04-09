@@ -2,21 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gjf.lovezzu">
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.camera.autofocus"
-        android:required="false" />
+
 
 
     <application
         android:name=".entity.CheckLoginApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/lovezuu"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask">
@@ -26,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.UserLoginActivity" />
+        <activity android:name=".activity.UserLoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.UserSettingActivity" />
         <activity
@@ -39,7 +36,8 @@
         <activity android:name=".activity.saylvoeActivity.SayLoveActivity"/>
         <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
         <activity android:name=".activity.TaoyuActivity"/>
-        <activity android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"/>
+        <activity android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
 
 
