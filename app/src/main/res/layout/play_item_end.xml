@@ -29,7 +29,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/play_ground"
+            android:id="@+id/play_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -123,11 +123,13 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/play_play_tag1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/new_group" />
 
                     <ImageView
+                        android:id="@+id/play_play_tag2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

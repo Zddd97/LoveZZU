@@ -6,13 +6,30 @@ package com.gjf.lovezzu.entity;
 
 public class PlayTop {
     private int userImage;
-    private String userNanme;
+    private String userName;
     private String dateTime;
     private String nice;
     private String talk;
     private String userTitle;
     private String newsTitle;
     private int newsImage;
+
+    public PlayTop() {
+
+    }
+
+    public PlayTop(int userImage, String userName, String dateTime, String nice,
+                   String talk, String userTitle, String newsTitle, int newsImage) {
+        this.userImage = userImage;
+        this.userName = userName;
+        this.dateTime = dateTime;
+        this.nice = nice;
+        this.talk = talk;
+        this.userTitle = userTitle;
+        this.newsTitle = newsTitle;
+        this.newsImage = newsImage;
+    }
+
 
     public int getUserImage() {
         return userImage;
@@ -22,12 +39,12 @@ public class PlayTop {
         this.userImage = userImage;
     }
 
-    public String getUserNanme() {
-        return userNanme;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserNanme(String userNanme) {
-        this.userNanme = userNanme;
+    public void setUserName(String userNanme) {
+        this.userName = userNanme;
     }
 
     public String getDateTime() {
