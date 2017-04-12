@@ -1,5 +1,6 @@
 package com.gjf.lovezzu.view;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +20,12 @@ import java.util.List;
 
 public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
     private List<TaoyuResult> taoyuResultList;
+    private  Context context;
+    private TaoyuResult taoyuResult;
 
-    public TaoyuAdapter(List<TaoyuResult> taoyuResultList) {
+    public TaoyuAdapter(List<TaoyuResult> taoyuResultList, Context context) {
         this.taoyuResultList = taoyuResultList;
+        this.context = context;
     }
 
     @Override
@@ -39,16 +43,16 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TaoyuResult TaoyuResult = taoyuResultList.get(position);
-        holder.touxiang.setImageResource(TaoyuResult.getImageID1());
-        holder.taoyuimag.setImageResource(TaoyuResult.getImageID2());
-        holder.title.setText(TaoyuResult.getTitle());
-        holder.comment.setText(TaoyuResult.getComment());
-        holder.position.setText(TaoyuResult.getPosition());
-        holder.price.setText(TaoyuResult.getPrice());
-        holder.phone.setText(TaoyuResult.getPhone());
-        holder.time.setText(TaoyuResult.getTime());
-        holder.zan.setText(TaoyuResult.getZan());
+         taoyuResult = taoyuResultList.get(position);
+        holder.touxiang.setImageResource(taoyuResult.getImageID1());
+        holder.taoyuimag.setImageResource(taoyuResult.getImageID2());
+//        //holder.title.setText(taoyuResult.getTitle());
+//        holder.comment.setText(taoyuResult.getComment());
+//        holder.position.setText(taoyuResult.getPosition());
+//        holder.price.setText(taoyuResult.getPrice());
+//        holder.phone.setText(taoyuResult.getPhone());
+//        holder.time.setText(taoyuResult.getTime());
+//        holder.zan.setText(taoyuResult.getZan());
 
 
     }

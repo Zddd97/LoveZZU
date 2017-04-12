@@ -4,32 +4,12 @@
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\anim\\abc_fade_in.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\anim\\abc_fade_out.xml"
     },
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\anim\\abc_fade_out.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\anim\\abc_slide_out_top.xml"
-    },
-    {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\2eb2fe09ef33c67522d28b92dbb9643cc0ad8cec\\output\\res\\anim\\abc_fade_in.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\2eb2fe09ef33c67522d28b92dbb9643cc0ad8cec\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
@@ -40,35 +20,7 @@
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\anim\\abc_slide_in_top.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\2eb2fe09ef33c67522d28b92dbb9643cc0ad8cec\\output\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
         "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\anim\\abc_slide_in_top.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\2eb2fe09ef33c67522d28b92dbb9643cc0ad8cec\\output\\res\\anim\\abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\anim\\abc_slide_out_bottom.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\2eb2fe09ef33c67522d28b92dbb9643cc0ad8cec\\output\\res\\anim\\abc_slide_in_top.xml"
-    },
-    {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\anim\\abc_slide_out_top.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\2eb2fe09ef33c67522d28b92dbb9643cc0ad8cec\\output\\res\\anim\\abc_fade_out.xml"
     }
 ]
