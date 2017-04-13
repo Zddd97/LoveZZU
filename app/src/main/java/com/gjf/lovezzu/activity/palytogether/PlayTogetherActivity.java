@@ -102,7 +102,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
 
         for (int i = 1; i <= 4; i++) {
 
-            PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", "123", "110",
+            PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", 123, 110,
                     "新闻的大标题111", "新闻的小标题", R.drawable.life_beautiful_girl);
             PlayEnd playEnd = new PlayEnd(R.drawable.test_person_01, "PlayBoy", "Android小组", R.drawable.new_group,
                     R.drawable.new_add, "小漠国服第一系列的第一螳螂丶第一大眼,国服最高排名第八,曾任CC战队教练击败OMG战队,现为国服第一金牌讲师长驻斗鱼..",
