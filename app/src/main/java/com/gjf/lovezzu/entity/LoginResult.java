@@ -39,7 +39,6 @@ public class LoginResult {
     }
 
 
-
     public String getPassword() {
         return password;
     }
@@ -48,7 +47,7 @@ public class LoginResult {
         this.password = password;
     }
 
-    private String  SessionID;
+    private String SessionID;
 
     public String getSessionID() {
         return SessionID;

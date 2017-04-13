@@ -23,7 +23,8 @@ public class SchoolNewsMethods {
     private Retrofit retrofit;
 
     private SchoolNewServer schoolNewServer;
-    private SchoolNewsMethods(){
+
+    private SchoolNewsMethods() {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
@@ -36,19 +37,20 @@ public class SchoolNewsMethods {
 
         schoolNewServer = retrofit.create(SchoolNewServer.class);
     }
+
     //在访问HttpMethods时创建单例
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final SchoolNewsMethods INSTANCE = new SchoolNewsMethods();
     }
 
     //获取单例
-    public static SchoolNewsMethods getInstance(){
+    public static SchoolNewsMethods getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
 
-    public void getSchoolNews(Subscriber<SchoolNewsData> subscriber ,int page){
-        schoolNewServer.getNews(page )
+    public void getSchoolNews(Subscriber<SchoolNewsData> subscriber, int page) {
+        schoolNewServer.getNews(page)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

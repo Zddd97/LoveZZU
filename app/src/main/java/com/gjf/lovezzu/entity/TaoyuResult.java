@@ -10,14 +10,13 @@ public class TaoyuResult {
     private String phone;
 
 
-
-    private  String title;
+    private String title;
     private String position;
-    private  int price;
-    private  int time;
-    private  int zan;
-    private  int comment;
-    private  SchoolNewsResult schoolNewsResult;
+    private int price;
+    private int time;
+    private int zan;
+    private int comment;
+    private SchoolNewsResult schoolNewsResult;
 
 
     public TaoyuResult(int imageID1, int imageID2, String phone, String title, String position, int price, int time, int zan, int comment) {

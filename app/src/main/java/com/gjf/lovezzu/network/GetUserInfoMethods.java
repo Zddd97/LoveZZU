@@ -22,7 +22,7 @@ public class GetUserInfoMethods {
     private GetUserInfoServer getUserInfoServer;
     private static final int DEFAULT_TIMEOUT = 5;
 
-    private GetUserInfoMethods(){
+    private GetUserInfoMethods() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -35,15 +35,16 @@ public class GetUserInfoMethods {
         getUserInfoServer = retrofit.create(GetUserInfoServer.class);
     }
 
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final GetUserInfoMethods INSTANCE = new GetUserInfoMethods();
     }
 
-    public static GetUserInfoMethods getUserInfoMethods(){
+    public static GetUserInfoMethods getUserInfoMethods() {
         return SingletonHolder.INSTANCE;
     }
-    public void goToGetUserInfo(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String password){
-        getUserInfoServer.getInfo(identifier,phone,password).subscribeOn(Schedulers.io())
+
+    public void goToGetUserInfo(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String password) {
+        getUserInfoServer.getInfo(identifier, phone, password).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

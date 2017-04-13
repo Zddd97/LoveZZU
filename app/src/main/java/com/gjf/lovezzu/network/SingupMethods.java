@@ -21,7 +21,8 @@ public class SingupMethods {
     private Retrofit retrofit;
     private SingupServer singupServer;
     private static final int DEFAULT_TIMEOUT = 5;
-    private SingupMethods(){
+
+    private SingupMethods() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -36,19 +37,20 @@ public class SingupMethods {
 
         singupServer = retrofit.create(SingupServer.class);
     }
+
     //在访问HttpMethods时创建单例
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final SingupMethods INSTANCE = new SingupMethods() {
         };
     }
 
     //获取单例
-    public static SingupMethods getInstance(){
+    public static SingupMethods getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-    public void goToSingup(Subscriber<LoginResult> subscriber,String identifier,boolean issuccesful,String phone,String password){
-        singupServer.register(identifier,issuccesful,phone,password).subscribeOn(Schedulers.io())
+    public void goToSingup(Subscriber<LoginResult> subscriber, String identifier, boolean issuccesful, String phone, String password) {
+        singupServer.register(identifier, issuccesful, phone, password).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

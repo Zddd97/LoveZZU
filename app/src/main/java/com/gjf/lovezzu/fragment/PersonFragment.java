@@ -26,59 +26,66 @@ import butterknife.OnClick;
  */
 public class PersonFragment extends Fragment {
     @Nullable
-    @BindView(R.id.user_image)LinearLayout linearLayout;
-    @BindView(R.id.my_info)  LinearLayout my_info;
-    @BindView(R.id.person_usersetting)  LinearLayout person_usersetting;
-    @BindView(R.id.person_saylove) LinearLayout person_saylove;
+    @BindView(R.id.user_image)
+    LinearLayout linearLayout;
+    @BindView(R.id.my_info)
+    LinearLayout my_info;
+    @BindView(R.id.person_usersetting)
+    LinearLayout person_usersetting;
+    @BindView(R.id.person_saylove)
+    LinearLayout person_saylove;
 
 
+    private View view;
 
-    private  View view;
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.person_fragment,container,false);
+        view = inflater.inflate(R.layout.person_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        return  view;
+        return view;
 
     }
 
     private void goTomyinfo() {
-       Intent intent =new Intent(getContext(), UserInfoActivity.class);
+        Intent intent = new Intent(getContext(), UserInfoActivity.class);
         startActivity(intent);
     }
 
     public void goTologin() {
-       Intent intent = new Intent(getContext(),UserLoginActivity.class);
-        startActivity(intent);
-}
-    public void goToSetting(){
-      Intent intent = new Intent(getContext(), UserSettingActivity.class);
+        Intent intent = new Intent(getContext(), UserLoginActivity.class);
         startActivity(intent);
     }
-    public void goToSayLove(){
+
+    public void goToSetting() {
+        Intent intent = new Intent(getContext(), UserSettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSayLove() {
         Intent intent = new Intent(getContext(), SayLoveActivity.class);
         startActivity(intent);
     }
-    @OnClick({R.id.user_image,R.id.person_usersetting,R.id.person_saylove})
-    public void onClick(View view){
-       switch (view.getId()){
-           case R.id.user_image:
-               CheckLoginApplication checkLoginApplication = (CheckLoginApplication)getActivity().getApplication();
-               if (checkLoginApplication.isLogin()){
-                   goTomyinfo();
-               }else {
-                   Toast.makeText(getContext(), "请先登录！", Toast.LENGTH_LONG).show();
-                   goTologin();
-               }
-               break;
-           case R.id.person_usersetting:
-               goToSetting();
-               break;
-           case R.id.person_saylove:
-               goToSayLove();
-               break;
+
+    @OnClick({R.id.user_image, R.id.person_usersetting, R.id.person_saylove})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.user_image:
+                CheckLoginApplication checkLoginApplication = (CheckLoginApplication) getActivity().getApplication();
+                if (checkLoginApplication.isLogin()) {
+                    goTomyinfo();
+                } else {
+                    Toast.makeText(getContext(), "请先登录！", Toast.LENGTH_LONG).show();
+                    goTologin();
+                }
+                break;
+            case R.id.person_usersetting:
+                goToSetting();
+                break;
+            case R.id.person_saylove:
+                goToSayLove();
+                break;
         }
     }
 }

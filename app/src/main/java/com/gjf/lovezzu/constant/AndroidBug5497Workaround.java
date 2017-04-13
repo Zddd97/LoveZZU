@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
  */
 
 public class AndroidBug5497Workaround {
-    public static void assistActivity (Activity activity) {
+    public static void assistActivity(Activity activity) {
         new AndroidBug5497Workaround(activity);
     }
 
@@ -35,7 +35,7 @@ public class AndroidBug5497Workaround {
         if (usableHeightNow != usableHeightPrevious) {
             int usableHeightSansKeyboard = mChildOfContent.getRootView().getHeight();
             int heightDifference = usableHeightSansKeyboard - usableHeightNow;
-            if (heightDifference > (usableHeightSansKeyboard/4)) {
+            if (heightDifference > (usableHeightSansKeyboard / 4)) {
                 // keyboard probably just became visible
                 frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
             } else {

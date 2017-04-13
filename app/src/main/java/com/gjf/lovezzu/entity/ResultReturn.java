@@ -7,6 +7,7 @@ public class ResultReturn {
     private boolean success;
     private String msg;
     private ResultBean result;
+
     public boolean isSuccess() {
         return success;
     }

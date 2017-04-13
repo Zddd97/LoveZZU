@@ -94,7 +94,7 @@ public class LifeFragment extends Fragment {
                 goToTaoYu();
                 break;
             case R.id.life_play:
-                Intent play_intent=new Intent(getActivity().getApplicationContext(), PlayTogetherActivity.class);
+                Intent play_intent = new Intent(getActivity().getApplicationContext(), PlayTogetherActivity.class);
                 startActivity(play_intent);
                 break;
             case R.id.life_talk:
@@ -111,7 +111,7 @@ public class LifeFragment extends Fragment {
     }
 
 
-    private void goToTaoYu(){
+    private void goToTaoYu() {
         Intent intent = new Intent(getContext(), TaoyuActivity.class);
         startActivity(intent);
     }

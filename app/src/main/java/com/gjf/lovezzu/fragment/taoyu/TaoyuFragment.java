@@ -23,45 +23,46 @@ import java.util.List;
 public class TaoyuFragment extends Fragment {
     private View view;
     private List<TaoyuResult> taoyuResultList = new ArrayList<>();
-    public static final  String TAG = "Fragment";
+    public static final String TAG = "Fragment";
     RecyclerView taoyu_list;
     private TaoyuAdapter adapter;
-   // private SwipeRefreshLayout swipeRefreshLayout;
+    // private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (view == null) {
             view = inflater.inflate(R.layout.taoyu_list, container, false);
 
             //初始化所需数据
             intList();
-             inittaoyuList();
+            inittaoyuList();
             //onRefresh();
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
                 viewGroup.removeView(view);
             }
-           // onRefresh();
+            // onRefresh();
         }
         return view;
     }
-    public void intList(){
-        taoyu_list = (RecyclerView)view.findViewById(R.id.taoyu_list);
+
+    public void intList() {
+        taoyu_list = (RecyclerView) view.findViewById(R.id.taoyu_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         taoyu_list.setLayoutManager(layoutManager);
-        adapter = new TaoyuAdapter(taoyuResultList,getContext());
+        adapter = new TaoyuAdapter(taoyuResultList, getContext());
         taoyu_list.setAdapter(adapter);
 
 
     }
 
     private void inittaoyuList() {
-        TaoyuResult taoyuResult1 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦啦啦","郑州",5,5,5,5);
-        TaoyuResult taoyuResult2 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦","lala",5,5,5,5);
-        TaoyuResult taoyuResult3 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦","郑州",5,5,5,5);
+        TaoyuResult taoyuResult1 = new TaoyuResult(R.drawable.ic_launcher, R.drawable.ic_launcher, "18838970227", "快来买我东西啦啦啦", "郑州", 5, 5, 5, 5);
+        TaoyuResult taoyuResult2 = new TaoyuResult(R.drawable.ic_launcher, R.drawable.ic_launcher, "18838970227", "快来买我东西啦", "lala", 5, 5, 5, 5);
+        TaoyuResult taoyuResult3 = new TaoyuResult(R.drawable.ic_launcher, R.drawable.ic_launcher, "18838970227", "快来买我东西啦", "郑州", 5, 5, 5, 5);
         taoyuResultList.add(taoyuResult1);
         taoyuResultList.add(taoyuResult2);
         taoyuResultList.add(taoyuResult3);

@@ -15,13 +15,14 @@ import com.gjf.lovezzu.R;
  */
 public class FriendFragment extends Fragment {
     @Nullable
-  private   LinearLayout linearLayout;
-   private  View view;
+    private LinearLayout linearLayout;
+    private View view;
+
     @Override
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.friend_fragment,container,false);
-        return  view;
+        view = inflater.inflate(R.layout.friend_fragment, container, false);
+        return view;
 
     }
 

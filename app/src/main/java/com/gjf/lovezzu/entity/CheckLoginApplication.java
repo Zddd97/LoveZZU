@@ -18,7 +18,7 @@ public class CheckLoginApplication extends Application {
 
     @Override
     public void onCreate() {
-       isLogin = false;
+        isLogin = false;
 
         super.onCreate();
     }

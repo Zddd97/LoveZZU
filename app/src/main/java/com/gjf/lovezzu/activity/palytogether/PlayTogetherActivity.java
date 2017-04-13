@@ -36,7 +36,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
     //数据源
     /*List<PlayTop> playTopList = new ArrayList<>();
     List<PlayEnd> playEndList = new ArrayList<>();*/
-    List<PlayItems> playItemsList=new ArrayList<>();
+    List<PlayItems> playItemsList = new ArrayList<>();
     PlayTogetherAdapter adapter;
     @BindView(R.id.play_title_back)
     ImageView playTitleBack;
@@ -51,9 +51,9 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         setContentView(R.layout.play_teg_view);
         ButterKnife.bind(this);
         initDate();
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         playRecyvlerView.setLayoutManager(layoutManager);
-        adapter=new PlayTogetherAdapter(playItemsList);
+        adapter = new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
     }
 
@@ -98,7 +98,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
     //初始化加载数据
     private void initDate() {
 
-        for (int i = 1; i <=4 ; i++) {
+        for (int i = 1; i <= 4; i++) {
 
             PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", "123", "110",
                     "新闻的大标题111", "新闻的小标题", R.drawable.life_beautiful_girl);

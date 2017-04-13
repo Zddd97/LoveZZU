@@ -19,12 +19,13 @@ import rx.Subscriber;
  */
 public class CheckLogin extends Service {
     private Subscriber subscriber;
-  private CheckLoginApplication checkLoginApplication;
+    private CheckLoginApplication checkLoginApplication;
     private boolean issuccrssful;
 
-    public  CheckLogin(){
+    public CheckLogin() {
 
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         throw new UnsupportedOperationException("11111111111");
@@ -33,7 +34,7 @@ public class CheckLogin extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-       // Toast.makeText(this,"创建",Toast.LENGTH_LONG).show();
+        // Toast.makeText(this,"创建",Toast.LENGTH_LONG).show();
         Log.d("My", "start");
 
 
@@ -49,18 +50,18 @@ public class CheckLogin extends Service {
 
     @Override
     public void onDestroy() {
-      //  Toast.makeText(this,"销毁",Toast.LENGTH_LONG).show();
-       super.onDestroy();
+        //  Toast.makeText(this,"销毁",Toast.LENGTH_LONG).show();
+        super.onDestroy();
 
     }
 
-    private void checkLogin(){
+    private void checkLogin() {
         SharedPreferences sharedPreferences = getSharedPreferences("userinfo", Activity.MODE_APPEND);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         String SessionID = sharedPreferences.getString("SessionID", "");
         //String password = sharedPreferences.getString("password","");
-       Toast.makeText(this, "电话是：" + SessionID.toString().trim() , Toast.LENGTH_LONG).show();
-        if (!SessionID.equals("")){
+        Toast.makeText(this, "电话是：" + SessionID.toString().trim(), Toast.LENGTH_LONG).show();
+        if (!SessionID.equals("")) {
             //Toast.makeText(getApplicationContext(),"1",Toast.LENGTH_LONG).show();
 
             subscriber = new Subscriber<LoginResult>() {
@@ -77,13 +78,13 @@ public class CheckLogin extends Service {
                 @Override
                 public void onNext(LoginResult loginResult) {
                     String SessionID = loginResult.getSessionID();
-                    if (!SessionID.equals("")){
-                        checkLoginApplication = (CheckLoginApplication)getApplication();
+                    if (!SessionID.equals("")) {
+                        checkLoginApplication = (CheckLoginApplication) getApplication();
                         checkLoginApplication.setIsLogin(true);
-                        Toast.makeText(getApplicationContext(),"2",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_LONG).show();
 
-                    }else {
-                        checkLoginApplication = (CheckLoginApplication)getApplication();
+                    } else {
+                        checkLoginApplication = (CheckLoginApplication) getApplication();
                         checkLoginApplication.setIsLogin(false);
                         editor.clear().commit();
 
@@ -91,12 +92,12 @@ public class CheckLogin extends Service {
                 }
             };
 
-            LoginMethods.getInstance().checkLogin(subscriber,SessionID);
-        }else {
-            checkLoginApplication = (CheckLoginApplication)getApplication();
+            LoginMethods.getInstance().checkLogin(subscriber, SessionID);
+        } else {
+            checkLoginApplication = (CheckLoginApplication) getApplication();
             checkLoginApplication.setIsLogin(false);
             editor.clear().commit();
-           // Toast.makeText(getApplicationContext(),"清除成功",Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(),"清除成功",Toast.LENGTH_LONG).show();
 
 
         }

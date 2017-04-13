@@ -15,5 +15,5 @@ import rx.Observable;
 public interface UploadIconServer {
     @Multipart
     @POST("upload")
-    Observable<ResponseBody> upLoadIcon(@PartMap Map<String , RequestBody> params);
+    Observable<ResponseBody> upLoadIcon(@PartMap Map<String, RequestBody> params);
 }

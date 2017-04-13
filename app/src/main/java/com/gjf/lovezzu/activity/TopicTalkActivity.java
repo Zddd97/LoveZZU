@@ -37,7 +37,6 @@ public class TopicTalkActivity extends AppCompatActivity {
     private TopicLastAdapter topicLastAdapter;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

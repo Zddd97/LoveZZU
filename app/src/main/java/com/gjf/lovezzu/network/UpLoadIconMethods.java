@@ -24,7 +24,7 @@ public class UpLoadIconMethods {
     private UploadIconServer uploadIconServer;
     private static final int DEFAULT_TIMEOUT = 5;
 
-    private UpLoadIconMethods(){
+    private UpLoadIconMethods() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -37,15 +37,17 @@ public class UpLoadIconMethods {
 
         uploadIconServer = retrofit.create(UploadIconServer.class);
     }
-    private static class SingletonHolder{
+
+    private static class SingletonHolder {
         private static final UpLoadIconMethods INSTANCE = new UpLoadIconMethods();
     }
 
-    public static UpLoadIconMethods upLoadIconMethods(){
+    public static UpLoadIconMethods upLoadIconMethods() {
         return SingletonHolder.INSTANCE;
     }
-    public void goToUploadIcon(Subscriber<ResponseBody> subscriber,Map<String , RequestBody> params){
-  uploadIconServer.upLoadIcon(params).subscribeOn(Schedulers.io())
+
+    public void goToUploadIcon(Subscriber<ResponseBody> subscriber, Map<String, RequestBody> params) {
+        uploadIconServer.upLoadIcon(params).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

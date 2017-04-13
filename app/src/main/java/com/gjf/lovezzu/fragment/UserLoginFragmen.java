@@ -32,32 +32,37 @@ import rx.Subscriber;
  * Created by BlackBeard丶 on 2017/03/01.
  */
 public class UserLoginFragmen extends Fragment {
-    private  View view;
+    private View view;
     private UserSingUpFragment userSingUpFragment;
     private Url url;
     private Subscriber subscriber;
-   private CheckLoginApplication checkLoginApplication;
+    private CheckLoginApplication checkLoginApplication;
 
 
-
-    @BindView(R.id.new_user_reg) TextView new_user_reg;
-    @BindView(R.id.login_title_back) ImageView my_title_back;
-    @BindView(R.id.user_reg_phone) EditText user_reg_phone;
-    @BindView(R.id.user_reg_password)   EditText user_reg_password;
-    @BindView(R.id.user_login)  LinearLayout user_login;
+    @BindView(R.id.new_user_reg)
+    TextView new_user_reg;
+    @BindView(R.id.login_title_back)
+    ImageView my_title_back;
+    @BindView(R.id.user_reg_phone)
+    EditText user_reg_phone;
+    @BindView(R.id.user_reg_password)
+    EditText user_reg_password;
+    @BindView(R.id.user_login)
+    LinearLayout user_login;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.userlogin_fragment,container,false);
+        view = inflater.inflate(R.layout.userlogin_fragment, container, false);
         ButterKnife.bind(this, view);
 
         return view;
     }
-    @OnClick({R.id.login_title_back,R.id.new_user_reg,R.id.user_login})
-    public void onClick(View view){
-        switch (view.getId()){
+
+    @OnClick({R.id.login_title_back, R.id.new_user_reg, R.id.user_login})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.login_title_back:
                 returnHome();
                 break;
@@ -65,11 +70,10 @@ public class UserLoginFragmen extends Fragment {
                 goToreg();
                 break;
             case R.id.user_login:
-               checkInput();
+                checkInput();
                 break;
         }
     }
-
 
 
 //回到主页
@@ -79,7 +83,8 @@ public class UserLoginFragmen extends Fragment {
         intent.setClass(getActivity(), MainActivity.class);
         startActivity(intent);
     }
-  //进入注册页面
+
+    //进入注册页面
     private void goToreg() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
@@ -87,8 +92,6 @@ public class UserLoginFragmen extends Fragment {
         transaction.replace(R.id.singfragment, userSingUpFragment);
         transaction.commit();
     }
-
-
 
 
     private void goTologin() {
@@ -102,22 +105,21 @@ public class UserLoginFragmen extends Fragment {
 
             @Override
             public void onError(Throwable e) {
-                Toast.makeText(getContext(),e.getMessage().toString()+"网络错误！",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), e.getMessage().toString() + "网络错误！", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onNext(LoginResult loginResult) {
                 String SessionID = loginResult.getSessionID();
-                if (SessionID!=null){
+                if (SessionID != null) {
                     String phone = user_reg_phone.getText().toString();
                     //String password = user_reg_password.getText().toString();
-                    saveUserInfo(SessionID,phone);
-                }else{
-                    Toast.makeText(getContext(),"账号或者密码错误！",Toast.LENGTH_LONG).show();
-                    checkLoginApplication = (CheckLoginApplication)getActivity().getApplication();
+                    saveUserInfo(SessionID, phone);
+                } else {
+                    Toast.makeText(getContext(), "账号或者密码错误！", Toast.LENGTH_LONG).show();
+                    checkLoginApplication = (CheckLoginApplication) getActivity().getApplication();
                     checkLoginApplication.setIsLogin(false);
                 }
-
 
 
             }
@@ -126,34 +128,36 @@ public class UserLoginFragmen extends Fragment {
 
         String phone = user_reg_phone.getText().toString().trim();
         String password = user_reg_password.getText().toString().trim();
-        boolean  issuccessful = false;
+        boolean issuccessful = false;
         String identifier = "0";
-        LoginMethods.getInstance().goToLogin(subscriber,phone, password);
+        LoginMethods.getInstance().goToLogin(subscriber, phone, password);
 
     }
-   private void saveUserInfo(String SessionID,String phone){
-       SharedPreferences sharedPreferences = getContext().getSharedPreferences("userinfo",getContext().MODE_APPEND);
-       SharedPreferences.Editor editUserInfo = sharedPreferences.edit();
-      editUserInfo.putString("phone",phone);
-       //editUserInfo.putString("password", password);
-       editUserInfo.putString("SessionID", SessionID);
-       editUserInfo.commit();
-       Toast.makeText(getContext(), "登录成功！", Toast.LENGTH_LONG).show();
 
-      checkLoginApplication = (CheckLoginApplication)getActivity().getApplication();
-       checkLoginApplication.setIsLogin(true);
-       Intent intent = new Intent(getContext(),MainActivity.class);
-       startActivity(intent);
+    private void saveUserInfo(String SessionID, String phone) {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("userinfo", getContext().MODE_APPEND);
+        SharedPreferences.Editor editUserInfo = sharedPreferences.edit();
+        editUserInfo.putString("phone", phone);
+        //editUserInfo.putString("password", password);
+        editUserInfo.putString("SessionID", SessionID);
+        editUserInfo.commit();
+        Toast.makeText(getContext(), "登录成功！", Toast.LENGTH_LONG).show();
+
+        checkLoginApplication = (CheckLoginApplication) getActivity().getApplication();
+        checkLoginApplication.setIsLogin(true);
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        startActivity(intent);
 
 
-   }
-    private void checkInput(){
+    }
+
+    private void checkInput() {
         String checkphone = user_reg_password.getText().toString();
         String checkpassword = user_reg_password.getText().toString();
-        if (checkphone==null||checkpassword==null){
+        if (checkphone == null || checkpassword == null) {
 
-            Toast.makeText(getContext(),"请输入用户名或者密码！",Toast.LENGTH_LONG).show();
-        }else {
+            Toast.makeText(getContext(), "请输入用户名或者密码！", Toast.LENGTH_LONG).show();
+        } else {
             goTologin();
         }
 

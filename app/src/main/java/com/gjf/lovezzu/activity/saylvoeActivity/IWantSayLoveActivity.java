@@ -8,7 +8,7 @@ import com.gjf.lovezzu.R;
 /**
  * Created by BlackBeard丶 on 2017/03/23.
  */
-public class IWantSayLoveActivity extends AppCompatActivity{
+public class IWantSayLoveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

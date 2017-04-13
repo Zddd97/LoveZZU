@@ -74,15 +74,15 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             photos.put("phone", RequestBody.create(MediaType.parse("multipart/form-data"), "123456"));
             Log.d("ggggg", photos.toString());
             Log.d("ggggg", uri.toString());
-            Log.d("ggggg",file.getName());
-
+            Log.d("ggggg", file.getName());
 
 
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
             if (canLoadImage) {
-                if (requestFile!=null){
-                upLoad(photos);}
+                if (requestFile != null) {
+                    upLoad(photos);
+                }
                 Glide.with(mContext)
                         .load(uri)
                         .centerCrop()
@@ -125,21 +125,21 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         subscriber = new Subscriber<ResponseBody>() {
             @Override
             public void onCompleted() {
-                Log.d("ggggg","success");
+                Log.d("ggggg", "success");
             }
 
             @Override
             public void onError(Throwable e) {
-               Log.d("ggggg",e.getMessage().toString());
+                Log.d("ggggg", e.getMessage().toString());
             }
 
             @Override
             public void onNext(ResponseBody userInfoResult) {
 
-                Log.d("ggggg","xiyibu");
+                Log.d("ggggg", "xiyibu");
             }
         };
         String phone = null;
-        UpLoadIconMethods.upLoadIconMethods().goToUploadIcon(subscriber,photos);
+        UpLoadIconMethods.upLoadIconMethods().goToUploadIcon(subscriber, photos);
     }
 }
