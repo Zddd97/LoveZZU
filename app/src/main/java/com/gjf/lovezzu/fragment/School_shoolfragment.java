@@ -232,6 +232,7 @@ public class School_shoolfragment extends android.app.Fragment
             @Override
             public void onNext(SchoolNewsData schoolNewsData) {
                 List<SchoolNewsResult> list = schoolNewsData.getResults();
+
                 schoolNewsResultList.addAll(list);
                 adapter1.notifyDataSetChanged();
 

@@ -1,28 +1,37 @@
 package com.gjf.lovezzu.fragment.taoyu;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.TaoyuResult;
+import com.gjf.lovezzu.entity.TaoyuDataBridging;
+import com.gjf.lovezzu.entity.TaoyuGoodsData;
+import com.gjf.lovezzu.network.TaoyuGoodsListMethods;
 import com.gjf.lovezzu.view.TaoyuAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by lenovo047 on 2017/3/24.
  */
 
 public class TaoyuFragment extends Fragment {
+    private Subscriber subscriber;
     private View view;
-    private List<TaoyuResult> taoyuResultList = new ArrayList<>();
+    private List<TaoyuDataBridging> taoyuResultList = new ArrayList<>();
     public static final  String TAG = "Fragment";
     RecyclerView taoyu_list;
     private TaoyuAdapter adapter;
@@ -37,7 +46,8 @@ public class TaoyuFragment extends Fragment {
 
             //初始化所需数据
             intList();
-             inittaoyuList();
+             //inittaoyuList();
+            getTaoyuGoodsList();
             //onRefresh();
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
@@ -58,15 +68,15 @@ public class TaoyuFragment extends Fragment {
 
     }
 
-    private void inittaoyuList() {
-        TaoyuResult taoyuResult1 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦啦啦","郑州",5,5,5,5);
-        TaoyuResult taoyuResult2 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦","lala",5,5,5,5);
-        TaoyuResult taoyuResult3 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦","郑州",5,5,5,5);
-        taoyuResultList.add(taoyuResult1);
-        taoyuResultList.add(taoyuResult2);
-        taoyuResultList.add(taoyuResult3);
-
-    }
+//    private void inittaoyuList() {
+//        TaoyuResult taoyuResult1 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦啦啦","郑州",5,5,5,5);
+//        TaoyuResult taoyuResult2 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦","lala",5,5,5,5);
+//        TaoyuResult taoyuResult3 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦","郑州",5,5,5,5);
+//        taoyuResultList.add(taoyuResult1);
+//        taoyuResultList.add(taoyuResult2);
+//        taoyuResultList.add(taoyuResult3);
+//
+//    }
 
 
 //    private void onRefresh() {
@@ -109,6 +119,41 @@ public class TaoyuFragment extends Fragment {
 //            }
 //        }).start();
 //    }
+
+    public void getTaoyuGoodsList(){
+
+        subscriber = new Subscriber<TaoyuGoodsData>() {
+            @Override
+            public void onCompleted() {
+                Log.d("ggggg","yiwancheng taoyu");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d("ggggg",e.getMessage().toString()+"hgggggggggggggg");
+            }
+
+            @Override
+            public void onNext(TaoyuGoodsData taoyuGoodsData) {
+               List<TaoyuDataBridging> list = taoyuGoodsData.getValues();
+                Toast.makeText(getContext(),taoyuGoodsData.getResult(),Toast.LENGTH_LONG).show();
+                taoyuResultList.addAll(list);
+                adapter.notifyDataSetChanged();
+
+
+            }
+
+
+        };
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("userinfo", Activity.MODE_APPEND);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        String SessionID = sharedPreferences.getString("SessionID", "");
+        TaoyuGoodsListMethods.getInstance().getGoodsList(subscriber,"学习",1);
+
+    }
+
+
 
 }
 

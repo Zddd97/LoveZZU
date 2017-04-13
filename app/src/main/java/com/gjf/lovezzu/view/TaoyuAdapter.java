@@ -9,8 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.TaoyuResult;
+import com.gjf.lovezzu.entity.TaoyuDataBridging;
 
 import java.util.List;
 
@@ -19,11 +20,11 @@ import java.util.List;
  */
 
 public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
-    private List<TaoyuResult> taoyuResultList;
+    private List<TaoyuDataBridging> taoyuResultList;
     private  Context context;
-    private TaoyuResult taoyuResult;
+    private TaoyuDataBridging taoyuResult;
 
-    public TaoyuAdapter(List<TaoyuResult> taoyuResultList, Context context) {
+    public TaoyuAdapter(List<TaoyuDataBridging> taoyuResultList, Context context) {
         this.taoyuResultList = taoyuResultList;
         this.context = context;
     }
@@ -44,13 +45,19 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
          taoyuResult = taoyuResultList.get(position);
-        holder.touxiang.setImageResource(taoyuResult.getImageID1());
-        holder.taoyuimag.setImageResource(taoyuResult.getImageID2());
-//        //holder.title.setText(taoyuResult.getTitle());
+       // holder.touxiang.setImageResource(taoyuResult.getUserinfo().getImageUrl());
+        Glide.with(context)
+                .load(taoyuResult.getUserinfo().getImageUrl())
+                .centerCrop().dontAnimate()
+                .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+                .error(R.drawable.__picker_ic_broken_image_black_48dp)
+                .into(holder.taoyuimag);
+        //holder.taoyuimag.setImageResource(taoyuResult.getImageID2());
+       // holder.title.setText(taoyuResult.getGoods().getGdescribe());
 //        holder.comment.setText(taoyuResult.getComment());
 //        holder.position.setText(taoyuResult.getPosition());
 //        holder.price.setText(taoyuResult.getPrice());
-//        holder.phone.setText(taoyuResult.getPhone());
+       //holder.phone.setText(taoyuResult.getUserinfo().getPhone());
 //        holder.time.setText(taoyuResult.getTime());
 //        holder.zan.setText(taoyuResult.getZan());
 

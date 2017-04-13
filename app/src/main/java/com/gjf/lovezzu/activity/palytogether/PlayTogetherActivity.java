@@ -1,5 +1,7 @@
 package com.gjf.lovezzu.activity.palytogether;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +19,6 @@ import com.gjf.lovezzu.entity.PlayEnd;
 import com.gjf.lovezzu.entity.PlayItems;
 import com.gjf.lovezzu.entity.PlayTop;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
-import com.gjf.lovezzu.view.TypeTwoViewViewHolder;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +55,15 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         playRecyvlerView.setLayoutManager(layoutManager);
         adapter=new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        }
     }
 
     @OnClick({R.id.play_title_back, R.id.play_menu})
