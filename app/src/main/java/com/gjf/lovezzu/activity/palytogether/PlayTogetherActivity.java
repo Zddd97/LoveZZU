@@ -1,4 +1,4 @@
-package com.gjf.lovezzu.activity;
+package com.gjf.lovezzu.activity.palytogether;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

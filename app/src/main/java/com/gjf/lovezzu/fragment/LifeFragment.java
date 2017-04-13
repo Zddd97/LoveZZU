@@ -14,7 +14,7 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.activity.PlayTogetherActivity;
+import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
 import com.gjf.lovezzu.activity.TaoyuActivity;
 import com.gjf.lovezzu.activity.TopicTalkActivity;
 

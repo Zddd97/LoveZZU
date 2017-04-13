@@ -39,7 +39,7 @@
         <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity" />
         <activity android:name=".activity.TaoyuActivity" />
         <activity
-            android:name=".activity.PlayTogetherActivity"
+            android:name=".activity.palytogether.PlayTogetherActivity"
             android:launchMode="singleTask" />
 
 
