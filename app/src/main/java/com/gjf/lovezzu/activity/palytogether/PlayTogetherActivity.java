@@ -16,8 +16,8 @@ import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.PlayEnd;
 import com.gjf.lovezzu.entity.PlayItems;
 import com.gjf.lovezzu.entity.PlayTop;
+import com.gjf.lovezzu.view.DividerItemDecoration;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
-import com.gjf.lovezzu.view.TypeTwoViewViewHolder;
 
 
 import java.util.ArrayList;
@@ -53,6 +53,8 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         initDate();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         playRecyvlerView.setLayoutManager(layoutManager);
+        playRecyvlerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));
         adapter = new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
     }
