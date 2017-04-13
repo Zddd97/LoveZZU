@@ -3,12 +3,15 @@ package com.gjf.lovezzu.fragment.taoyu;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.TaoyuResult;
+import com.gjf.lovezzu.view.TaoyuAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,8 @@ public class TaoyuFragment extends Fragment {
     private View view;
     private List<TaoyuResult> taoyuResultList = new ArrayList<>();
     public static final  String TAG = "Fragment";
+    RecyclerView taoyu_list;
+    private TaoyuAdapter adapter;
    // private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
@@ -28,9 +33,10 @@ public class TaoyuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
 
         if (view == null) {
-            view = inflater.inflate(R.layout.taoyu, container, false);
+            view = inflater.inflate(R.layout.taoyu_list, container, false);
 
             //初始化所需数据
+            intList();
              inittaoyuList();
             //onRefresh();
         } else {
@@ -41,6 +47,15 @@ public class TaoyuFragment extends Fragment {
            // onRefresh();
         }
         return view;
+    }
+    public void intList(){
+        taoyu_list = (RecyclerView)view.findViewById(R.id.taoyu_list);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        taoyu_list.setLayoutManager(layoutManager);
+        adapter = new TaoyuAdapter(taoyuResultList,getContext());
+        taoyu_list.setAdapter(adapter);
+
+
     }
 
     private void inittaoyuList() {

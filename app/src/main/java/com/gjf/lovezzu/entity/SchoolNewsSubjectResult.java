@@ -5,6 +5,7 @@ package com.gjf.lovezzu.entity;
  */
 
 public class SchoolNewsSubjectResult {
+    private String News_Id;
     private String News_Title;
     private String Author;
     private String Subject;
@@ -67,5 +68,13 @@ public class SchoolNewsSubjectResult {
 
     public void setCommentNumber(String commentNumber) {
         CommentNumber = commentNumber;
+    }
+
+    public String getNews_Id() {
+        return News_Id;
+    }
+
+    public void setNews_Id(String news_Id) {
+        News_Id = news_Id;
     }
 }

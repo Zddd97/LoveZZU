@@ -15,7 +15,7 @@ import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
-import com.gjf.lovezzu.activity.TaoyuActivity;
+import com.gjf.lovezzu.activity.taoyu.TaoyuActivity;
 import com.gjf.lovezzu.activity.TopicTalkActivity;
 
 import java.util.ArrayList;

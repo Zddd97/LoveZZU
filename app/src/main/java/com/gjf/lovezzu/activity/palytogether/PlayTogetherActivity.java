@@ -19,6 +19,7 @@ import com.gjf.lovezzu.entity.PlayTop;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
 import com.gjf.lovezzu.view.TypeTwoViewViewHolder;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +38,6 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
     List<PlayEnd> playEndList = new ArrayList<>();*/
     List<PlayItems> playItemsList=new ArrayList<>();
     PlayTogetherAdapter adapter;
-
     @BindView(R.id.play_title_back)
     ImageView playTitleBack;
     @BindView(R.id.play_menu)
@@ -100,17 +100,18 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
 
         for (int i = 1; i <=4 ; i++) {
 
-
             PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", "123", "110",
                     "新闻的大标题111", "新闻的小标题", R.drawable.life_beautiful_girl);
             PlayEnd playEnd = new PlayEnd(R.drawable.test_person_01, "PlayBoy", "Android小组", R.drawable.new_group,
                     R.drawable.new_add, "小漠国服第一系列的第一螳螂丶第一大眼,国服最高排名第八,曾任CC战队教练击败OMG战队,现为国服第一金牌讲师长驻斗鱼..",
                     R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03,
                     R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03);
+
             playItemsList.add(playTop);
             playItemsList.add(playEnd);
           /*  playTopList.add(playTop);
             playEndList.add(playEnd);*/
+
         }
 
     }

@@ -7,9 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -36,7 +35,7 @@ import rx.Subscriber;
  * Created by lenovo047 on 2017/3/9.
  */
 
-public class School_shoolfragment extends android.app.Fragment implements GestureDetector.OnGestureListener
+public class School_shoolfragment extends android.app.Fragment
 {
     private View view;
     private FlashView flashView;
@@ -213,7 +212,7 @@ public class School_shoolfragment extends android.app.Fragment implements Gestur
         recyclerView1 = (RecyclerView) view.findViewById(R.id.last_school_content);
         gridLayoutManager = new GridLayoutManager(view.getContext(), 3);
         recyclerView1.setLayoutManager(gridLayoutManager);
-        adapter1 = new SchoolLastAdapter(schoolNewsResultList, getContext());
+        adapter1 = new SchoolLastAdapter(schoolNewsResultList, getContext().getApplicationContext());
         recyclerView1.setAdapter(adapter1);
     }
 
@@ -227,7 +226,7 @@ public class School_shoolfragment extends android.app.Fragment implements Gestur
 
             @Override
             public void onError(Throwable e) {
-
+                Log.d("ggggg",e.getMessage().toString());
             }
 
             @Override
@@ -238,37 +237,8 @@ public class School_shoolfragment extends android.app.Fragment implements Gestur
 
             }
         };
-        SchoolNewsMethods.getInstance().getSchoolNews(subscriber, page);
+        SchoolNewsMethods.getInstance().getSchoolNews(subscriber,page);
     }
 
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
 
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        Toast.makeText(getContext(),"zaihuale", Toast.LENGTH_LONG).show();
-        return true;
-    }
 }
