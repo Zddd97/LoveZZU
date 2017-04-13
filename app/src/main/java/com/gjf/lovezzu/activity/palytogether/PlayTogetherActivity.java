@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.PlayEnd;
+import com.gjf.lovezzu.entity.PlayItems;
 import com.gjf.lovezzu.entity.PlayTop;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
+import com.gjf.lovezzu.view.TypeTwoViewViewHolder;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +34,10 @@ import butterknife.OnClick;
 public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     //数据源
-    List<PlayTop> playTopList = new ArrayList<>();
-    List<PlayEnd> playEndList = new ArrayList<>();
+    /*List<PlayTop> playTopList = new ArrayList<>();
+    List<PlayEnd> playEndList = new ArrayList<>();*/
+    List<PlayItems> playItemsList=new ArrayList<>();
     PlayTogetherAdapter adapter;
-
     @BindView(R.id.play_title_back)
     ImageView playTitleBack;
     @BindView(R.id.play_menu)
@@ -50,7 +53,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         initDate();
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         playRecyvlerView.setLayoutManager(layoutManager);
-        adapter=new PlayTogetherAdapter(playTopList,playEndList);
+        adapter=new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
     }
 
@@ -103,8 +106,12 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
                     R.drawable.new_add, "小漠国服第一系列的第一螳螂丶第一大眼,国服最高排名第八,曾任CC战队教练击败OMG战队,现为国服第一金牌讲师长驻斗鱼..",
                     R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03,
                     R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03);
-            playTopList.add(playTop);
-            playEndList.add(playEnd);
+
+            playItemsList.add(playTop);
+            playItemsList.add(playEnd);
+          /*  playTopList.add(playTop);
+            playEndList.add(playEnd);*/
+
         }
 
     }
