@@ -1,6 +1,7 @@
 package com.gjf.lovezzu.activity.palytogether;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -21,7 +22,6 @@ import com.gjf.lovezzu.entity.PlayItems;
 import com.gjf.lovezzu.entity.PlayTop;
 import com.gjf.lovezzu.view.DividerItemDecoration;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +63,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
                 DividerItemDecoration.VERTICAL_LIST));
         adapter = new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
+
         playSwipeRefresh.setColorSchemeColors(Color.GREEN);
         playSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -93,6 +94,17 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
                 });
             }
         }).start();
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+
+        }
+
     }
 
     @OnClick({R.id.play_title_back, R.id.play_menu})

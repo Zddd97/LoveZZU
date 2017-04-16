@@ -10,4 +10,11 @@ public class TaoyuData {
 
     List<TaoyuResult> results;
 
+    public List<TaoyuResult> getResults() {
+        return results;
+    }
+
+    public void setResults(List<TaoyuResult> results) {
+
+    }
 }
