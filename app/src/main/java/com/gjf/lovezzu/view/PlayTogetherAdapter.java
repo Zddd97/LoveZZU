@@ -53,8 +53,8 @@ public class PlayTogetherAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 typeOneViewViewHolder.circleImageView.setImageResource(playTop.getUserImage());
                 typeOneViewViewHolder.userName.setText(playTop.getUserName());
                 typeOneViewViewHolder.userTime.setText(playTop.getDateTime());
-                typeOneViewViewHolder.userNice.setText(playTop.getNice());
-                typeOneViewViewHolder.userTalk.setText(playTop.getTalk());
+                typeOneViewViewHolder.userNice.setText(playTop.getNice() + "");
+                typeOneViewViewHolder.userTalk.setText(playTop.getTalk() + "");
                 typeOneViewViewHolder.userTitle.setText(playTop.getUserTitle());
                 typeOneViewViewHolder.newsTilte.setText(playTop.getNewsTitle());
                 typeOneViewViewHolder.newsImage.setImageResource(playTop.getNewsImage());

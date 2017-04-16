@@ -42,11 +42,18 @@
         layout="@layout/item_cut"
         android:layout_width="match_parent"
         android:layout_height="1dp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/play_together_view"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/play_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/play_together_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

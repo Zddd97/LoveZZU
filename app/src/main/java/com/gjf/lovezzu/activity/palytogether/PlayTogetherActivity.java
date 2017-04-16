@@ -1,7 +1,10 @@
 package com.gjf.lovezzu.activity.palytogether;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
@@ -44,6 +47,9 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
     ImageView playMenu;
     @BindView(R.id.play_together_view)
     RecyclerView playRecyvlerView;
+    @BindView(R.id.play_refresh)
+    SwipeRefreshLayout playSwipeRefresh;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +63,36 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
                 DividerItemDecoration.VERTICAL_LIST));
         adapter = new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
+        playSwipeRefresh.setColorSchemeColors(Color.GREEN);
+        playSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //刷新数据
+                refreshDate();
+            }
+        });
+    }
+
+    private void refreshDate() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //再次加载数据
+                        initDate();
+                        adapter.notifyDataSetChanged();
+                        playSwipeRefresh.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
     }
 
     @OnClick({R.id.play_title_back, R.id.play_menu})
@@ -97,10 +133,10 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         return false;
     }
 
-    //初始化加载数据
+    //加载数据
     private void initDate() {
 
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 2; i++) {
 
             PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", 123, 110,
                     "新闻的大标题111", "新闻的小标题", R.drawable.life_beautiful_girl);
