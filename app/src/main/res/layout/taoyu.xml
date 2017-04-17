@@ -78,10 +78,11 @@
           android:layout_height="match_parent"
           android:layout_weight="1"
           >
+
           <ImageView
+              android:id="@+id/taoyuimag"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:id="@+id/taoyuimag"/>
+              android:layout_height="match_parent" />
       </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -89,7 +90,9 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             >
+
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>  <LinearLayout
@@ -98,7 +101,9 @@
         android:layout_weight="1"
         android:layout_marginLeft="10dp"
         >
+
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
