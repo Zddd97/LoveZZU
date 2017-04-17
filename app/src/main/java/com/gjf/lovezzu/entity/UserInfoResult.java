@@ -10,10 +10,11 @@ public class UserInfoResult {
     private String phone;//手机号
     private String Qr_codeUrl; //二维码地址
     private String gender;//性别
-    private String hometown ;//家乡
+    private String hometown;//家乡
     private String academy;//院校
-    private String departments ;//院系
-    private String professional ;//专业
+    private String departments;//院系
+    private String professional;//专业
+
     public boolean isSuccessful() {
         return isSuccessful;
     }
@@ -21,6 +22,7 @@ public class UserInfoResult {
     public void setIsSuccessful(boolean isSuccessful) {
         this.isSuccessful = isSuccessful;
     }
+
     public String getImageUrl() {
         return imageUrl;
     }

@@ -30,7 +30,7 @@ import rx.Subscriber;
  * Created by lenovo047 on 2017/3/9.
  */
 
-public class Shool_societyfragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate{
+public class Shool_societyfragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
     private BGARefreshLayout mRefreshLayout;
 
     private View view;
@@ -53,8 +53,7 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
 
             view = inflater.inflate(R.layout.inschool_society_view, container, false);
             ButterKnife.bind(this, view);
-           getNews(1);
-
+            getNews(1);
 
 
             showNews();
@@ -63,7 +62,7 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
-               viewGroup.removeView(view);
+                viewGroup.removeView(view);
             }
 
         }
@@ -112,15 +111,15 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
         newsSociety = (RecyclerView) view.findViewById(R.id.school_society_content);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         newsSociety.setLayoutManager(layoutManager);
-        adapter = new SocietyAdapter(societyNewsResultList,getContext());
+        adapter = new SocietyAdapter(societyNewsResultList, getContext());
         newsSociety.setAdapter(adapter);
     }
 
-    private void getNews(int page){
+    private void getNews(int page) {
 
-  subscriber = new Subscriber<SocietyNewsData>() {
-      @Override
-      public void onCompleted() {
+        subscriber = new Subscriber<SocietyNewsData>() {
+            @Override
+            public void onCompleted() {
 
 
             }
@@ -132,30 +131,28 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
             }
 
 
-      @Override
-      public void onNext(SocietyNewsData newsResult) {
+            @Override
+            public void onNext(SocietyNewsData newsResult) {
 
-          List<SocietyNewsResult> list = newsResult.getResults();
-
-
-         //Toast.makeText(getContext(),list.toString(),Toast.LENGTH_LONG).show();
-          //Log.d("gjf123", "");
-          //加载新闻
-          societyNewsResultList.addAll(list);
-          adapter.notifyDataSetChanged();
+                List<SocietyNewsResult> list = newsResult.getResults();
 
 
-      }
-  };
+                //Toast.makeText(getContext(),list.toString(),Toast.LENGTH_LONG).show();
+                //Log.d("gjf123", "");
+                //加载新闻
+                societyNewsResultList.addAll(list);
+                adapter.notifyDataSetChanged();
+
+
+            }
+        };
         NewsMethods.getInstance().getTopMovie(subscriber, page);
 
     }
 
 
+    private void initRefreshLayout() {
 
-
-    private void initRefreshLayout(){
-    
     }
 
 

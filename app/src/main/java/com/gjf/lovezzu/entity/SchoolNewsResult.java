@@ -12,7 +12,7 @@ public class SchoolNewsResult {
 
     private String createdAt;
 
-    private List<String> images ;
+    private List<String> images;
 
     private String desc;
 
@@ -30,21 +30,27 @@ public class SchoolNewsResult {
     private String urlImg;
     private String title;
     private Integer advisoryid;
+
     public String getUrlImg() {
         return urlImg;
     }
+
     public void setUrlImg(String urlImg) {
         this.urlImg = urlImg;
     }
+
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public Integer getAdvisoryid() {
         return advisoryid;
     }
+
     public void setAdvisoryid(Integer advisoryid) {
         this.advisoryid = advisoryid;
     }

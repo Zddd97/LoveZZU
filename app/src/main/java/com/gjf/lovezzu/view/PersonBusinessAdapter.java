@@ -19,16 +19,18 @@ import java.util.List;
  * Created by BlackBeard丶 on 2017/04/09.
  */
 
-public class PersonBusinessAdapter  extends RecyclerView.Adapter<PersonBusinessAdapter.ViewHolder>{
+public class PersonBusinessAdapter extends RecyclerView.Adapter<PersonBusinessAdapter.ViewHolder> {
     private Context mContext;
     private List<PersonBuinessResult> businesrecordList;
     private LayoutInflater inflater;
-    public  PersonBusinessAdapter(List<PersonBuinessResult> personBuinessResultList , Context context){
-///
-        this.businesrecordList =  businesrecordList;
+
+    public PersonBusinessAdapter(List<PersonBuinessResult> personBuinessResultList, Context context) {
+
+        this.businesrecordList = businesrecordList;
         this.mContext = context;
-        inflater= LayoutInflater.from(mContext);
+        inflater = LayoutInflater.from(mContext);
     }
+
     @Override
     public PersonBusinessAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.person_business_record, parent, false);
@@ -61,23 +63,24 @@ public class PersonBusinessAdapter  extends RecyclerView.Adapter<PersonBusinessA
     }
 
 
-
     @Override
     public int getItemCount() {
-        return businesrecordList.size();}
+        return businesrecordList.size();
+    }
 
-    static class ViewHolder extends  RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         View businessView;
         ImageView imageView_bus;
         TextView totalprice;
-        TextView  goodname;
+        TextView goodname;
         TextView jianshu;
         TextView number;
         TextView price;
-        public  ViewHolder(View itemView){
+
+        public ViewHolder(View itemView) {
             super(itemView);
             businessView = itemView;
-            imageView_bus= (ImageView) itemView.findViewById(R.id.bus_image);
+            imageView_bus = (ImageView) itemView.findViewById(R.id.bus_image);
             totalprice = (TextView) itemView.findViewById(R.id.totalprice);
             goodname = (TextView) itemView.findViewById(R.id.goodname);
             jianshu = (TextView) itemView.findViewById(R.id.jianshu);
@@ -86,4 +89,5 @@ public class PersonBusinessAdapter  extends RecyclerView.Adapter<PersonBusinessA
 
 
         }
-}}
+    }
+}

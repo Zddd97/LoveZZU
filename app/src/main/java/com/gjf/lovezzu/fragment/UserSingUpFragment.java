@@ -29,31 +29,37 @@ import rx.Subscriber;
  */
 public class UserSingUpFragment extends Fragment {
 
-    @BindView(R.id.login_now)  TextView login_now;
-    @BindView(R.id.user_singup_button) TextView user_singuo_button;
-    @BindView(R.id.user_reg_phone) EditText getuser_reg_phone;
-    @BindView(R.id.user_reg_password) EditText getUser_reg_password;
-    @BindView(R.id.reg_title_back) ImageView reg_title_back;
+    @BindView(R.id.login_now)
+    TextView login_now;
+    @BindView(R.id.user_singup_button)
+    TextView user_singuo_button;
+    @BindView(R.id.user_reg_phone)
+    EditText getuser_reg_phone;
+    @BindView(R.id.user_reg_password)
+    EditText getUser_reg_password;
+    @BindView(R.id.reg_title_back)
+    ImageView reg_title_back;
     private UserLoginFragmen userLoginFragmen;
-    private  View view;
+    private View view;
     private Subscriber subscriber;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.usersingup_fragment,container,false);
-        ButterKnife.bind(this,view);
-        return  view;
+        view = inflater.inflate(R.layout.usersingup_fragment, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     private void goTologin() {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         userLoginFragmen = new UserLoginFragmen();
-        transaction.replace(R.id.singfragment,userLoginFragmen);
+        transaction.replace(R.id.singfragment, userLoginFragmen);
         transaction.commit();
     }
-    private void goTosingup(){
+
+    private void goTosingup() {
         subscriber = new Subscriber<LoginResult>() {
             @Override
             public void onCompleted() {
@@ -67,12 +73,12 @@ public class UserSingUpFragment extends Fragment {
 
             @Override
             public void onNext(LoginResult loginResult) {
-                         if (loginResult.isSuccessful()){
-                             Toast.makeText(getContext(),"注册成功",Toast.LENGTH_LONG).show();
-                             goTologin();
-                         }else{
-                             Toast.makeText(getContext(),"注册失败！",Toast.LENGTH_LONG).show();
-                         }
+                if (loginResult.isSuccessful()) {
+                    Toast.makeText(getContext(), "注册成功", Toast.LENGTH_LONG).show();
+                    goTologin();
+                } else {
+                    Toast.makeText(getContext(), "注册失败！", Toast.LENGTH_LONG).show();
+                }
             }
 
 
@@ -84,16 +90,17 @@ public class UserSingUpFragment extends Fragment {
         SingupMethods.getInstance().goToSingup(subscriber, identifier, issuccessful, phone, password);
 
     }
-    @OnClick({R.id.login_now,R.id.user_singup_button,R.id.reg_title_back})
-    public void onClick(View view){
-        switch (view.getId()){
+
+    @OnClick({R.id.login_now, R.id.user_singup_button, R.id.reg_title_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.login_now:
-               goTologin();
+                goTologin();
                 break;
             case R.id.user_singup_button:
                 goTosingup();
                 break;
-            case R.id.reg_title_back :
+            case R.id.reg_title_back:
                 returnHome();
                 break;
         }

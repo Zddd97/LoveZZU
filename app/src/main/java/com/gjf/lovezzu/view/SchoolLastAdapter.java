@@ -25,9 +25,10 @@ public class SchoolLastAdapter extends RecyclerView.Adapter<SchoolLastAdapter.Vi
     private Context mContext;
     private List<SchoolNewsResult> schoolNewsResultList;
     private LayoutInflater inflater;
-    public SchoolLastAdapter(List<SchoolNewsResult> schoolNewsResultList,Context context) {
+
+    public SchoolLastAdapter(List<SchoolNewsResult> schoolNewsResultList, Context context) {
         this.schoolNewsResultList = schoolNewsResultList;
-        this.mContext =context;
+        this.mContext = context;
         this.inflater = LayoutInflater.from(mContext);
     }
 
@@ -49,7 +50,7 @@ public class SchoolLastAdapter extends RecyclerView.Adapter<SchoolLastAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         SchoolNewsResult schoolNewsResult = schoolNewsResultList.get(position);
 
-      //  holder.imageView.setImageResource(schoolNewsResult.getImageId());
+        //  holder.imageView.setImageResource(schoolNewsResult.getImageId());
         Glide.with(mContext)
                 .load(schoolNewsResult.getUrlImg())
                 .centerCrop()

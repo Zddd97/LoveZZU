@@ -40,23 +40,22 @@ public class NewsMethods {
     }
 
     //在访问HttpMethods时创建单例
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final NewsMethods INSTANCE = new NewsMethods();
     }
 
     //获取单例
-    public static NewsMethods getInstance(){
+    public static NewsMethods getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
     /**
      * 用于获取豆瓣电影Top250的数据
+     *
      * @param subscriber 由调用者传过来的观察者对象
-
-
      */
-    public void getTopMovie(Subscriber<SocietyNewsData> subscriber, int pageNO){
-        newServer.getNews(pageNO )
+    public void getTopMovie(Subscriber<SocietyNewsData> subscriber, int pageNO) {
+        newServer.getNews(pageNO)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -4,12 +4,12 @@ package com.gjf.lovezzu.entity;
  * Created by zhaox on 2017/4/9.
  */
 
-public class PlayTop extends PlayItems{
+public class PlayTop extends PlayItems {
     private int userImage;
     private String userName;
     private String dateTime;
-    private String nice;
-    private String talk;
+    private int nice;
+    private int talk;
     private String userTitle;
     private String newsTitle;
     private int newsImage;
@@ -18,8 +18,8 @@ public class PlayTop extends PlayItems{
 
     }
 
-    public PlayTop(int userImage, String userName, String dateTime, String nice,
-                   String talk, String userTitle, String newsTitle, int newsImage) {
+    public PlayTop(int userImage, String userName, String dateTime, int nice,
+                   int talk, String userTitle, String newsTitle, int newsImage) {
         this.userImage = userImage;
         this.userName = userName;
         this.dateTime = dateTime;
@@ -55,19 +55,19 @@ public class PlayTop extends PlayItems{
         this.dateTime = dateTime;
     }
 
-    public String getNice() {
+    public int  getNice() {
         return nice;
     }
 
-    public void setNice(String nice) {
+    public void setNice(int nice) {
         this.nice = nice;
     }
 
-    public String getTalk() {
+    public int  getTalk() {
         return talk;
     }
 
-    public void setTalk(String talk) {
+    public void setTalk(int talk) {
         this.talk = talk;
     }
 

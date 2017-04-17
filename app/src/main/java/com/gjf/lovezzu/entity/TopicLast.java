@@ -19,15 +19,15 @@ public class TopicLast {
         this.url = url;
     }
 
-    public TopicLast(){
+    public TopicLast() {
     }
 
     //测试
-    public TopicLast(String title,String content,String start,String talk){
-        this.title=title;
-        this.content=content;
-        this.start=start;
-        this.talk=talk;
+    public TopicLast(String title, String content, String start, String talk) {
+        this.title = title;
+        this.content = content;
+        this.start = start;
+        this.talk = talk;
 
     }
 

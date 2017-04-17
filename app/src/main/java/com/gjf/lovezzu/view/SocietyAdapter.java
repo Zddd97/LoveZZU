@@ -25,15 +25,14 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
     private List<SocietyNewsResult> societyNewsResultList;
 
 
-
-  private SocietyNewsResult societyNewsResult;
+    private SocietyNewsResult societyNewsResult;
 
     private Context mContext;
     private Activity activity;
     private LayoutInflater inflater;
 
 
-    public SocietyAdapter(List<SocietyNewsResult> societyNewsResults,Context mContext) {
+    public SocietyAdapter(List<SocietyNewsResult> societyNewsResults, Context mContext) {
         this.societyNewsResultList = societyNewsResults;
 
         this.mContext = mContext;

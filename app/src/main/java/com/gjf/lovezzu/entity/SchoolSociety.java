@@ -21,12 +21,12 @@ public class SchoolSociety {
     private String newsRead;
     private int newsImage;
 
-    public SchoolSociety(String newsTitle, String newsDate, String newsRead, int newsImage,String httpUrl) {
+    public SchoolSociety(String newsTitle, String newsDate, String newsRead, int newsImage, String httpUrl) {
         this.newsImage = newsImage;
         this.newsTitle = newsTitle;
         this.newsDate = newsDate;
         this.newsRead = newsRead;
-        this.httpUrl=httpUrl;
+        this.httpUrl = httpUrl;
 
     }
 

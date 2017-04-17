@@ -35,11 +35,11 @@ public class TaoyuFragment extends Fragment {
     public static final  String TAG = "Fragment";
     RecyclerView taoyu_list;
     private TaoyuAdapter adapter;
-   // private SwipeRefreshLayout swipeRefreshLayout;
+    // private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (view == null) {
             view = inflater.inflate(R.layout.taoyu_list, container, false);
@@ -54,19 +54,21 @@ public class TaoyuFragment extends Fragment {
             if (viewGroup != null) {
                 viewGroup.removeView(view);
             }
-           // onRefresh();
+            // onRefresh();
         }
         return view;
     }
-    public void intList(){
-        taoyu_list = (RecyclerView)view.findViewById(R.id.taoyu_list);
+
+    public void intList() {
+        taoyu_list = (RecyclerView) view.findViewById(R.id.taoyu_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         taoyu_list.setLayoutManager(layoutManager);
-        adapter = new TaoyuAdapter(taoyuResultList,getContext());
+        adapter = new TaoyuAdapter(taoyuResultList, getContext());
         taoyu_list.setAdapter(adapter);
 
 
     }
+
 
 //    private void inittaoyuList() {
 //        TaoyuResult taoyuResult1 = new TaoyuResult(R.drawable.ic_launcher,R.drawable.ic_launcher,"18838970227","快来买我东西啦啦啦","郑州",5,5,5,5);
@@ -77,6 +79,7 @@ public class TaoyuFragment extends Fragment {
 //        taoyuResultList.add(taoyuResult3);
 //
 //    }
+
 
 
 //    private void onRefresh() {

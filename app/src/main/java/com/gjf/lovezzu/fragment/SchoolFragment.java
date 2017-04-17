@@ -34,25 +34,26 @@ public class SchoolFragment extends Fragment {
     TextView inSociety;
     private School_shoolfragment school_shoolfragment;
     private Shool_societyfragment shool_societyfragment;
-   private View view;
+    private View view;
     final int RIGHT = 0;
     final int LEFT = 1;
     private FragmentTabHost mTabHost;
     private LayoutInflater layoutInflater;
-    private Class fragmentArray[] = { School_shoolfragment.class,Shool_societyfragment.class};
-    private String textViewArray[] = { "学校", "社会"};
+    private Class fragmentArray[] = {School_shoolfragment.class, Shool_societyfragment.class};
+    private String textViewArray[] = {"学校", "社会"};
     private List<android.support.v4.app.Fragment> list = new ArrayList<android.support.v4.app.Fragment>();
     private ViewPager vp;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-            view = inflater.inflate(R.layout.school_fragment, container, false);
-            ButterKnife.bind(this, view);
-            school_shoolfragment = new School_shoolfragment();
-            shool_societyfragment = new Shool_societyfragment();
-            inSchool.setTextColor(Color.parseColor("#0090FD"));
-            replaceFragment(school_shoolfragment);
+        view = inflater.inflate(R.layout.school_fragment, container, false);
+        ButterKnife.bind(this, view);
+        school_shoolfragment = new School_shoolfragment();
+        shool_societyfragment = new Shool_societyfragment();
+        inSchool.setTextColor(Color.parseColor("#0090FD"));
+        replaceFragment(school_shoolfragment);
         return view;
     }
 

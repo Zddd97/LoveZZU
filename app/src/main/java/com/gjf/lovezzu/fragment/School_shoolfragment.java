@@ -35,8 +35,7 @@ import rx.Subscriber;
  * Created by lenovo047 on 2017/3/9.
  */
 
-public class School_shoolfragment extends android.app.Fragment
-{
+public class School_shoolfragment extends android.app.Fragment {
     private View view;
     private FlashView flashView;
     private ArrayList<String> imageUrls = new ArrayList<String>();
@@ -92,9 +91,6 @@ public class School_shoolfragment extends android.app.Fragment
 
 
     //上拉加载
-
-
-
 
 
     private void doUpResfresh() {
@@ -226,7 +222,7 @@ public class School_shoolfragment extends android.app.Fragment
 
             @Override
             public void onError(Throwable e) {
-                Log.d("ggggg",e.getMessage().toString());
+                Log.d("ggggg", e.getMessage().toString());
             }
 
             @Override
@@ -238,7 +234,7 @@ public class School_shoolfragment extends android.app.Fragment
 
             }
         };
-        SchoolNewsMethods.getInstance().getSchoolNews(subscriber,page);
+        SchoolNewsMethods.getInstance().getSchoolNews(subscriber, page);
     }
 
 

@@ -3,7 +3,9 @@ package com.gjf.lovezzu.activity.palytogether;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
@@ -18,6 +20,7 @@ import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.PlayEnd;
 import com.gjf.lovezzu.entity.PlayItems;
 import com.gjf.lovezzu.entity.PlayTop;
+import com.gjf.lovezzu.view.DividerItemDecoration;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +39,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
     //数据源
     /*List<PlayTop> playTopList = new ArrayList<>();
     List<PlayEnd> playEndList = new ArrayList<>();*/
-    List<PlayItems> playItemsList=new ArrayList<>();
+    List<PlayItems> playItemsList = new ArrayList<>();
     PlayTogetherAdapter adapter;
     @BindView(R.id.play_title_back)
     ImageView playTitleBack;
@@ -44,6 +47,9 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
     ImageView playMenu;
     @BindView(R.id.play_together_view)
     RecyclerView playRecyvlerView;
+    @BindView(R.id.play_refresh)
+    SwipeRefreshLayout playSwipeRefresh;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,10 +57,44 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         setContentView(R.layout.play_teg_view);
         ButterKnife.bind(this);
         initDate();
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         playRecyvlerView.setLayoutManager(layoutManager);
-        adapter=new PlayTogetherAdapter(playItemsList);
+        playRecyvlerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));
+        adapter = new PlayTogetherAdapter(playItemsList);
         playRecyvlerView.setAdapter(adapter);
+
+        playSwipeRefresh.setColorSchemeColors(Color.GREEN);
+        playSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //刷新数据
+                refreshDate();
+            }
+        });
+    }
+
+    private void refreshDate() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //再次加载数据
+                        initDate();
+                        adapter.notifyDataSetChanged();
+                        playSwipeRefresh.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
+
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -64,6 +104,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
             getWindow().setStatusBarColor(Color.TRANSPARENT);
 
         }
+
     }
 
     @OnClick({R.id.play_title_back, R.id.play_menu})
@@ -104,12 +145,12 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         return false;
     }
 
-    //初始化加载数据
+    //加载数据
     private void initDate() {
 
-        for (int i = 1; i <=4 ; i++) {
+        for (int i = 1; i <= 2; i++) {
 
-            PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", "123", "110",
+            PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", 123, 110,
                     "新闻的大标题111", "新闻的小标题", R.drawable.life_beautiful_girl);
             PlayEnd playEnd = new PlayEnd(R.drawable.test_person_01, "PlayBoy", "Android小组", R.drawable.new_group,
                     R.drawable.new_add, "小漠国服第一系列的第一螳螂丶第一大眼,国服最高排名第八,曾任CC战队教练击败OMG战队,现为国服第一金牌讲师长驻斗鱼..",

@@ -4,7 +4,7 @@ package com.gjf.lovezzu.entity;
  * Created by zhaox on 2017/4/9.
  */
 
-public class PlayEnd extends PlayItems{
+public class PlayEnd extends PlayItems {
     private int groupImage;
     private String groupName;
     private String groupInfo;
@@ -21,7 +21,6 @@ public class PlayEnd extends PlayItems{
 
     public PlayEnd() {
     }
-
 
 
     public PlayEnd(int groupImage, String groupName, String groupInfo, int groupTagesImages1, int groupTagesImages2,

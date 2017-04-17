@@ -18,6 +18,7 @@ import com.gjf.lovezzu.fragment.UserSingUpFragment;
 public class UserLoginActivity extends AppCompatActivity {
     private UserLoginFragmen userLoginFragmen;
     private UserSingUpFragment userSingUpFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,7 @@ public class UserLoginActivity extends AppCompatActivity {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         userLoginFragmen = new UserLoginFragmen();
-        transaction.replace(R.id.singfragment,userLoginFragmen);
+        transaction.replace(R.id.singfragment, userLoginFragmen);
         transaction.commit();
     }
 }

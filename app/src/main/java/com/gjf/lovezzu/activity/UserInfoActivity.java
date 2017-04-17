@@ -124,7 +124,7 @@ public class UserInfoActivity extends AppCompatActivity {
                 EditSex();
                 break;
             case R.id.userinfo_home_layout:
-               EditHome();
+                EditHome();
                 break;
             case R.id.userinfo_school_layout:
                 EditSchool();

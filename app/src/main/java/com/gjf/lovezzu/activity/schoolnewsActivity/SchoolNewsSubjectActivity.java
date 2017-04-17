@@ -24,14 +24,18 @@ import butterknife.OnClick;
  */
 
 public class SchoolNewsSubjectActivity extends AppCompatActivity implements View.OnClickListener {
-    @BindView(R.id.school_news_subject) TextView school_news_subject;
-    @BindView(R.id.school_news_comment_text) EditText school_news_comment_text ;
-    @BindView(R.id.news_title_back) ImageView news_title_back;
+    @BindView(R.id.school_news_subject)
+    TextView school_news_subject;
+    @BindView(R.id.school_news_comment_text)
+    EditText school_news_comment_text;
+    @BindView(R.id.news_title_back)
+    ImageView news_title_back;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.school_news);
-       // AndroidBug5497Workaround.assistActivity(this);
+        // AndroidBug5497Workaround.assistActivity(this);
         ButterKnife.bind(this);
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -39,7 +43,7 @@ public class SchoolNewsSubjectActivity extends AppCompatActivity implements View
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
-            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
 
         }
@@ -147,10 +151,11 @@ public class SchoolNewsSubjectActivity extends AppCompatActivity implements View
         school_news_subject.setText(Html.fromHtml(hrml));
 
     }
-@OnClick({R.id.news_title_back})
+
+    @OnClick({R.id.news_title_back})
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.news_title_back:
 
                 goToHome();
@@ -159,7 +164,7 @@ public class SchoolNewsSubjectActivity extends AppCompatActivity implements View
         }
     }
 
-    private void goToHome(){
+    private void goToHome() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
