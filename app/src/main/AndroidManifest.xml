@@ -42,7 +42,14 @@
         <activity android:name=".activity.taoyu.TaoyuActivity"/>
         <activity android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".activity.palytogether.PlayGroupActivity">
+            <intent-filter>
+                <action android:name="com.playGroup"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.play.MY_CATEGROY"/>
 
+            </intent-filter>
+        </activity>
         <service android:name=".service.CheckLogin" />
 
     </application>

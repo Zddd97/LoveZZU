@@ -20,7 +20,7 @@ public class PlayTogetherAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     /*  private List<PlayTop> playTops;
       private List<PlayEnd> playEnds;*/
-    private List<PlayItems> playItems;
+     static List<PlayItems> playItems;
 
     public PlayTogetherAdapter(List<PlayItems> playItemsList) {
         this.playItems = playItemsList;
@@ -89,6 +89,7 @@ public class PlayTogetherAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
         if (position % 2 == 0) {
+
             return 1;
         } else {
             return 2;
