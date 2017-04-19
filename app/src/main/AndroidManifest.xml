@@ -50,6 +50,8 @@
 
             </intent-filter>
         </activity>
+        <activity android:name=".activity.palytogether.PlaySchoolActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
         <service android:name=".service.CheckLogin" />
 
     </application>

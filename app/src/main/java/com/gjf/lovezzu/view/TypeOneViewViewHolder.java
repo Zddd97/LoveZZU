@@ -1,19 +1,16 @@
 package com.gjf.lovezzu.view;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.palytogether.PlaySchoolActivity;
 import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
-import com.gjf.lovezzu.entity.PlayTop;
-
-import java.util.List;
 
 /**
  * Created by zhaox on 2017/4/9.
@@ -91,6 +88,8 @@ public class TypeOneViewViewHolder extends RecyclerView.ViewHolder implements Vi
                 break;
             case R.id.play_top_news:
                 Toast.makeText(v.getContext(), "活动详情", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(PlayTogetherActivity.playTogetherActivity, PlaySchoolActivity.class);
+                PlayTogetherActivity.playTogetherActivity.startActivity(intent);
                 break;
 
         }
