@@ -26,6 +26,25 @@ public class TaoyuGoodsResult {
     private String departments ;//院系
     private String professional ;//专业
 
+    private String Gthumb;//点赞数
+    private String Gcomments;//评论数
+
+    public String getGthumb() {
+        return Gthumb;
+    }
+
+    public void setGthumb(String gthumb) {
+        Gthumb = gthumb;
+    }
+
+    public String getGcomments() {
+        return Gcomments;
+    }
+
+    public void setGcomments(String gcomments) {
+        Gcomments = gcomments;
+    }
+
     public boolean isSuccessful() {
         return isSuccessful;
     }

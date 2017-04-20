@@ -44,6 +44,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <service android:name=".service.CheckLogin" />
+        <activity android:name=".activity.taoyu.TaoyuSearchActivity"/>
 
     </application>
 
