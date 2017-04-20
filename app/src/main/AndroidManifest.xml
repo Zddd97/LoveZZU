@@ -41,7 +41,7 @@
         <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
         <activity android:name=".activity.taoyu.TaoyuActivity"/>
         <activity android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.palytogether.PlayGroupActivity">
             <intent-filter>
                 <action android:name="com.playGroup"/>
@@ -51,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.palytogether.PlaySchoolActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="adjustPan"/>
         <service android:name=".service.CheckLogin" />
 
     </application>
