@@ -3,7 +3,6 @@ package com.gjf.lovezzu.activity.palytogether;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +35,8 @@ import butterknife.OnClick;
 
 public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
+    public static PlayTogetherActivity playTogetherActivity;
+
     //数据源
     /*List<PlayTop> playTopList = new ArrayList<>();
     List<PlayEnd> playEndList = new ArrayList<>();*/
@@ -56,6 +57,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_teg_view);
         ButterKnife.bind(this);
+        playTogetherActivity=this;
         initDate();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         playRecyvlerView.setLayoutManager(layoutManager);
@@ -152,7 +154,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
 
             PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", 123, 110,
                     "新闻的大标题111", "新闻的小标题", R.drawable.life_beautiful_girl);
-            PlayEnd playEnd = new PlayEnd(R.drawable.test_person_01, "PlayBoy", "Android小组", R.drawable.new_group,
+            PlayEnd playEnd = new PlayEnd(i,R.drawable.test_person_01, "PlayBoy", "Android小组", R.drawable.new_group,
                     R.drawable.new_add, "小漠国服第一系列的第一螳螂丶第一大眼,国服最高排名第八,曾任CC战队教练击败OMG战队,现为国服第一金牌讲师长驻斗鱼..",
                     R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03,
                     R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03, R.drawable.test_person_03);

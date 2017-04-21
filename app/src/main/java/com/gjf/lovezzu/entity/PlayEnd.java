@@ -5,6 +5,9 @@ package com.gjf.lovezzu.entity;
  */
 
 public class PlayEnd extends PlayItems {
+
+
+    public static int ID=-1;
     private int groupImage;
     private String groupName;
     private String groupInfo;
@@ -23,9 +26,10 @@ public class PlayEnd extends PlayItems {
     }
 
 
-    public PlayEnd(int groupImage, String groupName, String groupInfo, int groupTagesImages1, int groupTagesImages2,
+    public PlayEnd(int id,int groupImage, String groupName, String groupInfo, int groupTagesImages1, int groupTagesImages2,
                    String groupNewsTitle, int infoImages1, int infoImages2, int infoImages3, int joinersImage1,
                    int joinersImage2, int joinersImage3, int joinersImage4) {
+        this.ID=id;
         this.groupImage = groupImage;
         this.groupInfo = groupInfo;
         this.groupName = groupName;
@@ -41,6 +45,13 @@ public class PlayEnd extends PlayItems {
         this.joinersImage4 = joinersImage4;
     }
 
+    public static int getID() {
+        return ID;
+    }
+
+    public static void setITEMPOSION(int id) {
+        PlayEnd.ID= id;
+    }
 
     public int getGroupImage() {
         return groupImage;

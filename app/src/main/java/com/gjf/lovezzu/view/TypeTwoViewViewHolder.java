@@ -1,5 +1,6 @@
 package com.gjf.lovezzu.view;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,13 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
+import com.gjf.lovezzu.entity.PlayEnd;
 
 /**
  * Created by zhaox on 2017/4/9.
  */
 
 public class TypeTwoViewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private static int TYPE = 2;
     TextView playGroup;
     LinearLayout plaEndTitle;
     CircleImageView groupImage;
@@ -73,8 +75,15 @@ public class TypeTwoViewViewHolder extends RecyclerView.ViewHolder implements Vi
                 break;
             case R.id.play_end_news:
                 Toast.makeText(v.getContext(), "群组详情", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent("com.playGroup");
+                intent.addCategory("com.play.MY_CATEGROY");
+                PlayEnd playEnd=(PlayEnd) PlayTogetherAdapter.playItems.get(getAdapterPosition());
+                intent.putExtra("id",playEnd.ID+"");
+                PlayTogetherActivity.playTogetherActivity.startActivity(intent);
                 break;
 
         }
     }
+
+
 }
