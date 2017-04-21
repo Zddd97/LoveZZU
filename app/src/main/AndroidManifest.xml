@@ -53,6 +53,7 @@
         <activity android:name=".activity.palytogether.PlaySchoolActivity"
             android:windowSoftInputMode="adjustPan"/>
         <service android:name=".service.CheckLogin" />
+        <activity android:name=".activity.taoyu.TaoyuSearchActivity"/>
 
     </application>
 
