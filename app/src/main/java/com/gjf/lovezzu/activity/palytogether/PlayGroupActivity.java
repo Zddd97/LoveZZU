@@ -104,6 +104,7 @@ public class PlayGroupActivity extends AppCompatActivity {
         playEnd= (PlayEnd) intent.getSerializableExtra("group");
         Toast.makeText(this, playEnd.getID()+"", Toast.LENGTH_SHORT).show();
 
+
         //显示
         groupImage.setImageResource(playEnd.getGroupImage());
         groupName1.setText(playEnd.getGroupName());
