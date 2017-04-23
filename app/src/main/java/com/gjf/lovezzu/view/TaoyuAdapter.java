@@ -19,9 +19,9 @@ import java.util.List;
  * Created by lenovo047 on 2017/3/24.
  */
 
-public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
+public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder> {
     private List<TaoyuDataBridging> taoyuResultList;
-    private  Context context;
+    private Context context;
     private TaoyuDataBridging taoyuResult;
     private LayoutInflater inflater;
 
@@ -33,12 +33,12 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.taoyu,parent,false);
-        final  ViewHolder holder =new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.taoyu, parent, false);
+        final ViewHolder holder = new ViewHolder(view);
         holder.taoyuView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(),"点击事件",Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "点击事件", Toast.LENGTH_SHORT).show();
             }
         });
         return holder;
@@ -46,8 +46,8 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-         taoyuResult = taoyuResultList.get(position);
-       // holder.touxiang.setImageResource(taoyuResult.getUserinfo().getImageUrl());
+        taoyuResult = taoyuResultList.get(position);
+        // holder.touxiang.setImageResource(taoyuResult.getUserinfo().getImageUrl());
         Glide.with(context)
                 .load(taoyuResult.getUserinfo().getImageUrl())
                 .centerCrop().dontAnimate()
@@ -55,12 +55,12 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
                 .error(R.drawable.__picker_ic_broken_image_black_48dp)
                 .into(holder.taoyuimag);
         //holder.taoyuimag.setImageResource(taoyuResult.getImageID2());
-
-       holder.comment.setText(taoyuResult.getGoods().getGname());
-       holder.position.setText(taoyuResult.getUserinfo().getAcademy());
-       holder.price.setText(taoyuResult.getGoods().getGprice());
-       holder.phone.setText(taoyuResult.getUserinfo().getPhone());
-       holder.time.setText(taoyuResult.getGoods().getGdate());
+        holder.describe.setText(taoyuResult.getGoods().getGdescribe());
+        holder.comment.setText(taoyuResult.getGoods().getGname());
+        holder.position.setText(taoyuResult.getUserinfo().getAcademy());
+        holder.price.setText(taoyuResult.getGoods().getGprice());
+        holder.phone.setText(taoyuResult.getUserinfo().getPhone());
+        holder.time.setText(taoyuResult.getGoods().getGdate());
         holder.zan.setText(taoyuResult.getGoods().getGname());
 
 
@@ -74,13 +74,14 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         View taoyuView;
         ImageView touxiang;
-        ImageView  taoyuimag;
+        ImageView taoyuimag;
         TextView phone;
         TextView time;
         TextView price;
         TextView position;
         TextView zan;
         TextView comment;
+        TextView describe;
 
 
         public ViewHolder(View itemView) {
@@ -88,14 +89,13 @@ public class TaoyuAdapter extends RecyclerView.Adapter<TaoyuAdapter.ViewHolder>{
             taoyuView = itemView;
             taoyuimag = (ImageView) itemView.findViewById(R.id.taoyuimag);
             touxiang = (ImageView) itemView.findViewById(R.id.taoyuimag);
-            phone =(TextView) itemView.findViewById(R.id.phone);
-            time  =(TextView) itemView.findViewById(R.id.time);
+            phone = (TextView) itemView.findViewById(R.id.phone);
+            time = (TextView) itemView.findViewById(R.id.time);
             price = (TextView) itemView.findViewById(R.id.price);
             position = (TextView) itemView.findViewById(R.id.position);
-            zan = (TextView)  itemView.findViewById(R.id.zan);
+            zan = (TextView) itemView.findViewById(R.id.zan);
             comment = (TextView) itemView.findViewById(R.id.comment);
-
-
+            describe = (TextView) itemView.findViewById(R.id.goods_des);
 
 
         }
