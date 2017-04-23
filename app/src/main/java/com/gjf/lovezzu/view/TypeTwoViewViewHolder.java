@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.palytogether.PlayGroupListActivity;
 import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
 import com.gjf.lovezzu.entity.PlayEnd;
 
@@ -66,6 +67,8 @@ public class TypeTwoViewViewHolder extends RecyclerView.ViewHolder implements Vi
         switch (v.getId()) {
             case R.id.play_end_title:
                 Toast.makeText(v.getContext(), "热门群组", Toast.LENGTH_SHORT).show();
+                Intent intentList=new Intent(PlayTogetherActivity.playTogetherActivity, PlayGroupListActivity.class);
+                PlayTogetherActivity.playTogetherActivity.startActivity(intentList);
                 break;
             case R.id.play_group_image:
                 Toast.makeText(v.getContext(), "群组头像", Toast.LENGTH_SHORT).show();
@@ -77,8 +80,8 @@ public class TypeTwoViewViewHolder extends RecyclerView.ViewHolder implements Vi
                 Toast.makeText(v.getContext(), "群组详情", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent("com.playGroup");
                 intent.addCategory("com.play.MY_CATEGROY");
-                PlayEnd playEnd=(PlayEnd) PlayTogetherAdapter.playItems.get(getAdapterPosition());
-                intent.putExtra("id",playEnd.ID+"");
+                PlayEnd playEnd=(PlayEnd) PlayTogetherAdapter.playItems.get(getPosition());
+                intent.putExtra("group",playEnd);
                 PlayTogetherActivity.playTogetherActivity.startActivity(intent);
                 break;
 

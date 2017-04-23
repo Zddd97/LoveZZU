@@ -50,6 +50,7 @@
 
             </intent-filter>
         </activity>
+        <activity android:name=".activity.palytogether.PlayGroupListActivity"/>
         <activity android:name=".activity.palytogether.PlaySchoolActivity"
             android:windowSoftInputMode="adjustPan"/>
         <service android:name=".service.CheckLogin" />

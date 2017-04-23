@@ -54,7 +54,7 @@ public class PlaySchoolActivity extends AppCompatActivity {
 
         }
 
-        String text= "<br />新华社美国海湖庄园4月8日电4月6日至7日，国家主席习近平在美国佛罗里达州海湖庄园同美国总统特朗普举行会晤。初次谋面，坦诚相见，两国元首达成重要共识，为新时期中美关系发展指明了方向，推动开启合作共赢新篇章。\n" +
+        String text = "<br />新华社美国海湖庄园4月8日电4月6日至7日，国家主席习近平在美国佛罗里达州海湖庄园同美国总统特朗普举行会晤。初次谋面，坦诚相见，两国元首达成重要共识，为新时期中美关系发展指明了方向，推动开启合作共赢新篇章。\n" +
                 "\n" +
                 "<br />友谊之旅增进互信\n" +
                 "\n" +
@@ -158,7 +158,7 @@ public class PlaySchoolActivity extends AppCompatActivity {
 
     @OnClick(R.id.school_back)
     public void onViewClicked() {
-        Intent intent =new Intent(this,PlayTogetherActivity.class);
+        Intent intent = new Intent(this, PlayTogetherActivity.class);
         startActivity(intent);
         finish();
     }
@@ -168,10 +168,10 @@ public class PlaySchoolActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.school_news_comment:
                 //提交评论
-                Toast.makeText(this,"提交评论",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "提交评论", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.school_news_share:
-                Toast.makeText(this,"分享",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "分享", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

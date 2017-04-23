@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.entity.PlayEnd;
 import com.gjf.lovezzu.view.CircleImageView;
 
 import butterknife.BindView;
@@ -22,8 +23,7 @@ import butterknife.OnClick;
  */
 
 public class PlayGroupActivity extends AppCompatActivity {
-    //群组的ID
-    String ID;
+
     //销毁活动
     @BindView(R.id.back_activity)
     ImageView backActivity;
@@ -93,14 +93,27 @@ public class PlayGroupActivity extends AppCompatActivity {
     @BindView(R.id.group_join)
     TextView groupJoin;
 
+    static PlayEnd playEnd;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_group);
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        ID = intent.getStringExtra("id");
-        Toast.makeText(PlayGroupActivity.this, ID, Toast.LENGTH_SHORT).show();
+        playEnd= (PlayEnd) intent.getSerializableExtra("group");
+        Toast.makeText(this, playEnd.getID()+"", Toast.LENGTH_SHORT).show();
+
+        //显示
+        groupImage.setImageResource(playEnd.getGroupImage());
+        groupName1.setText(playEnd.getGroupName());
+        groupNumber.setText(playEnd.getID()+"");
+        groupInfo.setText(playEnd.getGroupInfo()+"群介绍群介绍群介绍群介只要妹子绍群介绍群只要妹子介绍群介绍");
+        groupMasterImage.setImageResource(playEnd.getGroupImage());
+        groupMasterName.setText(playEnd.getGroupName());
+        groupJoinRequest.setText(playEnd.getGroupInfo()+"入群条件只要妹子只要妹子只要妹子只要妹子只要妹子只要妹子只要妹子");
+
+        //.....其他属性默认未设置。。。
     }
 
 
@@ -128,6 +141,7 @@ public class PlayGroupActivity extends AppCompatActivity {
     //更新群组信息
     public static void lodDate() {
         //根据群组的ID，获得群组的相关信息，在对相应控件进行设置
+
     }
 
 }
