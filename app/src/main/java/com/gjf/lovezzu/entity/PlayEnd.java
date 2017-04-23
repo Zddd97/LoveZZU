@@ -7,7 +7,7 @@ package com.gjf.lovezzu.entity;
 public class PlayEnd extends PlayItems {
 
 
-    public static int ID=-1;
+    private int ID;
     private int groupImage;
     private String groupName;
     private String groupInfo;
@@ -45,12 +45,12 @@ public class PlayEnd extends PlayItems {
         this.joinersImage4 = joinersImage4;
     }
 
-    public static int getID() {
+    public  int getID() {
         return ID;
     }
 
-    public static void setITEMPOSION(int id) {
-        PlayEnd.ID= id;
+    public void setITEMPOSION(int id) {
+        this.ID= id;
     }
 
     public int getGroupImage() {
