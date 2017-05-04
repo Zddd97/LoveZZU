@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.gjf.lovezzu.entity.PlayTop;
 import com.gjf.lovezzu.view.DividerItemDecoration;
 import com.gjf.lovezzu.view.PlayTogetherAdapter;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,6 +130,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
         MenuInflater inflater = popupMenu.getMenuInflater();
         //填充菜单
         inflater.inflate(R.menu.play_menu, popupMenu.getMenu());
+
         //绑定菜单的点击事件
         popupMenu.setOnMenuItemClickListener(this);
         popupMenu.show();
