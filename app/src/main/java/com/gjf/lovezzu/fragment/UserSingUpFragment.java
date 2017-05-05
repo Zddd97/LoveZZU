@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.activity.MainActivity;
 import com.gjf.lovezzu.entity.LoginResult;
-import com.gjf.lovezzu.network.SingupMethods;
+import com.gjf.lovezzu.network.SingInMethods;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,7 +87,7 @@ public class UserSingUpFragment extends Fragment {
         String password = getUser_reg_password.getText().toString();
         boolean issuccessful = false;
         String identifier = "1";
-        SingupMethods.getInstance().goToSingup(subscriber, identifier, issuccessful, phone, password);
+        SingInMethods.getInstance().goToSingup(subscriber, identifier, issuccessful, phone, password);
 
     }
 

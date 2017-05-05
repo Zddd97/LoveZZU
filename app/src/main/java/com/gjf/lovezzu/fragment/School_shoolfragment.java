@@ -48,6 +48,8 @@ public class School_shoolfragment extends android.app.Fragment {
     private Subscriber subscriber;
     private GridLayoutManager gridLayoutManager;
     SchoolLastAdapter adapter1;
+    private LinearLayoutManager linearLayoutManager;
+    private int lastVisibleItem;
 
 
     @Nullable
@@ -64,6 +66,7 @@ public class School_shoolfragment extends android.app.Fragment {
             showEndImage();
             onRefresh();
             doUpResfresh();
+            doDownResfresh();
 
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
@@ -100,7 +103,27 @@ public class School_shoolfragment extends android.app.Fragment {
 
     }
 
+private void doDownResfresh(){
+    recyclerView1.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+            if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem+1==adapter1.getItemCount()){
+              refreshlast();
+            }
 
+        }
+
+        @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+
+            lastVisibleItem =linearLayoutManager.findLastVisibleItemPosition();
+        }
+    });
+
+
+}
     private void refreshlast() {
 
         new Thread(new Runnable() {

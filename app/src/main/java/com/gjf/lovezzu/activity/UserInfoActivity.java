@@ -237,7 +237,7 @@ public class UserInfoActivity extends AppCompatActivity {
         recyclerView.setAdapter(photoAdapter);
 
         PhotoPicker.builder()
-                .setPhotoCount(1)
+                .setPhotoCount(2)
                 .start(UserInfoActivity.this);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this,
                 new RecyclerItemClickListener.OnItemClickListener() {

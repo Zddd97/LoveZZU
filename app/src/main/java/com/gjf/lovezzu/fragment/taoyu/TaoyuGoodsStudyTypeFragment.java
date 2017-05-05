@@ -98,7 +98,7 @@ public class TaoyuGoodsStudyTypeFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("userinfo", Activity.MODE_APPEND);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         String SessionID = sharedPreferences.getString("SessionID", "");
-        TaoyuGoodsListMethods.getInstance().getGoodsList(subscriber,"学习",1);
+        TaoyuGoodsListMethods.getInstance().getGoodsList(subscriber,"学习",0);
 
     }
 

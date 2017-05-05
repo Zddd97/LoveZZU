@@ -3,8 +3,6 @@
     package="com.gjf.lovezzu">
 
 
-
-
     <application
         android:name=".entity.CheckLoginApplication"
         android:allowBackup="true"
@@ -55,6 +53,7 @@
             android:windowSoftInputMode="adjustPan"/>
         <service android:name=".service.CheckLogin" />
         <activity android:name=".activity.taoyu.TaoyuSearchActivity"/>
+        <activity android:name=".activity.taoyu.TaoyuPublishGoodActivity"/>
 
     </application>
 

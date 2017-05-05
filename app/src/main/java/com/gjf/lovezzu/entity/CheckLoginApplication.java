@@ -2,6 +2,8 @@ package com.gjf.lovezzu.entity;
 
 import android.app.Application;
 
+import org.xutils.x;
+
 /**
  * Created by BlackBeard丶 on 2017/03/08.
  */
@@ -21,5 +23,6 @@ public class CheckLoginApplication extends Application {
         isLogin = false;
 
         super.onCreate();
+        x.Ext.init(this);
     }
 }
