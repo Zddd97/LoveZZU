@@ -13,6 +13,10 @@ import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.network.UpLoadIconMethods;
 
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +27,8 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import rx.Subscriber;
+
+import static com.gjf.lovezzu.constant.Url.LOGIN_URL;
 
 /**
  * Created by BlackBeard丶 on 2017/03/15.
@@ -69,8 +75,13 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
             Map<String, RequestBody> photos = new HashMap<>();
             File file = new File(uri.getPath());
+
+            if (file.exists()){
+                Log.d("ggggg","yicunzai");
+            }
+            testReq(file);
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            photos.put("myUpload", requestFile);
+            photos.put("image", requestFile);
             photos.put("phone", RequestBody.create(MediaType.parse("multipart/form-data"), "123456"));
             Log.d("ggggg", photos.toString());
             Log.d("ggggg", uri.toString());
@@ -81,17 +92,51 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
             if (canLoadImage) {
                 if (requestFile != null) {
-                    upLoad(photos);
+                    // upLoad(photos);
+                    Glide.with(mContext)
+                            .load(uri)
+                            .centerCrop()
+                            .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+                            .error(R.drawable.__picker_ic_broken_image_black_48dp)
+                            .into(holder.ivPhoto);
                 }
-                Glide.with(mContext)
-                        .load(uri)
-                        .centerCrop()
 
-                        .placeholder(R.drawable.__picker_ic_photo_black_48dp)
-                        .error(R.drawable.__picker_ic_broken_image_black_48dp)
-                        .into(holder.ivPhoto);
             }
         }
+    }
+
+    private void testReq(File file){
+//        x.Ext.init(mContext.getApplicationContext());
+        RequestParams requestParams=new RequestParams(LOGIN_URL+"upload");
+        requestParams.setMultipart(true);
+        requestParams.addBodyParameter("phone","1222");
+        requestParams.addBodyParameter("myUpload",file);
+        x.http().post(requestParams, new Callback.CacheCallback<String>() {
+            @Override
+            public boolean onCache(String result) {
+                return false;
+            }
+
+            @Override
+            public void onSuccess(String result) {
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
 
 

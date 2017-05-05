@@ -37,6 +37,8 @@ public class TaoyuActivity extends AppCompatActivity {
     TextView taoyu_enjoy;
     @BindView(R.id.taoyu_activity_search)
     TextView taoyu_activity_search;
+    @BindView(R.id.taoyu_publish_button)
+    android.support.design.widget.FloatingActionButton taoyu_publish_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +69,7 @@ public class TaoyuActivity extends AppCompatActivity {
         taoyu_traffic.setTextColor(Color.parseColor("#000000"));
     }
 
-    @OnClick({R.id.taoyu_study, R.id.taoyu_traffic, R.id.taoyu_enjoy,R.id.taoyu_activity_search})
+    @OnClick({R.id.taoyu_study, R.id.taoyu_traffic, R.id.taoyu_enjoy,R.id.taoyu_activity_search,R.id.taoyu_publish_button})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.taoyu_enjoy:
@@ -95,6 +97,10 @@ public class TaoyuActivity extends AppCompatActivity {
             case R.id.taoyu_activity_search:
                 Intent intent = new Intent(getApplicationContext(),TaoyuSearchActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.taoyu_publish_button:
+                Intent intent1 = new Intent(getApplicationContext(),TaoyuPublishGoodActivity.class);
+                startActivity(intent1);
                 break;
         }
 

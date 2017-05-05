@@ -2,7 +2,7 @@ package com.gjf.lovezzu.network;
 
 import com.gjf.lovezzu.constant.Url;
 import com.gjf.lovezzu.network.api.LoginServer;
-import com.gjf.lovezzu.network.api.SingupServer;
+import com.gjf.lovezzu.network.api.SingInServer;
 
 import okhttp3.OkHttpClient;
 import retrofit2.CallAdapter;
@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class NetWork {
     private static LoginServer loginServer;
-    private static SingupServer singupServer;
+    private static SingInServer singInServer;
     private static OkHttpClient okHttpClient = new OkHttpClient();
     private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
@@ -35,17 +35,17 @@ public class NetWork {
     }
 
 
-    public static SingupServer getRegisterApi() {
-        if (singupServer == null) {
+    public static SingInServer getRegisterApi() {
+        if (singInServer == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(okHttpClient)
                     .baseUrl(Url.LOGIN_URL)
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build();
-            singupServer = retrofit.create(SingupServer.class);
+            singInServer = retrofit.create(SingInServer.class);
         }
-        return singupServer;
+        return singInServer;
     }
 
 

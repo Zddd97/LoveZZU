@@ -38,9 +38,9 @@ public class UpLoadIconMethods {
         uploadIconServer = retrofit.create(UploadIconServer.class);
     }
 
-    private static class SingletonHolder {
-        private static final UpLoadIconMethods INSTANCE = new UpLoadIconMethods();
-    }
+private static class SingletonHolder {
+    private static final UpLoadIconMethods INSTANCE = new UpLoadIconMethods();
+}
 
     public static UpLoadIconMethods upLoadIconMethods() {
         return SingletonHolder.INSTANCE;

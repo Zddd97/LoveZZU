@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,8 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
     private SocietyAdapter adapter;
     @BindView(R.id.title_douban)
     TextView doubantitle;
+    private LinearLayoutManager linearLayoutManager;
+    private int lastVisibleItem;
 
     @Nullable
     @Override
@@ -55,10 +58,10 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
             ButterKnife.bind(this, view);
             getNews(1);
 
-
             showNews();
+           isVisBottom();
             onRegresh();
-            refreshView();
+
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
@@ -80,6 +83,8 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
                 refreshView();
             }
         });
+
+
     }
 
     //下拉刷新
@@ -105,7 +110,36 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
             }
         }).start();
     }
+    public void  isVisBottom(){
+        newsSociety.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LinearLayoutManager layoutManager = (LinearLayoutManager) newsSociety.getLayoutManager();
+                //屏幕中最后一个可见子项的position
+                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+                //当前屏幕所看到的子项个数
+                int visibleItemCount = layoutManager.getChildCount();
+                //当前RecyclerView的所有子项个数
+                int totalItemCount = layoutManager.getItemCount();
+                //RecyclerView的滑动状态
+                int state = newsSociety.getScrollState();
+                if(visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == newsSociety.SCROLL_STATE_IDLE){
+                    Log.d("ggggg","到了底部");
+                    refreshView();
+                }else {
 
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+            }
+        });
+
+    }
     //展示新闻
     private void showNews() {
         newsSociety = (RecyclerView) view.findViewById(R.id.school_society_content);
