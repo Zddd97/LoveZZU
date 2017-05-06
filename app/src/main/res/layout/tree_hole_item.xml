@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="150dp"
     android:layout_margin="5dp"
     android:orientation="vertical">
 
@@ -17,16 +17,17 @@
 
         <TextView
             android:id="@+id/tree_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="25dp"
             android:layout_weight="3"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="4"
             android:text="测试测试测试测试测试"
             android:textColor="#fdfdfd"
-            android:textSize="25sp" />
+            android:textSize="17sp" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -43,7 +44,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="测试"
                 android:textColor="#fdfdfd"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <LinearLayout
 
@@ -56,8 +57,9 @@
 
                 <ImageView
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:src="@drawable/zan_white" />
 
@@ -71,11 +73,12 @@
                     android:gravity="center"
                     android:text="110"
                     android:textColor="#fdfdfd"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:src="@drawable/comment_white" />
@@ -91,7 +94,7 @@
                     android:gravity="center"
                     android:text="200"
                     android:textColor="#fdfdfd"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </RelativeLayout>

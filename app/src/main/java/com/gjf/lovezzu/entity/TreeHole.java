@@ -10,6 +10,18 @@ public class TreeHole {
     private String zanNumber;
     private String talkNumber;
 
+
+    public TreeHole(){
+
+    }
+    public TreeHole(String treeContent,String itemTest,String zanNumber,String talkNumber){
+        this.treeContent=treeContent;
+        this.itemTest=itemTest;
+        this.zanNumber=zanNumber;
+        this.talkNumber=talkNumber;
+
+    }
+
     public String getTreeContent() {
         return treeContent;
     }

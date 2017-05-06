@@ -106,7 +106,8 @@ public class PlayGroupActivity extends AppCompatActivity {
 
 
         //显示
-        groupImage.setImageResource(playEnd.getGroupImage());
+        groupImage.setBackgroundResource(playEnd.getGroupImage());
+        //groupImage.setImageResource(playEnd.getGroupImage());
         groupName1.setText(playEnd.getGroupName());
         groupNumber.setText(playEnd.getID()+"");
         groupInfo.setText(playEnd.getGroupInfo()+"群介绍群介绍群介绍群介只要妹子绍群介绍群只要妹子介绍群介绍");

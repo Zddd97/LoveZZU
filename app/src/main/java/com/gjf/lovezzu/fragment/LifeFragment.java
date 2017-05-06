@@ -17,6 +17,7 @@ import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
 import com.gjf.lovezzu.activity.taoyu.TaoyuActivity;
 import com.gjf.lovezzu.activity.TopicTalkActivity;
+import com.gjf.lovezzu.activity.treehole.TreeHoleActivity;
 
 import java.util.ArrayList;
 
@@ -102,7 +103,8 @@ public class LifeFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.life_shudong:
-                Toast.makeText(getActivity().getApplicationContext(), "树洞", Toast.LENGTH_SHORT).show();
+                Intent treeHole_intent = new Intent(getActivity().getApplicationContext(), TreeHoleActivity.class);
+                startActivity(treeHole_intent);
                 break;
             case R.id.life_jianzhi:
                 Toast.makeText(getActivity().getApplicationContext(), "兼职", Toast.LENGTH_SHORT).show();
