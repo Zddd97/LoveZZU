@@ -9,8 +9,7 @@
         android:icon="@drawable/lovezuu_1"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask">
@@ -20,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.UserLoginActivity"
+        <activity
+            android:name=".activity.UserLoginActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.UserSettingActivity" />
@@ -30,31 +30,39 @@
         <activity
 
             android:name="me.iwf.photopicker.PhotoPickerActivity" />
-      
+
         <activity
             android:name=".activity.palytogether.PlayTogetherActivity"
             android:launchMode="singleTask" />
-      
-        <activity android:name=".activity.saylvoeActivity.SayLoveActivity"/>
-        <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity"/>
-        <activity android:name=".activity.taoyu.TaoyuActivity"/>
-        <activity android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"
-            android:windowSoftInputMode="adjustPan"/>
+
+        <activity android:name=".activity.saylvoeActivity.SayLoveActivity" />
+        <activity android:name=".activity.saylvoeActivity.IWantSayLoveActivity" />
+        <activity android:name=".activity.taoyu.TaoyuActivity" />
+        <activity
+            android:name=".activity.schoolnewsActivity.SchoolNewsSubjectActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.palytogether.PlayGroupActivity">
             <intent-filter>
-                <action android:name="com.playGroup"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="com.play.MY_CATEGROY"/>
+                <action android:name="com.playGroup" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.play.MY_CATEGROY" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".activity.palytogether.PlayGroupListActivity"/>
-        <activity android:name=".activity.palytogether.PlaySchoolActivity"
-            android:windowSoftInputMode="adjustPan"/>
-        <service android:name=".service.CheckLogin" />
-        <activity android:name=".activity.taoyu.TaoyuSearchActivity"/>
-        <activity android:name=".activity.taoyu.TaoyuPublishGoodActivity"/>
+        <activity android:name=".activity.palytogether.PlayGroupListActivity" />
+        <activity
+            android:name=".activity.palytogether.PlaySchoolActivity"
+            android:windowSoftInputMode="adjustPan" />
 
+        <service android:name=".service.CheckLogin" />
+
+        <activity android:name=".activity.taoyu.TaoyuSearchActivity" />
+        <activity android:name=".activity.taoyu.TaoyuPublishGoodActivity" />
+        <activity android:name=".activity.treehole.TreeHoleActivity" />
+        <activity
+            android:name=".activity.treehole.AddTreeHoleActivity"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
