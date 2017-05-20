@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.SocietyNewsResult;
+import com.gjf.lovezzu.network.HttpClientUtils;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
 public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHolder> {
 
     private List<SocietyNewsResult> societyNewsResultList;
-
+    HttpClientUtils httpClientUtils;
 
     private SocietyNewsResult societyNewsResult;
 
@@ -71,6 +72,8 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
         holder.newsTitle.setText(societyNewsResult.getCreatedAt());
         holder.newsDate.setText(societyNewsResult.get_id());
         holder.newsRead.setText(societyNewsResult.getSource());
+         //httpClientUtils = new HttpClientUtils(societyNewsResult.getUrl(),"gjf",societyNewsResult.get_id()+".jpg");
+        //httpClientUtils.downloadFile();
     }
 
     @Override
@@ -97,5 +100,7 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
 
         }
     }
+
+
 
 }

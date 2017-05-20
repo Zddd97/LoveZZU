@@ -10,16 +10,57 @@ public class TreeHole {
     private String zanNumber;
     private String talkNumber;
 
+    String treeHoleid;
+    String praiseNumber;
+    String commentNumber;
+    String content;
+
+    public String getTreeHoleid() {
+        return treeHoleid;
+    }
+
+    public void setTreeHoleid(String treeHoleid) {
+        this.treeHoleid = treeHoleid;
+    }
+
+    public String getPraiseNumber() {
+        return praiseNumber;
+    }
+
+    public void setPraiseNumber(String praiseNumber) {
+        this.praiseNumber = praiseNumber;
+    }
+
+    public String getCommentNumber() {
+        return commentNumber;
+    }
+
+    public void setCommentNumber(String commentNumber) {
+        this.commentNumber = commentNumber;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public TreeHole(){
 
     }
-    public TreeHole(String treeContent,String itemTest,String zanNumber,String talkNumber){
-        this.treeContent=treeContent;
-        this.itemTest=itemTest;
-        this.zanNumber=zanNumber;
-        this.talkNumber=talkNumber;
 
+
+    public TreeHole(String treeContent, String itemTest, String zanNumber, String talkNumber, String treeHoleid, String praiseNumber, String commentNumber, String content) {
+        this.treeContent = treeContent;
+        this.itemTest = itemTest;
+        this.zanNumber = zanNumber;
+        this.talkNumber = talkNumber;
+        this.treeHoleid = treeHoleid;
+        this.praiseNumber = praiseNumber;
+        this.commentNumber = commentNumber;
+        this.content = content;
     }
 
     public String getTreeContent() {

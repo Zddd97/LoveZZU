@@ -16,8 +16,13 @@ import android.widget.Toast;
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.SocietyNewsData;
 import com.gjf.lovezzu.entity.SocietyNewsResult;
+import com.gjf.lovezzu.network.HttpClientUtils;
 import com.gjf.lovezzu.network.NewsMethods;
 import com.gjf.lovezzu.view.SocietyAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +52,7 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
     TextView doubantitle;
     private LinearLayoutManager linearLayoutManager;
     private int lastVisibleItem;
+    HttpClientUtils httpClientUtils;
 
     @Nullable
     @Override
@@ -61,6 +67,7 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
             showNews();
            isVisBottom();
             onRegresh();
+
 
         } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
@@ -169,13 +176,26 @@ public class Shool_societyfragment extends Fragment implements BGARefreshLayout.
             public void onNext(SocietyNewsData newsResult) {
 
                 List<SocietyNewsResult> list = newsResult.getResults();
+                JSONArray arr = new JSONArray(list);
 
+                for (int i = 0; i < arr.length(); i++) {
+                    Log.d("ggggg",list.toString());
+                    JSONObject temp = null;
+                    try {
+                        temp = (JSONObject) arr.get(i);
+                        String url = temp.getString("url");
+                       Log.d("ggggg",url.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
+                }
                 //Toast.makeText(getContext(),list.toString(),Toast.LENGTH_LONG).show();
                 //Log.d("gjf123", "");
                 //加载新闻
                 societyNewsResultList.addAll(list);
                 adapter.notifyDataSetChanged();
+
 
 
             }

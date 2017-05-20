@@ -110,6 +110,8 @@ public class UserLoginFragmen extends Fragment {
 
             @Override
             public void onNext(LoginResult loginResult) {
+
+
                 String SessionID = loginResult.getSessionID();
                 if (SessionID != null) {
                     String phone = user_reg_phone.getText().toString();
@@ -147,8 +149,6 @@ public class UserLoginFragmen extends Fragment {
         checkLoginApplication.setIsLogin(true);
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
-
-
     }
 
     private void checkInput() {
