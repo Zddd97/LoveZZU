@@ -72,8 +72,8 @@ public class SocietyAdapter extends RecyclerView.Adapter<SocietyAdapter.ViewHold
         holder.newsTitle.setText(societyNewsResult.getCreatedAt());
         holder.newsDate.setText(societyNewsResult.get_id());
         holder.newsRead.setText(societyNewsResult.getSource());
-         //httpClientUtils = new HttpClientUtils(societyNewsResult.getUrl(),"gjf",societyNewsResult.get_id()+".jpg");
-        //httpClientUtils.downloadFile();
+         httpClientUtils = new HttpClientUtils(societyNewsResult.getUrl(),"gjf",societyNewsResult.get_id()+".jpg");
+        httpClientUtils.downloadFile();
     }
 
     @Override

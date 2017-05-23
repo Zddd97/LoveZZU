@@ -1,7 +1,7 @@
 package com.gjf.lovezzu.network;
 
 import com.gjf.lovezzu.constant.Url;
-import com.gjf.lovezzu.entity.TreeHole;
+import com.gjf.lovezzu.entity.TreeHoleData;
 import com.gjf.lovezzu.network.api.TreeHoleServer;
 
 import java.util.concurrent.TimeUnit;
@@ -50,8 +50,16 @@ public class TreeHoleMethods {
     }
 
 
-    public void getHomePageList(Subscriber<TreeHole> subscriber, int page) {
+    public void getHomePageList(Subscriber<TreeHoleData> subscriber, int page) {
         treeHoleServer.getHomePageList(page)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void sendTUCAOContent(Subscriber<TreeHoleData> subscriber, String sessionId ,String content) {
+        treeHoleServer.sendTUCAOContent(subscriber,sessionId,content)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

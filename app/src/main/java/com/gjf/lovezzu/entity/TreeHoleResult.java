@@ -4,7 +4,7 @@ package com.gjf.lovezzu.entity;
  * Created by zhao on 2017/5/4.
  */
 
-public class TreeHole {
+public class TreeHoleResult {
     private String treeContent;
     private String itemTest;
     private String zanNumber;
@@ -47,12 +47,12 @@ public class TreeHole {
         this.content = content;
     }
 
-    public TreeHole(){
+    public TreeHoleResult(String 发布我的树洞主体美容, String s, String s1, String s2){
 
     }
 
 
-    public TreeHole(String treeContent, String itemTest, String zanNumber, String talkNumber, String treeHoleid, String praiseNumber, String commentNumber, String content) {
+    public TreeHoleResult(String treeContent, String itemTest, String zanNumber, String talkNumber, String treeHoleid, String praiseNumber, String commentNumber, String content) {
         this.treeContent = treeContent;
         this.itemTest = itemTest;
         this.zanNumber = zanNumber;

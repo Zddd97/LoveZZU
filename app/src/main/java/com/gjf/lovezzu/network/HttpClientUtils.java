@@ -58,14 +58,15 @@ public class HttpClientUtils {
 
                 // 判断SD卡是否存在，并且是否具有读写权限
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-
+                    String path = Environment.getExternalStorageDirectory().getPath();
+                    Log.d("ggggg","路径是："+path.toString());
                     BufferedOutputStream os = null;
                     Bitmap bitmap;
 
                     // 获得存储卡的路径
                     //http://182.92.158.132/cloud/cloudfile?path=/public/notice/201606101737302282/16-131109141345 (1)_20160610173730880.jpg
                     //http://182.92.158.132/cloud/cloudfile?path=/public/notice/201606101737302282/16-131109141345%20(1)_20160610173730880.jpg
-                    Log.d("ggggg",Environment.getExternalStorageState().toString());
+                    //Log.d("ggggg",Environment.getExternalStorageState().toString());
                     Log.d("ggggg","我是路径-===="+urlPath);
                     Log.d("ggggg","下载开始");
                     URL url = new URL(urlPath);
@@ -81,13 +82,13 @@ public class HttpClientUtils {
                     InputStream is = conn.getInputStream();
                     bitmap= BitmapFactory.decodeStream(is);
 
-                    File file = new File("/sdcard/gjf");
+                    File file = new File(path+"/gjf");
                     // 判断文件目录是否存在
                     if (!file.exists()) {
                         Log.d("ggggg","草泥马");
                         file.mkdirs();
                     }
-                    File apkFile = new File("/sdcard/gjf",fileName);
+                    File apkFile = new File(path+"/gjf",fileName);
                     FileOutputStream fos = new FileOutputStream(apkFile);
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100,fos);
 //                    int count = 0;
@@ -114,4 +115,8 @@ public class HttpClientUtils {
 
         }
     }
+
+
+
+
 }
