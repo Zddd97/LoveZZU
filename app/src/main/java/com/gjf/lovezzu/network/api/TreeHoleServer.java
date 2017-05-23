@@ -22,4 +22,28 @@ public interface TreeHoleServer {
     @FormUrlEncoded
     @POST("发送")
         Observable<TreeHoleData> sendTUCAOContent(Subscriber<TreeHoleData> subscriber, @Field("SessionID") String SessionID, @Field("content") String Content);
+
+    @FormUrlEncoded
+    @POST("获得某条内容")
+    Observable<TreeHoleData> getTreeHoleContent(Subscriber<TreeHoleData> subscriber, @Field("newsid") String newsid);
+
+
+    @FormUrlEncoded
+    @POST("获得评论")
+    Observable<TreeHoleData> getComment(Subscriber<TreeHoleData> subscriber, @Field("id") String newsid);
+
+    @FormUrlEncoded
+    @POST("发送评论")
+    Observable<TreeHoleData> sendComment(Subscriber<TreeHoleData> subscriber, @Field("newsid") String newsid , @Field("content") String content, @Field("userid") String userid);
+
+   @FormUrlEncoded
+    @POST("点赞新闻")
+    Observable<TreeHoleData> LikesNews(Subscriber<TreeHoleData> subscriber, @Field("newsid") String newsid, @Field("userid") String userid);
+
+    @FormUrlEncoded
+    @POST("点赞评论")
+    Observable<TreeHoleData> LikesComments(Subscriber<TreeHoleData> subscriber, @Field("newsid") String newsid, @Field("userid") String userid, @Field("commentid") String commentid);
+
+
+
 }

@@ -12,14 +12,13 @@
         android:paddingRight="10dp">
 
         <EditText
-            android:paddingRight="20dp"
             android:id="@+id/school_news_comment_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="写下你的态度"
+            android:paddingRight="20dp"
             android:textSize="10sp"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-
+android:id="@+id/send_comment"
             android:src="@drawable/school_news_comments_image" />
     </LinearLayout>
 

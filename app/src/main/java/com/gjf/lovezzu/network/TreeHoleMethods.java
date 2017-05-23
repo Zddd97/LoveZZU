@@ -66,4 +66,44 @@ public class TreeHoleMethods {
                 .subscribe(subscriber);
     }
 
+    public void getTreeHoleContent(Subscriber<TreeHoleData> subscriber, String newsid ) {
+        treeHoleServer.getTreeHoleContent(subscriber,newsid)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void getComment(Subscriber<TreeHoleData> subscriber, String newsid ) {
+        treeHoleServer.getComment(subscriber,newsid)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void sendComment(Subscriber<TreeHoleData> subscriber, String newsid,String content,String  userid) {
+        treeHoleServer.sendComment(subscriber,newsid,content,userid)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+
+    public void LikesNews(Subscriber<TreeHoleData> subscriber, String newsid,String  userid) {
+        treeHoleServer.LikesNews(subscriber,newsid,userid)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void LikesComments(Subscriber<TreeHoleData> subscriber, String newsid,String  userid,String commentsid) {
+        treeHoleServer.LikesComments(subscriber,newsid,userid,commentsid)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 }

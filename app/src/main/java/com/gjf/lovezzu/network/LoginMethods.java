@@ -59,7 +59,6 @@ public class LoginMethods {
         loginServer.checklogin(SessionID).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
-
     }
 
 }
