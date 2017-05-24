@@ -60,6 +60,10 @@
         <activity android:name=".activity.taoyu.TaoyuSearchActivity" />
         <activity android:name=".activity.taoyu.TaoyuPublishGoodActivity" />
         <activity android:name=".activity.treehole.TreeHoleActivity" />
+        <activity android:name=".activity.parttimejob.PartTimeJobActivity"/>
+        <activity android:name=".activity.parttimejob.AddJopActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activity.parttimejob.JobInfoActivity"/>
         <activity
             android:name=".activity.treehole.AddTreeHoleActivity"
             android:windowSoftInputMode="adjustPan" />

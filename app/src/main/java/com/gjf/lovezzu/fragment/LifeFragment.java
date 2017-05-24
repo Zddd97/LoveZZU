@@ -14,6 +14,7 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.parttimejob.PartTimeJobActivity;
 import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
 import com.gjf.lovezzu.activity.taoyu.TaoyuActivity;
 import com.gjf.lovezzu.activity.TopicTalkActivity;
@@ -107,7 +108,8 @@ public class LifeFragment extends Fragment {
                 startActivity(treeHole_intent);
                 break;
             case R.id.life_jianzhi:
-                Toast.makeText(getActivity().getApplicationContext(), "兼职", Toast.LENGTH_SHORT).show();
+                Intent partTimeJob_intent = new Intent(getActivity().getApplicationContext(), PartTimeJobActivity.class);
+                startActivity(partTimeJob_intent);
                 break;
         }
     }
