@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.activity.treehole.TreeHoleActivity;
-import com.gjf.lovezzu.entity.TreeHole;
+import com.gjf.lovezzu.entity.TreeHoleResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,13 @@ import static com.gjf.lovezzu.R.id.tree_item_view;
  * Created by zhao on 2017/5/4.
  */
 
-public class TreeHoleAdapter extends RecyclerView.Adapter<TreeHoleAdapter.ViewHolder> {
+    public class TreeHoleAdapter extends RecyclerView.Adapter<TreeHoleAdapter.ViewHolder> {
 
-    private List<TreeHole> treeHoleList = new ArrayList<>();
-    private TreeHole treeHole;
+    private List<TreeHoleResult> treeHoleResultList = new ArrayList<>();
+    private TreeHoleResult treeHoleResult;
 
-    public TreeHoleAdapter(List<TreeHole> treeHoleList) {
-        this.treeHoleList = treeHoleList;
+    public TreeHoleAdapter(List<TreeHoleResult> treeHoleResultList) {
+        this.treeHoleResultList = treeHoleResultList;
     }
 
     @Override
@@ -59,15 +59,15 @@ public class TreeHoleAdapter extends RecyclerView.Adapter<TreeHoleAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        treeHole = treeHoleList.get(position);
-        holder.contentView.setText(treeHole.getTreeContent());
-        holder.zanView.setText(treeHole.getZanNumber());
-        holder.talkView.setText(treeHole.getTalkNumber());
+        treeHoleResult = treeHoleResultList.get(position);
+        holder.contentView.setText(treeHoleResult.getTreeContent());
+        holder.zanView.setText(treeHoleResult.getZanNumber());
+        holder.talkView.setText(treeHoleResult.getTalkNumber());
     }
 
     @Override
     public int getItemCount() {
-        return treeHoleList.size();
+        return treeHoleResultList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

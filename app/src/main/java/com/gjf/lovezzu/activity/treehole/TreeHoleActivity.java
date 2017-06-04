@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +16,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.TreeHole;
+import com.gjf.lovezzu.entity.TreeHoleData;
+import com.gjf.lovezzu.entity.TreeHoleResult;
+import com.gjf.lovezzu.network.TreeHoleMethods;
 import com.gjf.lovezzu.view.TreeHoleAdapter;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
 
 /**
  * Created by zhao on 2017/5/4.
@@ -32,6 +36,8 @@ import butterknife.OnClick;
 public class TreeHoleActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     public static TreeHoleActivity treeHoleActivity;
+    private Subscriber subscriber;
+
     @BindView(R.id.tree_title_back)
     ImageView treeTitleBack;
     @BindView(R.id.tree_menu)
@@ -43,7 +49,7 @@ public class TreeHoleActivity extends AppCompatActivity implements PopupMenu.OnM
     @BindView(R.id.tree_fab)
     ImageView treeFab;
 
-    private List<TreeHole> treeHoleList = new ArrayList<>();
+    private List<TreeHoleResult> treeHoleResultList = new ArrayList<>();
     TreeHoleAdapter treeHoleAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,7 @@ public class TreeHoleActivity extends AppCompatActivity implements PopupMenu.OnM
         initDate();
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         treeItemView.setLayoutManager(layoutManager);
-        treeHoleAdapter=new TreeHoleAdapter(treeHoleList);
+        treeHoleAdapter=new TreeHoleAdapter(treeHoleResultList);
         treeItemView.setAdapter(treeHoleAdapter);
 
         treeRefresh.setColorSchemeColors(Color.GREEN);
@@ -131,11 +137,31 @@ public class TreeHoleActivity extends AppCompatActivity implements PopupMenu.OnM
     }
 
     private void initDate(){
-        //服务器获取
-        //测试数据
-        for (int i = 1; i <= 5; i++){
-            TreeHole treeHole=new TreeHole("发布我的树洞主体美容","啥用？","100","101");
-            treeHoleList.add(treeHole);
-        }
+//        //服务器获取
+//        //测试数据
+//        for (int i = 1; i <= 5; i++){
+//            TreeHoleResult treeHole=new TreeHoleResult("发布我的树洞主体美容","啥用？","100","101");
+//            treeHoleResultList.add(treeHole);
+//        }
+
+        subscriber = new Subscriber<TreeHoleData>() {
+            @Override
+            public void onCompleted() {
+            Log.d("ggggg","显示成功!");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d("ggggg",e.getMessage().toString());
+            }
+
+            @Override
+            public void onNext(TreeHoleData treeHoleData) {
+                List<TreeHoleResult> list = treeHoleData.getResults();
+                treeHoleResultList.addAll(list);
+
+            }
+        };
+        TreeHoleMethods.getInstance().getHomePageList(subscriber,1);
     }
 }

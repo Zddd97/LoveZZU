@@ -84,12 +84,12 @@
         "source": "C:\\Users\\G\\.android\\build-cache\\086b1c413032ac7eee42c1e282a4400b8aef7a59\\output\\res\\drawable-mdpi\\abc_ic_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi\\abc_btn_radio_to_on_mtrl_000.png",
-        "source": "C:\\Users\\G\\.android\\build-cache\\086b1c413032ac7eee42c1e282a4400b8aef7a59\\output\\res\\drawable-mdpi\\abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi\\abc_switch_track_mtrl_alpha.9.png",
         "source": "C:\\Users\\G\\.android\\build-cache\\086b1c413032ac7eee42c1e282a4400b8aef7a59\\output\\res\\drawable-mdpi\\abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi\\abc_btn_radio_to_on_mtrl_000.png",
+        "source": "C:\\Users\\G\\.android\\build-cache\\086b1c413032ac7eee42c1e282a4400b8aef7a59\\output\\res\\drawable-mdpi\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi\\abc_list_selector_disabled_holo_light.9.png",

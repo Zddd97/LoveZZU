@@ -12,10 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.entity.TreeHoleData;
+import com.gjf.lovezzu.network.TreeHoleMethods;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
 
 /**
  * Created by zhao on 2017/5/4.
@@ -30,6 +33,7 @@ public class AddTreeHoleActivity extends AppCompatActivity {
     EditText addTreeContent;
     @BindView(R.id.add_tree_textNumber)
     TextView addTreeTextNumber;
+    private Subscriber subscriber;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,23 +41,23 @@ public class AddTreeHoleActivity extends AppCompatActivity {
         setContentView(R.layout.tree_add_view);
         ButterKnife.bind(this);
         //字数监听
-       addTreeContent.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        addTreeContent.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-           }
+            }
 
-           @Override
-           public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String text=addTreeContent.getText().toString();
-               addTreeTextNumber.setText(text.length()+"");
-           }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String text = addTreeContent.getText().toString();
+                addTreeTextNumber.setText(text.length() + "");
+            }
 
-           @Override
-           public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-           }
-       });
+            }
+        });
     }
 
     @OnClick({R.id.tree_add_back, R.id.send_tree})
@@ -63,25 +67,38 @@ public class AddTreeHoleActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.send_tree:
-                if (sendMessage()){
-                    Toast.makeText(this,"发送成功！",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this,"发送失败！",Toast.LENGTH_SHORT).show();
-                }
+                sendMessage();
                 break;
             default:
                 break;
         }
     }
 
-    private boolean sendMessage(){
+    private void sendMessage() {
+        subscriber = new Subscriber<TreeHoleData>() {
+            @Override
+            public void onCompleted() {
 
-        try{
-            //doSomething
-            return true;
-        }catch (Exception e){
-            return false;
-        }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(TreeHoleData treeHoleData) {
+                if (treeHoleData.getCode().equals("200")) {
+                    Toast.makeText(getApplicationContext(), "发送成功！", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "发送失败！", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        };
+        TreeHoleMethods.getInstance().sendTUCAOContent(subscriber, "sessionid", addTreeContent.getText().toString());
+
 
     }
 }
