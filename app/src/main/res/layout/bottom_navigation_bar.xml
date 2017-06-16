@@ -5,46 +5,47 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/tab_icon_school"
         android:id="@+id/onefragment"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/tab_icon_school">
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/twofragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/tab_icon_life"
-        android:id="@+id/twofragment">
+        android:background="@drawable/tab_icon_life">
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/threefragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/tab_icon_friend"
-        android:id="@+id/threefragment">
+        android:background="@drawable/tab_icon_friend">
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/fourfragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/tab_icon_message"
-        android:id="@+id/fourfragment">
+        android:background="@drawable/tab_icon_message">
 
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/fivefragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/tab_icon_preson"
-        android:id="@+id/fivefragment">
+        android:background="@drawable/tab_icon_preson">
 
     </LinearLayout>
 </LinearLayout>
