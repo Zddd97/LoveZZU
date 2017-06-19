@@ -67,6 +67,7 @@
         <activity
             android:name=".activity.treehole.AddTreeHoleActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.schoolnewsActivity.SchoolNewsWebView"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
