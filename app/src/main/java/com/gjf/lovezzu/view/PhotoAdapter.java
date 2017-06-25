@@ -41,7 +41,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     private Subscriber subscriber;
     public final static int TYPE_ADD = 1;
     public final static int TYPE_PHOTO = 2;
-    //
+
     public final static int MAX = 9;
 
     public PhotoAdapter(Context mContext, ArrayList<String> photoPaths) {
@@ -91,7 +91,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
             if (canLoadImage) {
-                if (requestFile != null) {
+
                     // upLoad(photos);
                     Glide.with(mContext)
                             .load(uri)
@@ -99,7 +99,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
                             .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                             .error(R.drawable.__picker_ic_broken_image_black_48dp)
                             .into(holder.ivPhoto);
-                }
+
 
             }
         }
