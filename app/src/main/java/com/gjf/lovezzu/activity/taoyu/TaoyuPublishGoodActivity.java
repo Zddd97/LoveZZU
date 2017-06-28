@@ -1,5 +1,6 @@
 package com.gjf.lovezzu.activity.taoyu;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.gjf.lovezzu.view.PhotoAdapter;
 import com.gjf.lovezzu.view.RecyclerItemClickListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,7 +68,7 @@ public class TaoyuPublishGoodActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view_1);
         photoAdapter = new PhotoAdapter(this, selectedPhotos);
 
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, OrientationHelper.HORIZONTAL));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, OrientationHelper.VERTICAL));
         recyclerView.setAdapter(photoAdapter);
 
         PhotoPicker.builder()
@@ -84,14 +86,34 @@ public class TaoyuPublishGoodActivity extends AppCompatActivity {
                                     .setPreviewEnabled(false)
                                     .setSelected(selectedPhotos)
                                     .start(TaoyuPublishGoodActivity.this);
+                            photoAdapter.notifyDataSetChanged();
                         } else {
                             PhotoPreview.builder()
                                     .setPhotos(selectedPhotos)
                                     .setCurrentItem(position)
                                     .start(TaoyuPublishGoodActivity.this);
+                            photoAdapter.notifyDataSetChanged();
                         }
                     }
                 }));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
+
+            List<String> photos = null;
+            if (data != null) {
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+            }
+            selectedPhotos.clear();
+
+            if (photos != null) {
+
+                selectedPhotos.addAll(photos);
+            }
+            photoAdapter.notifyDataSetChanged();
+        }
+    }
 }
