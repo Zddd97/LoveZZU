@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.CheckLoginApplication;
-import com.gjf.lovezzu.fragment.FriendFragment;
+import com.gjf.lovezzu.fragment.friends.FriendFragment;
 import com.gjf.lovezzu.fragment.LifeFragment;
 import com.gjf.lovezzu.fragment.MessageFragment;
 import com.gjf.lovezzu.fragment.PersonFragment;

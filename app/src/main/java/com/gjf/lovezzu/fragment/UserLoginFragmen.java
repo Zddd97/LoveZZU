@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,15 @@ import com.gjf.lovezzu.constant.Url;
 import com.gjf.lovezzu.entity.CheckLoginApplication;
 import com.gjf.lovezzu.entity.LoginResult;
 import com.gjf.lovezzu.network.LoginMethods;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Subscriber;
+
+import static com.hyphenate.easeui.R.string.password;
 
 /**
  * Created by BlackBeard丶 on 2017/03/01.
@@ -67,9 +72,11 @@ public class UserLoginFragmen extends Fragment {
                 returnHome();
                 break;
             case R.id.new_user_reg:
+
                 goToreg();
                 break;
             case R.id.user_login:
+                loginIM();
                 checkInput();
                 break;
         }
@@ -93,6 +100,28 @@ public class UserLoginFragmen extends Fragment {
         transaction.commit();
     }
 
+    //登录环信账号
+    private void loginIM() {
+        EMClient.getInstance().login(user_reg_phone.getText().toString(), user_reg_password.getText().toString(), new EMCallBack() {//回调
+            @Override
+            public void onSuccess() {
+                EMClient.getInstance().groupManager().loadAllGroups();
+                EMClient.getInstance().chatManager().loadAllConversations();
+                Toast.makeText(getContext(), "登录聊天服务器成功！", Toast.LENGTH_LONG).show();
+                Log.d("main", "登录聊天服务器成功！");
+            }
+
+            @Override
+            public void onProgress(int progress, String status) {
+
+            }
+
+            @Override
+            public void onError(int code, String message) {
+                Log.d("main", "登录聊天服务器失败！");
+            }
+        });
+    }
 
     private void goTologin() {
         subscriber = new Subscriber<LoginResult>() {

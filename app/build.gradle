@@ -18,6 +18,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            //jni库的调用会到资源文件夹下libs里面找so文件
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -44,6 +50,6 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
     compile 'org.xutils:xutils:3.5.0'
-
     compile 'org.jsoup:jsoup:1.10.2'
+    compile project(':easeui')
 }
