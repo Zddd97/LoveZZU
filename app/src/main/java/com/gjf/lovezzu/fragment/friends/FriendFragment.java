@@ -7,24 +7,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.transition.Transition;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.activity.MainActivity;
-import com.hyphenate.chat.EMConversation;
-import com.hyphenate.easeui.EaseConstant;
-import com.hyphenate.easeui.domain.EaseUser;
-import com.hyphenate.easeui.ui.EaseBaseFragment;
-import com.hyphenate.easeui.ui.EaseContactListFragment;
-import com.hyphenate.easeui.ui.EaseConversationListFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

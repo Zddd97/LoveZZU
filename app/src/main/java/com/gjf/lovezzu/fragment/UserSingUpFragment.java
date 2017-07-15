@@ -19,8 +19,7 @@ import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.activity.MainActivity;
 import com.gjf.lovezzu.entity.LoginResult;
 import com.gjf.lovezzu.network.SingInMethods;
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.exceptions.HyphenateException;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
