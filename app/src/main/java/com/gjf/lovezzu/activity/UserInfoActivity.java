@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserInfo;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.PhotoPreview;
 import rx.Subscriber;
@@ -87,6 +91,9 @@ public class UserInfoActivity extends AppCompatActivity {
     @BindView(R.id.userinfo_major_layout)
     RelativeLayout userinfo_major_layout;
 
+    private static String userPhone;
+    private static String userName;
+    private  String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +103,7 @@ public class UserInfoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         disPlayImage();
         dispalyUserInfo();
+
         onRefresh();
 
         if (Build.VERSION.SDK_INT >= 21) {
@@ -203,6 +211,8 @@ public class UserInfoActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("userinfo", Activity.MODE_APPEND);
                 final SharedPreferences.Editor editor = sharedPreferences.edit();
                 user_info_nickname_text.setText(userInfoResult.getNickname());
+                //this.userName=userInfoResult.getNickname();
+
                 user_info_phone_text.setText(userInfoResult.getPhone());
                 user_info_sex_text.setText(userInfoResult.getGender());
                 user_info_hone_text.setText(userInfoResult.getHometown());
@@ -564,6 +574,7 @@ public class UserInfoActivity extends AppCompatActivity {
             photoAdapter.notifyDataSetChanged();
         }
     }
+
 
 
 }

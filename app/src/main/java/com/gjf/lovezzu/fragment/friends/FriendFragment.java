@@ -37,13 +37,13 @@ public class FriendFragment extends Fragment {
     @Nullable
     private View view;
     private ContactListFragment contactListFragment;
-    private ConversationFragment conversationFragment;
+    private ConversationListFragment conversationFragment;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         contactListFragment = new ContactListFragment();
-        conversationFragment = new ConversationFragment();
+        conversationFragment = new ConversationListFragment();
     }
 
     @Override
@@ -60,7 +60,7 @@ public class FriendFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        //unbinder.unbind();
     }
 
     @OnClick({R.id.friends_messages, R.id.friends_people, R.id.add_friends})
@@ -68,11 +68,12 @@ public class FriendFragment extends Fragment {
         switch (view.getId()) {
             case R.id.friends_messages:
                 if (conversationFragment == null) {
-                    conversationFragment = new ConversationFragment();
+                    conversationFragment = new ConversationListFragment();
                 }
                 replaceFragment(conversationFragment);
                 friendsMessages.setTextColor(Color.parseColor("#0090FD"));
                 friendsPeople.setTextColor(Color.parseColor("#000000"));
+                startActivity(new Intent(getActivity(),ConversationListActivity.class));
                 break;
             case R.id.friends_people:
                 if (contactListFragment == null) {
@@ -81,9 +82,10 @@ public class FriendFragment extends Fragment {
                 replaceFragment(contactListFragment);
                 friendsMessages.setTextColor(Color.parseColor("#000000"));
                 friendsPeople.setTextColor(Color.parseColor("#0090FD"));
+                startActivity(new Intent(getActivity(),ConversationActivity.class));
                 break;
             case R.id.add_friends:
-                startActivity(new Intent(getActivity(), AddContactActivity.class));
+                //startActivity(new Intent(getActivity(), AddContactActivity.class));
                 break;
         }
     }

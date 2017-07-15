@@ -14,15 +14,12 @@ import com.gjf.lovezzu.R;
  * Created by zhao on 2017/7/14.
  */
 
-public class ConversationFragment extends Fragment {
+public class ConversationListFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.friend_coversation,container,false);
-
-
-
+        View view=inflater.inflate(R.layout.conversationlist,container,false);
         return view;
     }
 }
