@@ -73,7 +73,6 @@ public class FriendFragment extends Fragment {
                 replaceFragment(conversationFragment);
                 friendsMessages.setTextColor(Color.parseColor("#0090FD"));
                 friendsPeople.setTextColor(Color.parseColor("#000000"));
-                startActivity(new Intent(getActivity(),ConversationListActivity.class));
                 break;
             case R.id.friends_people:
                 if (contactListFragment == null) {
@@ -82,7 +81,7 @@ public class FriendFragment extends Fragment {
                 replaceFragment(contactListFragment);
                 friendsMessages.setTextColor(Color.parseColor("#000000"));
                 friendsPeople.setTextColor(Color.parseColor("#0090FD"));
-                startActivity(new Intent(getActivity(),ConversationActivity.class));
+                //startActivity(new Intent(getActivity(),ConversationActivity.class));
                 break;
             case R.id.add_friends:
                 //startActivity(new Intent(getActivity(), AddContactActivity.class));
@@ -94,6 +93,7 @@ public class FriendFragment extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.friends_main, fragment);
+        fragmentTransaction.commit();
 
     }
 

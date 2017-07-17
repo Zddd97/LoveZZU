@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
 
@@ -51,16 +50,20 @@
             android:src="@drawable/friend_add" />
 
     </RelativeLayout>
-
     <include
         layout="@layout/item_cut"
+        android:id="@+id/cc"
+        android:layout_below="@id/aa"
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="20dp"
+        />
 
     <FrameLayout
         android:id="@+id/friends_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/aa" />
+        android:layout_below="@id/cc" >
+
+        </FrameLayout>
 
 </RelativeLayout>
