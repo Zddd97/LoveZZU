@@ -2,7 +2,12 @@ package com.gjf.lovezzu.entity;
 
 import android.app.Application;
 
+
+
 import org.xutils.x;
+
+import io.rong.imkit.RongIM;
+
 
 /**
  * Created by BlackBeard丶 on 2017/03/08.
@@ -23,6 +28,11 @@ public class CheckLoginApplication extends Application {
         isLogin = false;
 
         super.onCreate();
+        RongIM.init(this);
         x.Ext.init(this);
     }
+
+
+
+
 }

@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.activity.MainActivity;
 import com.gjf.lovezzu.entity.LoginResult;
 import com.gjf.lovezzu.network.SingInMethods;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,6 +87,7 @@ public class UserSingUpFragment extends Fragment {
         };
         String phone = getuser_reg_phone.getText().toString();
         String password = getUser_reg_password.getText().toString();
+
         boolean issuccessful = false;
         String identifier = "1";
         SingInMethods.getInstance().goToSingup(subscriber, identifier, issuccessful, phone, password);
@@ -106,6 +109,8 @@ public class UserSingUpFragment extends Fragment {
         }
     }
     //回到主页
+
+
 
     private void returnHome() {
         Intent intent = new Intent();

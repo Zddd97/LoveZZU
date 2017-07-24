@@ -7,17 +7,23 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.gjf.lovezzu.R;
 import com.gjf.lovezzu.entity.CheckLoginApplication;
-import com.gjf.lovezzu.fragment.FriendFragment;
+import com.gjf.lovezzu.fragment.friends.FriendFragment;
 import com.gjf.lovezzu.fragment.LifeFragment;
 import com.gjf.lovezzu.fragment.MessageFragment;
 import com.gjf.lovezzu.fragment.PersonFragment;
 import com.gjf.lovezzu.fragment.SchoolFragment;
 import com.gjf.lovezzu.service.CheckLogin;
+
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+
+import static io.rong.imkit.utils.SystemUtils.getCurProcessName;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -108,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (friendFragment == null) {
                     friendFragment = new FriendFragment();
                 }
+
                 mOne.setBackgroundResource(R.drawable.tab_icon_school);
                 mTwo.setBackgroundResource(R.drawable.tab_icon_life);
                 mThree.setBackgroundResource(R.drawable.tab_icon_friend_selected);
@@ -165,5 +172,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startService(startintent);
         }
     }
+
+
+
+
 
 }
