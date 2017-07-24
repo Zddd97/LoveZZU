@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_title"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fffffc">
-
-    <ImageView
-        android:id="@+id/my_title_back"
+    android:layout_height="wrap_content"
+    android:background="#fffffc"
+    android:paddingTop="30dp">
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="0.5dp"
-        android:src="@drawable/fragment_back" />
+        android:layout_weight="1">
+        <ImageView
 
-    <TextView
-        android:id="@+id/my_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0.5dp"
+            android:id="@+id/reg_title_back"
+            android:src="@drawable/fragment_back" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="注册" />
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:gravity="center">
+        <TextView
 
-</RelativeLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:text="注册"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

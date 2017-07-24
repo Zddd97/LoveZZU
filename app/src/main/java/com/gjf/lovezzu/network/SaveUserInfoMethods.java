@@ -21,7 +21,8 @@ public class SaveUserInfoMethods {
     private Retrofit retrofit;
     private EdituserInfoServer edituserInfoServer;
     private static final int DEFAULT_TIMEOUT = 5;
-    private SaveUserInfoMethods(){
+
+    private SaveUserInfoMethods() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -33,40 +34,47 @@ public class SaveUserInfoMethods {
                 .build();
         edituserInfoServer = retrofit.create(EdituserInfoServer.class);
     }
-    private static class SingletonHolder{
+
+    private static class SingletonHolder {
         private static final SaveUserInfoMethods INSTANCE = new SaveUserInfoMethods();
     }
-    public static SaveUserInfoMethods saveUserInfoMethods(){
-        return  SingletonHolder.INSTANCE;
+
+    public static SaveUserInfoMethods saveUserInfoMethods() {
+        return SingletonHolder.INSTANCE;
     }
 
-    public void editNickname(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String nicnaem ){
-        edituserInfoServer.editNickname(identifier,phone,nicnaem).subscribeOn(Schedulers.io())
+    public void editNickname(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String nicnaem) {
+        edituserInfoServer.editNickname(identifier, phone, nicnaem).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-    public void editSex(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String sex ){
-        edituserInfoServer.editNickname(identifier,phone,sex).subscribeOn(Schedulers.io())
+
+    public void editSex(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String sex) {
+        edituserInfoServer.editSex(identifier, phone, sex).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-    public void editHome(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String home ){
-        edituserInfoServer.editNickname(identifier,phone,home).subscribeOn(Schedulers.io())
+
+    public void editHome(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String home) {
+        edituserInfoServer.editHome(identifier, phone, home).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-    public void editSchool(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String school ){
-        edituserInfoServer.editNickname(identifier,phone,school).subscribeOn(Schedulers.io())
+
+    public void editSchool(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String school) {
+        edituserInfoServer.editSchool(identifier, phone, school).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-    public void editClass(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String Class ){
-        edituserInfoServer.editNickname(identifier,phone,Class).subscribeOn(Schedulers.io())
+
+    public void editClass(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String Class) {
+        edituserInfoServer.editClass(identifier, phone, Class).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-    public void editMajor(Subscriber<UserInfoResult> subscriber,String identifier,String phone,String major ){
-        edituserInfoServer.editNickname(identifier,phone,major).subscribeOn(Schedulers.io())
+
+    public void editMajor(Subscriber<UserInfoResult> subscriber, String identifier, String phone, String major) {
+        edituserInfoServer.editMajor(identifier, phone, major).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }

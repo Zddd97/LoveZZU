@@ -1,14 +1,6 @@
 [
     {
-        "merged": "F:\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\layout-v11\\abc_screen_content_include.xml",
-        "source": "C:\\Users\\lenovo047\\.android\\build-cache\\a6233473acff73ac512f08116be548d8e688f7a4\\output\\res\\layout-v11\\abc_screen_content_include.xml"
-    },
-    {
         "merged": "C:\\Users\\G\\AndroidStudioProjects\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\layout-v11\\abc_screen_content_include.xml",
-        "source": "C:\\Users\\G\\.android\\build-cache\\032c56a4f04e5641f9a524b3dcd43cd68305bc7b\\output\\res\\layout-v11\\abc_screen_content_include.xml"
-    },
-    {
-        "merged": "D:\\Android\\LoveZZU\\flashview\\build\\intermediates\\res\\merged\\debug\\layout-v11\\abc_screen_content_include.xml",
-        "source": "C:\\Users\\zhaox\\.android\\build-cache\\f59b38abddf7c357e17b055dc7b28e05cb02c663\\output\\res\\layout-v11\\abc_screen_content_include.xml"
+        "source": "C:\\Users\\G\\.android\\build-cache\\086b1c413032ac7eee42c1e282a4400b8aef7a59\\output\\res\\layout-v11\\abc_screen_content_include.xml"
     }
 ]

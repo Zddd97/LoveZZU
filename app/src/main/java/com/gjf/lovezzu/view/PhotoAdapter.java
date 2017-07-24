@@ -11,8 +11,11 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.UserInfoResult;
 import com.gjf.lovezzu.network.UpLoadIconMethods;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,21 +25,24 @@ import java.util.Map;
 import me.iwf.photopicker.utils.AndroidLifecycleUtils;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import rx.Subscriber;
+
+import static com.gjf.lovezzu.constant.Url.LOGIN_URL;
 
 /**
  * Created by BlackBeard丶 on 2017/03/15.
  */
-public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
+public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder> {
     private ArrayList<String> photoPaths = new ArrayList<String>();
     private LayoutInflater inflater;
-    private  Uri uri;
+    private Uri uri;
     private Context mContext;
     private Subscriber subscriber;
-  public   final static int TYPE_ADD = 1;
-  public   final static int TYPE_PHOTO = 2;
-//
-  public   final static int MAX = 9;
+    public final static int TYPE_ADD = 1;
+    public final static int TYPE_PHOTO = 2;
+
+    public final static int MAX = 9;
 
     public PhotoAdapter(Context mContext, ArrayList<String> photoPaths) {
         this.photoPaths = photoPaths;
@@ -46,7 +52,8 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     }
 
 
-    @Override public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public PhotoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = null;
         switch (viewType) {
             case TYPE_ADD:
@@ -64,30 +71,77 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     public void onBindViewHolder(final PhotoViewHolder holder, final int position) {
 
         if (getItemViewType(position) == TYPE_PHOTO) {
-          uri = Uri.fromFile(new File(photoPaths.get(position)));
+            uri = Uri.fromFile(new File(photoPaths.get(position)));
 
             Map<String, RequestBody> photos = new HashMap<>();
             File file = new File(uri.getPath());
+
+            if (file.exists()){
+                Log.d("ggggg","yicunzai");
+            }
+            testReq(file);
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-            photos.put("\"; filename=\""+file.getName(),requestFile);
-            Log.d("ggggg",uri.toString());
+            photos.put("image", requestFile);
+            photos.put("phone", RequestBody.create(MediaType.parse("multipart/form-data"), "123456"));
+            Log.d("ggggg", photos.toString());
+            Log.d("ggggg", uri.toString());
+            Log.d("ggggg", file.getName());
+
 
             boolean canLoadImage = AndroidLifecycleUtils.canLoadImage(holder.ivPhoto.getContext());
 
             if (canLoadImage) {
-                Glide.with(mContext)
-                        .load(uri)
-                        .centerCrop()
-                        .thumbnail(0.1f)
-                        .placeholder(R.drawable.__picker_ic_photo_black_48dp)
-                        .error(R.drawable.__picker_ic_broken_image_black_48dp)
-                        .into(holder.ivPhoto);
+
+                    // upLoad(photos);
+                    Glide.with(mContext)
+                            .load(uri)
+                            .centerCrop()
+                            .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+                            .error(R.drawable.__picker_ic_broken_image_black_48dp)
+                            .into(holder.ivPhoto);
+
+
             }
         }
     }
 
+    private void testReq(File file){
+//        x.Ext.init(mContext.getApplicationContext());
+        RequestParams requestParams=new RequestParams(LOGIN_URL+"upload");
+        requestParams.setMultipart(true);
+        requestParams.addBodyParameter("phone","1222");
+        requestParams.addBodyParameter("myUpload",file);
+        x.http().post(requestParams, new Callback.CacheCallback<String>() {
+            @Override
+            public boolean onCache(String result) {
+                return false;
+            }
 
-    @Override public int getItemCount() {
+            @Override
+            public void onSuccess(String result) {
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
+
+    @Override
+    public int getItemCount() {
         int count = photoPaths.size() + 1;
         if (count > MAX) {
             count = MAX;
@@ -103,32 +157,34 @@ public class PhotoAdapter  extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHo
     public static class PhotoViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivPhoto;
         private View vSelected;
+
         public PhotoViewHolder(View itemView) {
             super(itemView);
-            ivPhoto   = (ImageView) itemView.findViewById(R.id.iv_photo);
+            ivPhoto = (ImageView) itemView.findViewById(R.id.iv_photo);
             vSelected = itemView.findViewById(R.id.v_selected);
             if (vSelected != null) vSelected.setVisibility(View.GONE);
         }
     }
 
-    public void upLoad(   Map<String, RequestBody> photos){
-        subscriber = new Subscriber<UserInfoResult>() {
+    public void upLoad(Map<String, RequestBody> photos) {
+        subscriber = new Subscriber<ResponseBody>() {
             @Override
             public void onCompleted() {
-
+                Log.d("ggggg", "success");
             }
 
             @Override
             public void onError(Throwable e) {
-
+                Log.d("ggggg", e.getMessage().toString());
             }
 
             @Override
-            public void onNext(UserInfoResult userInfoResult) {
+            public void onNext(ResponseBody userInfoResult) {
 
+                Log.d("ggggg", "xiyibu");
             }
         };
         String phone = null;
-        UpLoadIconMethods.upLoadIconMethods(subscriber,photos,phone);
+        UpLoadIconMethods.upLoadIconMethods().goToUploadIcon(subscriber, photos);
     }
 }

@@ -1,19 +1,24 @@
 package com.gjf.lovezzu.fragment;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
-
+import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gjf.lovezzu.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,17 +34,26 @@ public class SchoolFragment extends Fragment {
     TextView inSociety;
     private School_shoolfragment school_shoolfragment;
     private Shool_societyfragment shool_societyfragment;
-   private View view;
+    private View view;
+    final int RIGHT = 0;
+    final int LEFT = 1;
+    private FragmentTabHost mTabHost;
+    private LayoutInflater layoutInflater;
+    private Class fragmentArray[] = {School_shoolfragment.class, Shool_societyfragment.class};
+    private String textViewArray[] = {"学校", "社会"};
+    private List<android.support.v4.app.Fragment> list = new ArrayList<android.support.v4.app.Fragment>();
+    private ViewPager vp;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-            view = inflater.inflate(R.layout.school_fragment, container, false);
-            ButterKnife.bind(this, view);
-            school_shoolfragment = new School_shoolfragment();
-            shool_societyfragment = new Shool_societyfragment();
-            inSchool.setTextColor(Color.parseColor("#0090FD"));
-            replaceFragment(school_shoolfragment);
+        view = inflater.inflate(R.layout.school_fragment, container, false);
+        ButterKnife.bind(this, view);
+        school_shoolfragment = new School_shoolfragment();
+        shool_societyfragment = new Shool_societyfragment();
+        inSchool.setTextColor(Color.parseColor("#0090FD"));
+        replaceFragment(school_shoolfragment);
         return view;
     }
 
@@ -67,11 +81,13 @@ public class SchoolFragment extends Fragment {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.in_school_content, fragment);
         transaction.commit();
     }
+
 
 }

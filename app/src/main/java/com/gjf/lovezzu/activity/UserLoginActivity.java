@@ -18,6 +18,7 @@ import com.gjf.lovezzu.fragment.UserSingUpFragment;
 public class UserLoginActivity extends AppCompatActivity {
     private UserLoginFragmen userLoginFragmen;
     private UserSingUpFragment userSingUpFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class UserLoginActivity extends AppCompatActivity {
             int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
             decorView.setSystemUiVisibility(option);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         setDefaultFragment();
@@ -38,7 +40,7 @@ public class UserLoginActivity extends AppCompatActivity {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         userLoginFragmen = new UserLoginFragmen();
-        transaction.replace(R.id.singfragment,userLoginFragmen);
+        transaction.replace(R.id.singfragment, userLoginFragmen);
         transaction.commit();
     }
 }

@@ -1,6 +1,7 @@
 package com.gjf.lovezzu.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,6 +14,11 @@ import com.gc.flashview.FlashView;
 import com.gc.flashview.constants.EffectConstants;
 import com.gc.flashview.listener.FlashViewListener;
 import com.gjf.lovezzu.R;
+import com.gjf.lovezzu.activity.parttimejob.PartTimeJobActivity;
+import com.gjf.lovezzu.activity.palytogether.PlayTogetherActivity;
+import com.gjf.lovezzu.activity.taoyu.TaoyuActivity;
+import com.gjf.lovezzu.activity.TopicTalkActivity;
+import com.gjf.lovezzu.activity.treehole.TreeHoleActivity;
 
 import java.util.ArrayList;
 
@@ -86,20 +92,31 @@ public class LifeFragment extends Fragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.life_taoyu:
-                Toast.makeText(getContext(), "淘鱼", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), "淘鱼", Toast.LENGTH_SHORT).show();
+                goToTaoYu();
                 break;
             case R.id.life_play:
-                Toast.makeText(getContext(), "一起玩", Toast.LENGTH_SHORT).show();
+                Intent play_intent = new Intent(getActivity().getApplicationContext(), PlayTogetherActivity.class);
+                startActivity(play_intent);
                 break;
             case R.id.life_talk:
-                Toast.makeText(getContext(), "话题圈", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity().getApplicationContext(), TopicTalkActivity.class);
+                startActivity(intent);
                 break;
             case R.id.life_shudong:
-                Toast.makeText(getContext(), "树洞", Toast.LENGTH_SHORT).show();
+                Intent treeHole_intent = new Intent(getActivity().getApplicationContext(), TreeHoleActivity.class);
+                startActivity(treeHole_intent);
                 break;
             case R.id.life_jianzhi:
-                Toast.makeText(getContext(), "兼职", Toast.LENGTH_SHORT).show();
+                Intent partTimeJob_intent = new Intent(getActivity().getApplicationContext(), PartTimeJobActivity.class);
+                startActivity(partTimeJob_intent);
                 break;
         }
+    }
+
+
+    private void goToTaoYu() {
+        Intent intent = new Intent(getContext(), TaoyuActivity.class);
+        startActivity(intent);
     }
 }

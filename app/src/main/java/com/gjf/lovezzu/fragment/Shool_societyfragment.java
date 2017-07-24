@@ -14,8 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gjf.lovezzu.R;
-import com.gjf.lovezzu.entity.Data;
-import com.gjf.lovezzu.entity.NewsResult;
+import com.gjf.lovezzu.entity.SocietyNewsData;
+import com.gjf.lovezzu.entity.SocietyNewsResult;
+import com.gjf.lovezzu.network.HttpClientUtils;
 import com.gjf.lovezzu.network.NewsMethods;
 import com.gjf.lovezzu.view.SocietyAdapter;
 
@@ -24,22 +25,30 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import rx.Subscriber;
 
 /**
  * Created by lenovo047 on 2017/3/9.
  */
 
-public class Shool_societyfragment extends Fragment {
+public class Shool_societyfragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
+    private BGARefreshLayout mRefreshLayout;
+
     private View view;
     private Subscriber subscriber;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    private List<NewsResult> newsResultList = new ArrayList<>();
-    private List<NewsResult> mlist;
+    private List<SocietyNewsResult> societyNewsResultList = new ArrayList<>();
+    private List<SocietyNewsResult> mlist;
+    private int Page = 0;
     RecyclerView newsSociety;
     private SocietyAdapter adapter;
-    @BindView(R.id.title_douban)  TextView doubantitle;
+    @BindView(R.id.title_douban)
+    TextView doubantitle;
+    private LinearLayoutManager linearLayoutManager;
+    private int lastVisibleItem;
+    HttpClientUtils httpClientUtils;
 
     @Nullable
     @Override
@@ -49,23 +58,25 @@ public class Shool_societyfragment extends Fragment {
 
             view = inflater.inflate(R.layout.inschool_society_view, container, false);
             ButterKnife.bind(this, view);
-            getNews();
-
+            getNews(1);
 
             showNews();
+           isVisBottom();
             onRegresh();
-        }else {
+
+
+        } else {
             ViewGroup viewGroup = (ViewGroup) view.getParent();
             if (viewGroup != null) {
                 viewGroup.removeView(view);
             }
-            onRegresh();
+
         }
 
         return view;
     }
 
-    private void onRegresh(){
+    private void onRegresh() {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.society_refresh_layout);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -75,6 +86,8 @@ public class Shool_societyfragment extends Fragment {
                 refreshView();
             }
         });
+
+
     }
 
     //下拉刷新
@@ -83,7 +96,7 @@ public class Shool_societyfragment extends Fragment {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -92,7 +105,7 @@ public class Shool_societyfragment extends Fragment {
                     @Override
                     public void run() {
                         //刷新数据
-                        initNews(null);
+                        getNews(Page++);
                         adapter.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -100,57 +113,99 @@ public class Shool_societyfragment extends Fragment {
             }
         }).start();
     }
+    public void  isVisBottom(){
+        newsSociety.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LinearLayoutManager layoutManager = (LinearLayoutManager) newsSociety.getLayoutManager();
+                //屏幕中最后一个可见子项的position
+                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+                //当前屏幕所看到的子项个数
+                int visibleItemCount = layoutManager.getChildCount();
+                //当前RecyclerView的所有子项个数
+                int totalItemCount = layoutManager.getItemCount();
+                //RecyclerView的滑动状态
+                int state = newsSociety.getScrollState();
+                if(visibleItemCount > 0 && lastVisibleItemPosition == totalItemCount - 1 && state == newsSociety.SCROLL_STATE_IDLE){
+                    Log.d("ggggg","到了底部");
+                    refreshView();
+                }else {
 
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+            }
+        });
+
+    }
     //展示新闻
-    private void showNews(){
+    private void showNews() {
         newsSociety = (RecyclerView) view.findViewById(R.id.school_society_content);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         newsSociety.setLayoutManager(layoutManager);
-        adapter = new SocietyAdapter(newsResultList,getContext());
+        adapter = new SocietyAdapter(societyNewsResultList, getContext());
         newsSociety.setAdapter(adapter);
     }
 
-    private void getNews(){
-  subscriber = new Subscriber<Data>() {
-      @Override
-      public void onCompleted() {
+    private void getNews(int page) {
 
-      }
-
-      @Override
-      public void onError(Throwable e) {
-          Toast.makeText(getContext(),e.getMessage().toString(),Toast.LENGTH_LONG).show();
-         // Log.d("gjf123", e.getMessage().toString());
-      }
-
-      @Override
-      public void onNext(Data newsResult) {
-
-          List<NewsResult> list = newsResult.getResults();
+        subscriber = new Subscriber<SocietyNewsData>() {
+            @Override
+            public void onCompleted() {
 
 
-         Toast.makeText(getContext(),"",Toast.LENGTH_LONG).show();
-         Log.d("gjf123", "");
-          initNews(list);
+            }
 
-      }
-  };
-        NewsMethods.getInstance().getTopMovie(subscriber,1);
-    }
-
-    //初始化新闻
-    private void initNews(List<NewsResult> newsResult) {
-
-//        SchoolSociety schoolSociety = new SchoolSociety("111nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn", "2017-3-15", "1024",R.drawable.__picker_ic_photo_black_48dp, "http://7xi8d6.com1.z0.glb.clouddn.com/2017-03-16-17333221_108837802984751_2789267558635667456_n.jpg");
-//        schoolSocietyList.add(schoolSociety);
-
- newsResultList.addAll(newsResult);
+            @Override
+            public void onError(Throwable e) {
+                Toast.makeText(getContext(), e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                // Log.d("gjf123", e.getMessage().toString());
+            }
 
 
+            @Override
+            public void onNext(SocietyNewsData newsResult) {
+
+                List<SocietyNewsResult> list = newsResult.getResults();
+
+                //Toast.makeText(getContext(),list.toString(),Toast.LENGTH_LONG).show();
+                //Log.d("gjf123", "");
+                //加载新闻
+                societyNewsResultList.addAll(list);
+                adapter.notifyDataSetChanged();
+
+
+
+            }
+        };
+        NewsMethods.getInstance().getTopMovie(subscriber, page);
 
     }
 
+
+    private void initRefreshLayout() {
+
     }
+
+
+    @Override
+    public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+
+    }
+
+    @Override
+    public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+        return false;
+    }
+}
+
+
+
 
 
 

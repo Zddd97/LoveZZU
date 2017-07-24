@@ -22,7 +22,8 @@ public class LoginMethods {
     private LoginServer loginServer;
 
     private static final int DEFAULT_TIMEOUT = 5;
-    private LoginMethods(){
+
+    private LoginMethods() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
         httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -37,20 +38,27 @@ public class LoginMethods {
 
         loginServer = retrofit.create(LoginServer.class);
     }
+
     //在访问HttpMethods时创建单例
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private static final LoginMethods INSTANCE = new LoginMethods();
     }
 
     //获取单例
-    public static LoginMethods getInstance(){
+    public static LoginMethods getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
-     public void goToLogin(Subscriber<LoginResult> subscriber,String identifier,boolean issuccessful,String phone,String password){
-         loginServer.login(identifier,issuccessful,phone,password).subscribeOn(Schedulers.io())
-                 .observeOn(AndroidSchedulers.mainThread())
-                 .subscribe(subscriber);
-     }
+    public void goToLogin(Subscriber<LoginResult> subscriber, String phone, String password) {
+        loginServer.login(phone, password).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    public void checkLogin(Subscriber<LoginResult> subscriber, String SessionID) {
+        loginServer.checklogin(SessionID).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 
 }

@@ -19,32 +19,32 @@ import butterknife.OnClick;
  * Created by BlackBeard丶 on 2017/03/15.
  */
 public class UserSettingActivity extends AppCompatActivity {
-    @BindView(R.id.setting_exitLogin)  RelativeLayout setting_exitLogin;
+    @BindView(R.id.setting_exitLogin)
+    RelativeLayout setting_exitLogin;
 
-    private  CheckLoginApplication  checkLoginApplication;
-
-
+    private CheckLoginApplication checkLoginApplication;
 
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_usersetting);
+        setContentView(R.layout.activity_usersetting);
         ButterKnife.bind(this);
     }
-  @OnClick({R.id.setting_exitLogin})
-    public void onClick(View view){
-      switch (view.getId()){
-          case R.id.setting_exitLogin :
-              cleanUserLoinInfo();
-              break;
-      }
 
-  }
+    @OnClick({R.id.setting_exitLogin})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.setting_exitLogin:
+                cleanUserLoinInfo();
+                break;
+        }
 
-    private void cleanUserLoinInfo(){
-        checkLoginApplication = (CheckLoginApplication)getApplication();
+    }
+
+    private void cleanUserLoinInfo() {
+        checkLoginApplication = (CheckLoginApplication) getApplication();
         if (checkLoginApplication.isLogin()) {
             SharedPreferences sharedPreferences = getSharedPreferences("userinfo", Activity.MODE_APPEND);
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -54,8 +54,8 @@ public class UserSettingActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "已退出登录！", Toast.LENGTH_LONG).show();
             finish();
 
-        }else {
-            Toast.makeText(getApplicationContext(),"您还未登录！",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "您还未登录！", Toast.LENGTH_LONG).show();
         }
     }
 
