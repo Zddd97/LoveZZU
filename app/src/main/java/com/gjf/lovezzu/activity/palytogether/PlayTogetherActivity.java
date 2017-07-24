@@ -152,7 +152,7 @@ public class PlayTogetherActivity extends AppCompatActivity implements PopupMenu
 
     //加载数据
     private void initDate() {
-
+        //从服务器获取
         for (int i = 1; i <= 2; i++) {
 
             PlayTop playTop = new PlayTop(R.drawable.test_person_01, "凹凸", "4-11 23:01", 123, 110,
